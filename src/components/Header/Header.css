@@ -1,0 +1,8 @@
+.header-container {
+    height: 3em;
+    background-image: linear-gradient(to right, #5c46cc, #1d1723);
+}
+
+.header-container .brand-name {
+    color: white;
+}

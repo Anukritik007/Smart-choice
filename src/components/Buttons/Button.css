@@ -1,0 +1,17 @@
+.circular-button {
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    border: none;
+    background-color: #5c46cc;
+    color: white
+}
+
+.rectangular-button {
+    width: 100%;
+    border: none;
+    height: 3em;
+    background-color: #5c46cc;
+    color: white;
+    border-radius: 0.25rem;
+}

@@ -1,0 +1,2 @@
+export const ADD_CHOICE = "ADD_CHOICE";
+export const UPDATE_QUESTION = "UPDATE_QUESTION";
