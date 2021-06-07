@@ -15,3 +15,7 @@
     color: white;
     border-radius: 0.25rem;
 }
+
+button:disabled {
+    background-color: grey !important;
+}

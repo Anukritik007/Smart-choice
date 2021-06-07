@@ -4,50 +4,66 @@ import Button from "../../components/Buttons/Button";
 import { useHistory } from "react-router-dom";
 import ChoiceInput from "./ChoiceInput";
 import { useSelector, useDispatch } from "react-redux";
-import { addChoice, updateQuestion } from "../../redux/choices/choiceActions";
+import {
+  updateChoices,
+  updateQuestion,
+} from "../../redux/choices/choiceActions";
 
 const GettingStarted = () => {
   const history = useHistory();
-  const [question, setQuestion] = useState("");
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
   const choiceList = useSelector((state) => state.choices);
+  const question_ = useSelector((state) => state.question);
   const dispatch = useDispatch();
+  const [question, setQuestion] = useState(question_);
+  const [addedChoices, setAddedChoices] = useState(choiceList);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const defaultVal_ = {
+    dispatch(updateChoices(addedChoices));
+    dispatch(updateQuestion(question));
+    history.push("/dashboard");
+  };
+
+  const generateId = () => {
+    return Date.now().toString();
+  };
+
+  const handleChoiceDelete = (choiceId) => {
+    console.log("Choice delete");
+    const newChoices_ = [...addedChoices];
+    newChoices_.splice(
+      newChoices_.findIndex((choice_) => choice_.id === choiceId),
+      1
+    );
+    setAddedChoices(newChoices_);
+  };
+
+  const handleAddMore = () => {
+    console.log("Add new Choice");
+    const newAdd_ = [...addedChoices];
+    newAdd_.push({
+      id: generateId(),
+      name: "",
       attributes: [],
       score: 0,
       probability: "low",
-    };
-    const choice1 = {
-      name: input1,
-      ...defaultVal_,
-    };
-    const choice2 = {
-      name: input2,
-      ...defaultVal_,
-    };
-    console.log("submitted:", choice1);
-    dispatch(addChoice(choice1));
-    dispatch(addChoice(choice2));
-    dispatch(updateQuestion(question));
-    history.push("/");
+    });
+    setAddedChoices(newAdd_);
   };
 
-  const handleCancel = (event) => {
-    console.log("Choice delete");
-    setInput1("");
-    setInput2("");
+  const handleChoiceChange = (e, choiceId) => {
+    //TODO: debounce
+    console.log("handleChoiceChange", e, choiceId);
+    const newChoices_ = addedChoices.map((choice) => {
+      return choice.id === choiceId
+        ? {
+            ...choice,
+            name: e,
+          }
+        : choice;
+    });
+    setAddedChoices(newChoices_);
   };
-
-  const handleAddMore = (event) => {
-    console.log("Choice Add");
-  };
-
-  const updateChoice = () => {};
-  const deleteChoice = () => {};
 
   return (
     <div className="getting-started">
@@ -68,36 +84,21 @@ const GettingStarted = () => {
             {/* inputing choices */}
             <section className="choices">
               <label>Who are the contenders in your mind?</label>
-              {choiceList.length === 0 ? (
-                <>
+              {addedChoices.map((choice, index) => {
+                return (
                   <ChoiceInput
-                    value={input1}
-                    placeholder="Choice 1"
-                    onInputChange={(val) => setInput1(val)}
-                    onInputDelete={handleCancel}
+                    key={choice.id}
+                    value={choice.name}
+                    disableDelete={addedChoices.length === 2}
+                    placeholder={`Choice ${index + 1}`}
+                    onInputChange={(e) => handleChoiceChange(e, choice.id)}
+                    onInputDelete={() => handleChoiceDelete(choice.id)}
                   />
-                  <ChoiceInput
-                    value={input2}
-                    placeholder="Choice 2"
-                    onInputChange={(val) => setInput2(val)}
-                    onInputDelete={handleCancel}
-                  />
-                </>
-              ) : (
-                choiceList.map((choice) => {
-                  return (
-                    <ChoiceInput
-                      value={choice.name}
-                      placeholder="Choice x"
-                      onInputChange={updateChoice}
-                      onInputDelete={deleteChoice}
-                    />
-                  );
-                })
-              )}
+                );
+              })}
 
               {/* Add more choices */}
-              {input1 !== "" && input2 !== "" ? (
+              {addedChoices.every((choice) => choice.name !== "") ? (
                 <div className="d-flex justify-content-center align-item-center">
                   <Button name="+" type="circular" onClick={handleAddMore} />
                 </div>
@@ -108,7 +109,7 @@ const GettingStarted = () => {
           </div>
 
           <Button
-            name="START"
+            name="PROCEED"
             type="rectangular"
             role="submit"
             bgColor="green"

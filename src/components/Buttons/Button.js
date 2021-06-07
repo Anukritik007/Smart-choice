@@ -1,6 +1,14 @@
 import React from "react";
 import "./Button.css";
-const Button = ({ name, type, role, bgColor, fontColor, onClick }) => {
+const Button = ({
+  name,
+  type,
+  role,
+  bgColor,
+  fontColor,
+  isDisabled,
+  onClick,
+}) => {
   const renderButton = (name, type, bgColor, fontColor) => {
     switch (type) {
       case "circular":
@@ -8,6 +16,7 @@ const Button = ({ name, type, role, bgColor, fontColor, onClick }) => {
           <button
             className="circular-button"
             onClick={onClick}
+            disabled={isDisabled}
             type={role}
             style={{
               backgroundColor: bgColor,
@@ -24,6 +33,7 @@ const Button = ({ name, type, role, bgColor, fontColor, onClick }) => {
             className="rectangular-button"
             onClick={onClick}
             type={role}
+            disabled={isDisabled}
             style={{
               backgroundColor: bgColor,
               color: fontColor,
@@ -35,7 +45,12 @@ const Button = ({ name, type, role, bgColor, fontColor, onClick }) => {
 
       default:
         return (
-          <button type="button" className="btn btn-primary" onClick={onClick}>
+          <button
+            className="btn btn-primary"
+            type="button"
+            disabled={isDisabled}
+            onClick={onClick}
+          >
             {name}
           </button>
         );

@@ -1,8 +1,23 @@
-import { ADD_CHOICE, UPDATE_QUESTION } from "./actionTypes";
+import { ADD_CHOICE, UPDATE_CHOICES, UPDATE_QUESTION } from "./actionTypes";
 
 const initialState_ = {
   question: "",
-  choices: [],
+  choices: [
+    {
+      id: "a101",
+      name: "",
+      attributes: [],
+      score: 0,
+      probability: "low",
+    },
+    {
+      id: "a102",
+      name: "",
+      attributes: [],
+      score: 0,
+      probability: "low",
+    },
+  ],
   leaders: [],
 };
 
@@ -14,6 +29,12 @@ const choiceReducer = (state = initialState_, action) => {
       return {
         ...state,
         choices: newChoices_,
+      };
+
+    case UPDATE_CHOICES:
+      return {
+        ...state,
+        choices: action.payload,
       };
 
     case UPDATE_QUESTION:

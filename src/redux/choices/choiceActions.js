@@ -1,10 +1,29 @@
-import { ADD_CHOICE, UPDATE_QUESTION } from "./actionTypes";
+import {
+  ADD_CHOICE,
+  UPDATE_CHOICES,
+  DELETE_CHOICE,
+  UPDATE_QUESTION,
+} from "./actionTypes";
 
 //action creators
 export const addChoice = (choice) => {
   return {
     type: ADD_CHOICE,
     payload: choice,
+  };
+};
+
+export const deleteChoice = (id) => {
+  return {
+    type: DELETE_CHOICE,
+    payload: id,
+  };
+};
+
+export const updateChoices = (choices) => {
+  return {
+    type: UPDATE_CHOICES,
+    payload: choices,
   };
 };
 

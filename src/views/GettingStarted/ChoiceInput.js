@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "../../components/Buttons/Button";
 
-const ChoiceInput = ({ value, placeholder, onInputChange, onInputDelete }) => {
+const ChoiceInput = ({
+  value,
+  placeholder,
+  onInputChange,
+  disableDelete,
+  onInputDelete,
+}) => {
   return (
     <div className="d-flex align-items-center">
       <input
@@ -15,6 +21,7 @@ const ChoiceInput = ({ value, placeholder, onInputChange, onInputDelete }) => {
           name="X"
           type="rectangular"
           bgColor="red"
+          isDisabled={disableDelete}
           onClick={onInputDelete}
         />
       </div>
