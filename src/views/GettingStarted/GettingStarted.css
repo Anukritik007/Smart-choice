@@ -2,8 +2,14 @@
     padding: 1em;
 }
 
+.getting-started-card {
+    height: 40em;
+}
+
 .add-choices-form {
     text-align: left;
+    max-height: 75vh;
+    overflow: scroll;
 }
 
 .form-elements {

@@ -1,0 +1,36 @@
+.score-card {
+    border: none !important;
+}
+
+.score-card.bg--success {
+    background-image: radial-gradient(white 20%, #6ab76a);
+}
+
+.score-card.bg--warning {
+    background-image: radial-gradient(white 20%, #f5f168);
+}
+
+.score-card.bg--danger {
+    background-image: radial-gradient(white 20%, #ff9595);
+}
+
+.total-score {
+    height: 2em;
+    width: 2em;
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.score-card .delete-choice {
+    top: -1em;
+    left: -1em;
+}
+
+.score-card .header {
+    font-weight: bold;
+}
+
+.score-card .body {
+    overflow: hidden;
+}

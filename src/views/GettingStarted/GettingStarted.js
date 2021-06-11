@@ -8,6 +8,7 @@ import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
+// import PerfectScrollbar from "react-perfect-scrollbar";
 
 const GettingStarted = () => {
   const history = useHistory();
@@ -53,7 +54,7 @@ const GettingStarted = () => {
 
   const handleChoiceChange = (e, choiceId) => {
     //TODO: debounce
-    console.log("handleChoiceChange", e, choiceId);
+    // console.log("handleChoiceChange", e, choiceId);
     const newChoices_ = addedChoices.map((choice) => {
       return choice.id === choiceId
         ? {
@@ -69,8 +70,8 @@ const GettingStarted = () => {
     <div className="getting-started">
       <section className="card shadow">
         <h2 style={{ paddingTop: "1.5em" }}>Add Choices:</h2>
-
         <form className="add-choices-form" onSubmit={handleSubmit}>
+          {/* <PerfectScrollbar> */}
           <div className="form-elements">
             <section className="question">
               <label>What are you confused about?</label>
@@ -111,9 +112,11 @@ const GettingStarted = () => {
           <Button
             name="PROCEED"
             type="rectangular"
+            isDisabled={addedChoices.some((choice) => choice.name === "")}
             role="submit"
             bgColor="green"
           />
+          {/* </PerfectScrollbar> */}
         </form>
       </section>
     </div>

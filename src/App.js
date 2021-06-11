@@ -6,6 +6,7 @@ import GettingStarted from "./views/GettingStarted/GettingStarted";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Dashboard from "./views/Dashboard/Dashboard";
+import Decision from "./views/Decision/Decision";
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
               </Route>
               <Route path="/dashboard">
                 <Dashboard />
+              </Route>
+              <Route path="/decision">
+                <Decision />
               </Route>
             </Switch>
           </div>

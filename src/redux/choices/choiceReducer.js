@@ -1,4 +1,9 @@
-import { ADD_CHOICE, UPDATE_CHOICES, UPDATE_QUESTION } from "./actionTypes";
+import {
+  ADD_CHOICE,
+  UPDATE_CHOICES,
+  UPDATE_QUESTION,
+  DELETE_CHOICE,
+} from "./actionTypes";
 
 const initialState_ = {
   question: "",
