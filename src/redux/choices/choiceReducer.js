@@ -42,6 +42,17 @@ const choiceReducer = (state = initialState_, action) => {
         choices: action.payload,
       };
 
+    case DELETE_CHOICE:
+      const splicedChoices_ = [...state.choices];
+      splicedChoices_.splice(
+        splicedChoices_.findIndex((choice) => choice.id === action.payload),
+        1
+      );
+      return {
+        ...state,
+        choices: splicedChoices_,
+      };
+
     case UPDATE_QUESTION:
       return {
         ...state,

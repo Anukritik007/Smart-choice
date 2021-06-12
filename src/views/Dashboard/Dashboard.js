@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../components/Buttons/Button";
 import { useHistory } from "react-router-dom";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
+import ChoiceDetails from "./ChoiceDetails";
 
 const Dashboard = () => {
   const history = useHistory();
   const choices = useSelector((state) => state.choices);
+  const [showChoiceDetails, setShowChoiceDetails] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState("");
 
   const handleNavigateBack = () => {
     history.push("/getting-started");
@@ -43,48 +46,62 @@ const Dashboard = () => {
 
   const handleCardClick = (id_) => {
     console.log("Card clicked:", id_);
+    setSelectedChoice(id_);
+    setShowChoiceDetails(!showChoiceDetails);
   };
 
+  const handleBackdropClick = () => {
+    setShowChoiceDetails(!showChoiceDetails);
+  };
   const handleAddAttribute = () => {};
   const handleProceed = () => {
     history.push("/decision");
   };
 
   return (
-    <div className="dashboard h-100 p-3">
-      <div className="top-nav">
-        <Button name="Back" onClick={handleNavigateBack} />
-      </div>
-      <div className="body row">
-        {choices.map((choice) => {
-          return (
-            <div
-              className="col-6 py-3 d-flex justify-content-center"
-              key={choice.id}
-            >
-              <ScoreCard
-                choiceId={choice.id}
-                background={mapProbabilityToBackground(choice.probability)}
-                onClick={() => handleCardClick(choice.id)}
+    <div className="dashboard h-100 position-relative">
+      {showChoiceDetails && (
+        <ChoiceDetails
+          choiceId={selectedChoice}
+          onBackdropClick={handleBackdropClick}
+        />
+      )}
+      <div className="main-content h-100 p-3">
+        <div className="top-nav">
+          <Button name="Back" onClick={handleNavigateBack} />
+        </div>
+        <div className="body row">
+          {choices.map((choice) => {
+            return (
+              <div
+                className="col-6 py-3 d-flex justify-content-center"
+                key={choice.id}
               >
-                {getCardContent(choice.attributes)}
-              </ScoreCard>
-            </div>
-          );
-        })}
-      </div>
-      <div className="bottom-nav d-flex">
-        <Button
-          name="Proceed to Decision"
-          type="rectangular"
-          bgColor="green"
-          onClick={handleProceed}
-        />
-        <Button
-          name="Add attribute"
-          type="rectangular"
-          onClick={handleAddAttribute}
-        />
+                <ScoreCard
+                  choiceId={choice.id}
+                  background={mapProbabilityToBackground(choice.probability)}
+                  onClick={() => handleCardClick(choice.id)}
+                  showClose={choices.length > 2}
+                >
+                  {getCardContent(choice.attributes)}
+                </ScoreCard>
+              </div>
+            );
+          })}
+        </div>
+        <div className="bottom-nav d-flex">
+          <Button
+            name="Proceed to Decision"
+            type="rectangular"
+            bgColor="green"
+            onClick={handleProceed}
+          />
+          <Button
+            name="Add attribute"
+            type="rectangular"
+            onClick={handleAddAttribute}
+          />
+        </div>
       </div>
     </div>
   );

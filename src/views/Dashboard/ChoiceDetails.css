@@ -1,0 +1,14 @@
+.content {
+    border-radius: 4px;
+    background: white;
+}
+
+.content .bottom-nav {
+    bottom: 0
+}
+
+.content .display-body {
+    min-height: 30vh;
+    max-height: 55vh;
+    overflow: scroll;
+}

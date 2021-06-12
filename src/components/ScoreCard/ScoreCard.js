@@ -1,8 +1,9 @@
 import "./ScoreCard.css";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { BsFillXCircleFill } from "react-icons/bs";
 import PropTypes from "prop-types";
+import { deleteChoice } from "../../redux/choices/choiceActions";
 
 /**
  * Component to create a card for choice with body content as passed in children
@@ -18,16 +19,19 @@ const ScoreCard = ({
   children,
 }) => {
   const choices = useSelector((state) => state.choices);
-  const [state, setstate] = useState(null);
+  const dispatch = useDispatch();
+  const [choiceInfo, setChoiceInfo] = useState(null);
 
   useEffect(() => {
     console.log("useEffect");
     const current = choices.find((choice) => choice.id === choiceId);
-    setstate(current);
+    setChoiceInfo(current);
   }, [choices, choiceId]);
 
-  const handleDelete = () => {
-    console.log("delete:", state.name);
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    console.log("deleting:", choiceInfo.name);
+    dispatch(deleteChoice(choiceInfo.id));
   };
 
   return (
@@ -53,10 +57,10 @@ const ScoreCard = ({
           />
         </div>
       )}
-      {state && (
+      {choiceInfo && (
         <div className="header py-2 d-flex justify-content-between">
-          <div>{state.name}</div>
-          <div className="total-score">{state.score}</div>
+          <div>{choiceInfo.name !== "" ? choiceInfo.name : "Add name"}</div>
+          <div className="total-score">{choiceInfo.score}</div>
         </div>
       )}
       <div className="body p-2">{children ? children : "Nothing to show"}</div>
