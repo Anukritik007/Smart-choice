@@ -28,6 +28,9 @@ const App = () => {
               <Route path="/decision">
                 <Decision />
               </Route>
+              <Route path="*">
+                <Home />
+              </Route>
             </Switch>
           </div>
         </div>

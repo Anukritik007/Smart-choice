@@ -3,6 +3,7 @@ import {
   UPDATE_CHOICES,
   UPDATE_QUESTION,
   DELETE_CHOICE,
+  RESET,
 } from "./actionTypes";
 
 const initialState_ = {
@@ -13,14 +14,14 @@ const initialState_ = {
       name: "",
       attributes: [],
       score: 0,
-      probability: "low",
+      probability: "medium",
     },
     {
       id: "a102",
       name: "",
       attributes: [],
       score: 0,
-      probability: "low",
+      probability: "medium",
     },
   ],
   leaders: [],
@@ -58,6 +59,10 @@ const choiceReducer = (state = initialState_, action) => {
         ...state,
         question: action.payload,
       };
+
+    case RESET:
+      return initialState_;
+
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import {
   UPDATE_CHOICES,
   DELETE_CHOICE,
   UPDATE_QUESTION,
+  RESET,
 } from "./actionTypes";
 
 //action creators
@@ -31,5 +32,11 @@ export const updateQuestion = (ques) => {
   return {
     type: UPDATE_QUESTION,
     payload: ques,
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: RESET,
   };
 };

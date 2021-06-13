@@ -8,3 +8,7 @@
     max-height: 55vh;
     overflow: scroll;
 }
+
+.content .display-body .empty-state {
+    color: grey
+}

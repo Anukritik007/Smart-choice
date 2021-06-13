@@ -35,13 +35,18 @@ const ChoiceDetails = ({ choiceId }) => {
         <div className="display-body">Allows to Edit</div>
       ) : (
         <div className="display-body p-2">
-          {choice_ &&
+          {choice_ && choice_.attributes.length > 0 ? (
             choice_.attributes.map((attr) => (
               <div key={attr.id} className="d-flex justify-content-between">
                 <p>{attr.name}</p>
                 <p>{attr.score}</p>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="empty-state">
+              Looks like you haven't added your points.
+            </div>
+          )}
         </div>
       )}
 

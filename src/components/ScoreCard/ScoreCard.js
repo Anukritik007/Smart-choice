@@ -63,7 +63,7 @@ const ScoreCard = ({
           <div className="total-score">{choiceInfo.score}</div>
         </div>
       )}
-      <div className="body p-2">{children ? children : "Nothing to show"}</div>
+      <div className="body p-2">{children ? children : "Empty"}</div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/Buttons/Button";
+// import { FaTrashAlt } from "react-icons/fa";
 
 const ChoiceInput = ({
   value,
@@ -17,6 +18,7 @@ const ChoiceInput = ({
         onChange={(e) => onInputChange(e.target.value)}
       />
       <div className="d-flex justify-content-center align-item-center w-25">
+        {/* <FaTrashAlt onClick={onInputDelete}/> */}
         <Button
           name="X"
           type="rectangular"
