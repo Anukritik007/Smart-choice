@@ -5,11 +5,15 @@ import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "./ChoiceDetails";
+import AddAttribute from "./AddAttribute";
 
 const Dashboard = () => {
   const history = useHistory();
   const choices = useSelector((state) => state.choices);
+  const question = useSelector((state) => state.question);
   const [showChoiceDetails, setShowChoiceDetails] = useState(false);
+  const [showAddAttributes, setShowAddAttributes] = useState(false);
+
   const [selectedChoice, setSelectedChoice] = useState("");
 
   const handleNavigateBack = () => {
@@ -50,10 +54,9 @@ const Dashboard = () => {
     setShowChoiceDetails(!showChoiceDetails);
   };
 
-  const handleBackdropClick = () => {
-    setShowChoiceDetails(!showChoiceDetails);
+  const handleAddAttribute = () => {
+    setShowAddAttributes(!showAddAttributes);
   };
-  const handleAddAttribute = () => {};
   const handleProceed = () => {
     history.push("/decision");
   };
@@ -63,11 +66,17 @@ const Dashboard = () => {
       {showChoiceDetails && (
         <ChoiceDetails
           choiceId={selectedChoice}
-          onBackdropClick={handleBackdropClick}
+          onBackdropClick={() => setShowChoiceDetails(!showChoiceDetails)}
+        />
+      )}
+      {showAddAttributes && (
+        <AddAttribute
+          onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       )}
       <div className="main-content h-100 p-3">
-        <div className="top-nav">
+        <div className="d-flex justify-content-between">
+          <h3>{question ? question + "?" : ""}</h3>
           <Button name="Back" onClick={handleNavigateBack} />
         </div>
         <div className="body row">

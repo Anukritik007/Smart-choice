@@ -1,0 +1,18 @@
+.add-attribute {
+    border-radius: 4px;
+    background: white;
+}
+
+.add-attribute .display-body {
+    min-height: 30vh;
+    max-height: 65vh;
+    overflow: scroll;
+}
+
+.check-button {
+    display: inline-block;
+}
+
+.display-body .description {
+    text-align: left;
+}

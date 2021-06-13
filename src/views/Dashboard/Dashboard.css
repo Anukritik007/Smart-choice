@@ -2,10 +2,6 @@
     background: white;
 }
 
-.dashboard .top-nav {
-    text-align: right;
-}
-
 .dashboard .body {
     height: 75vh;
     overflow: scroll;

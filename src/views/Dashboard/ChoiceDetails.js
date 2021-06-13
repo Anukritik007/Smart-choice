@@ -26,7 +26,9 @@ const ChoiceDetails = ({ choiceId }) => {
     >
       <div className="header py-2 d-flex justify-content-between align-items-center">
         <h3 className="m-0 px-3">{choice_.name}</h3>
-        <h3 className="total-score m-0">{choice_.score}</h3>
+        <h3 className="total-score m-0 d-flex justify-content-center align-items-center">
+          {choice_.score}
+        </h3>
       </div>
 
       {allowEdit ? (
