@@ -6,29 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateChoices } from "../../redux/choices/choiceActions";
 import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
 import Slider from "@material-ui/core/Slider";
-
-const marks = [
-  {
-    value: -10,
-    label: "-10",
-  },
-  {
-    value: -5,
-    label: "-5",
-  },
-  {
-    value: 0,
-    label: "0",
-  },
-  {
-    value: 5,
-    label: "5",
-  },
-  {
-    value: 10,
-    label: "10",
-  },
-];
+import { SCORE_MARKS } from "../../Constants";
 
 const AddAttribute = () => {
   const choices = useSelector((state) => state.choices);
@@ -168,7 +146,7 @@ const AddAttribute = () => {
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         step={1}
-                        marks={marks}
+                        marks={SCORE_MARKS}
                         min={-10}
                         max={10}
                       />

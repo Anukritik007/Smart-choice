@@ -26,7 +26,7 @@ const Dashboard = () => {
       jsx_ = attributes.map((attr) => {
         return (
           <div key={attr.id} className="d-flex justify-content-between">
-            <p>{attr.name}</p>
+            <p style={{ textAlign: "left" }}>{attr.name}</p>
             <p>{attr.score}</p>
           </div>
         );

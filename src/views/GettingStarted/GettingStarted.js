@@ -47,7 +47,7 @@ const GettingStarted = () => {
       name: "",
       attributes: [],
       score: 0,
-      probability: "low",
+      probability: "medium", //TODO: calculate from utility
     });
     setAddedChoices(newAdd_);
   };

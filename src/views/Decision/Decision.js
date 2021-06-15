@@ -30,7 +30,7 @@ const Decision = () => {
     history.push("/dashboard");
   };
   const handleRestart = () => {
-    // dispatch(resetState);
+    dispatch(resetState());
     history.push("/home");
   };
 
