@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "../../components/Buttons/Button";
-// import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ChoiceInput = ({
   value,
@@ -17,15 +16,15 @@ const ChoiceInput = ({
         value={value}
         onChange={(e) => onInputChange(e.target.value)}
       />
-      <div className="d-flex justify-content-center align-item-center w-25">
-        {/* <FaTrashAlt onClick={onInputDelete}/> */}
-        <Button
-          name="X"
-          type="rectangular"
-          bgColor="red"
-          isDisabled={disableDelete}
-          onClick={onInputDelete}
-        />
+      <div
+        className="d-flex justify-content-end align-item-center"
+        style={{ width: "15%", cursor: "pointer" }}
+      >
+        {disableDelete ? (
+          <FaTrashAlt size={25} color="grey" />
+        ) : (
+          <FaTrashAlt size={25} color="red" onClick={onInputDelete} />
+        )}
       </div>
     </div>
   );

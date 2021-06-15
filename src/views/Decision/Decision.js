@@ -41,14 +41,15 @@ const Decision = () => {
         {winners.map((ch_, index_) => (
           <div className="p-3" key={index_}>
             <FaRegCheckCircle color="green" />
-            <span>{ch_}</span>
+            <span className="px-3">{ch_}</span>
           </div>
         ))}
-        {winners.length > 1 ? (
-          <div>You still have contenders. Wanna go for a toss?</div>
-        ) : (
-          <div>Wish you luck!</div>
-        )}
+
+        <div className="pt-3">
+          {winners.length > 1
+            ? "You still have contenders. Wanna go for a toss?"
+            : "Wish you luck!"}
+        </div>
         <div className="bottom-nav mt-5">
           <Button name="Back" onClick={handleNavigateBack} />
         </div>

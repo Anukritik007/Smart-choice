@@ -69,11 +69,11 @@ const GettingStarted = () => {
   return (
     <div className="getting-started">
       <section className="card shadow">
-        <h2 style={{ paddingTop: "1.5em" }}>Add Choices:</h2>
+        <h2 className="pt-5">Add Choices:</h2>
         <form className="add-choices-form" onSubmit={handleSubmit}>
           {/* <PerfectScrollbar> */}
-          <div className="form-elements">
-            <section className="question">
+          <div className="form-elements p-4">
+            <section className="question pb-3">
               <label>What are you confused about?</label>
               <input
                 type="text"
@@ -100,7 +100,7 @@ const GettingStarted = () => {
 
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
-                <div className="d-flex justify-content-center align-item-center">
+                <div className="d-flex justify-content-center align-item-center py-3">
                   <Button name="+" type="circular" onClick={handleAddMore} />
                 </div>
               ) : (

@@ -6,24 +6,15 @@
     height: 40em;
 }
 
-.add-choices-form {
-    text-align: left;
-    max-height: 75vh;
-    overflow: scroll;
-}
-
-.form-elements {
-    padding: 2em;
-}
-
-
-.choices,
-.question {
-    padding: 1em 0;
-}
-
 .add-choices-form input {
     width: 100%;
     padding: 0.5em 0.5em;
     margin: 0.5em 0;
+}
+
+.add-choices-form .form-elements {
+    text-align: left;
+    max-height: 60vh;
+    overflow: scroll;
+    min-height: 52vh;
 }
