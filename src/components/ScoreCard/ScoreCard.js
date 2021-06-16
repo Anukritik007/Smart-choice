@@ -53,17 +53,23 @@ const ScoreCard = ({
           <BsFillXCircleFill
             size={30}
             onClick={handleDelete}
-            style={{ color: "red", cursor: "pointer" }}
+            style={{ color: "#de4653", cursor: "pointer" }}
           />
         </div>
       )}
       {choiceInfo && (
         <div className="header py-2 d-flex justify-content-between">
-          <div>{choiceInfo.name !== "" ? choiceInfo.name : "Add name"}</div>
-          <div className="total-score">{choiceInfo.score}</div>
+          <div className="text-left">
+            {choiceInfo.name !== "" ? choiceInfo.name : "Add name"}
+          </div>
+          <div className="total-score d-flex justify-content-center align-items-center">
+            {choiceInfo.score}
+          </div>
         </div>
       )}
-      <div className="body p-2">{children ? children : "Empty"}</div>
+      <div className="body p-2">
+        {children ? children : <p style={{ color: "grey" }}>Empty</p>}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,11 @@
 .decision-view {
-    margin: auto;
     background: white;
+}
+
+.decision-view .back-button {
+    background-color: #5c46cc;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    cursor: pointer;
 }

@@ -23,7 +23,7 @@ const ChoiceInput = ({
         {disableDelete ? (
           <FaTrashAlt size={25} color="grey" />
         ) : (
-          <FaTrashAlt size={25} color="red" onClick={onInputDelete} />
+          <FaTrashAlt size={25} color="#de4653" onClick={onInputDelete} />
         )}
       </div>
     </div>

@@ -20,9 +20,6 @@ const ChoiceDetails = ({ choiceId }) => {
   const toggleAllowEdit = () => {
     setAllowEdit(!allowEdit);
   };
-  const handleAdd = () => {
-    console.log("Add attribue to", choice_.name);
-  };
 
   const handleSliderChange = (e, val, attrId) => {
     //TODO: debounce
@@ -53,6 +50,7 @@ const ChoiceDetails = ({ choiceId }) => {
     );
     const updatedProb_ = mapScoreToProbabilities(allUpdatedChoices_);
     dispatch(updateChoices(updatedProb_));
+    toggleAllowEdit();
   };
 
   return (
@@ -62,8 +60,8 @@ const ChoiceDetails = ({ choiceId }) => {
         e.stopPropagation();
       }}
     >
-      <div className="header py-2 d-flex justify-content-between align-items-center">
-        <h3 className="m-0 px-3">{choice_.name}</h3>
+      <div className="header p-2 d-flex justify-content-between align-items-center">
+        <h3 className="m-0 text-left">{choice_.name}</h3>
         <h3 className="total-score m-0 d-flex justify-content-center align-items-center">
           {choice_.score}
         </h3>
@@ -76,6 +74,7 @@ const ChoiceDetails = ({ choiceId }) => {
               return (
                 <div key={attr.id} className="card attribute-info p-2 my-4">
                   <input
+                    type="text"
                     className="w-100 p-2"
                     value={attr.name}
                     onChange={(e) => onAttrChange(e.target.value, attr.id)}
@@ -99,32 +98,26 @@ const ChoiceDetails = ({ choiceId }) => {
         <div className="display-body p-2">
           {choice_ && choice_.attributes.length > 0 ? (
             choice_.attributes.map((attr) => (
-              <div key={attr.id} className="d-flex justify-content-between">
-                <p>{attr.name}</p>
-                <p>{attr.score}</p>
+              <div key={attr.id} className="row">
+                <div className="col-10 text-left">{attr.name}</div>
+                <div className="col-2 p-0">{attr.score}</div>
               </div>
             ))
           ) : (
             <div className="empty-state">
-              Looks like you haven't added your points.
+              <p>No points added yet.</p>
+              <p>Click on "Add attribute" to add your points</p>
             </div>
           )}
         </div>
       )}
 
       <div className="bottom-nav">
-        {choice_.attributes.length === 0 ? (
-          <Button
-            name="Add Attributes"
-            type="rectangular"
-            bgColor="green"
-            onClick={handleAdd}
-          />
-        ) : (
+        {choice_.attributes.length > 0 && (
           <Button
             name={allowEdit ? "Update" : "Edit"}
             type="rectangular"
-            bgColor="green"
+            styles={{ backgroundColor: "#007a96" }}
             onClick={allowEdit ? handleUpdateAttributes : toggleAllowEdit}
           />
         )}

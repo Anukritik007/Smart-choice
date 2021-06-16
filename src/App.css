@@ -1,11 +1,32 @@
 .App {
   text-align: center;
-  font-family: 'Courgette', cursive;
+  font-family: 'Poppins', sans-serif;
   overflow: hidden;
 }
 
 .view-container {
   height: calc(100vh - 3em);
   /* Since the header's height is 3em */
-  background-image: linear-gradient(to right, #c8bdff, #9172af);
+  background-image: linear-gradient(to right, #c8bdff, #8173d0);
+}
+
+
+input[type=text]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(46 150 181);
+  border: 2px solid rgb(46 150 181 / 55%);
+  border-radius: 2px;
+  outline: none;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.font-em-8 {
+  font-size: 0.8em;
 }

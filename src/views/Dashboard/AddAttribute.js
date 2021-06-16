@@ -102,31 +102,31 @@ const AddAttribute = () => {
         e.stopPropagation();
       }}
     >
-      <h3 className="header">Add Attribute:</h3>
+      <h3 className="header py-2">Add Attribute</h3>
       <div className="display-body p-2">
         <input
           type="text"
           className="w-100 p-2"
           value={attribute}
-          placeholder="Start typing..."
+          placeholder="Your point goes here..."
           onChange={(e) => onInputChange(e.target.value)}
         />
         <section>
-          <p className="description">
-            Against which choices would you add this?
+          <p className="description pt-3 text-left">
+            Select choices to add this to and provide a score:
           </p>
           {choices &&
             choices.map((choice) => {
               return (
-                <div className="card m-2 p-3" key={choice.id}>
-                  <div className="d-flex justify-content-between">
+                <div className="card my-2 p-3" key={choice.id}>
+                  <div
+                    className="d-flex justify-content-between"
+                    onClick={() => onSelectionChange(choice.id)}
+                  >
                     <p>{choice.name}</p>
-                    <div
-                      className="check-button"
-                      onClick={() => onSelectionChange(choice.id)}
-                    >
+                    <div className="check-button">
                       {choiceScoreMap[choice.id].isSelected ? (
-                        <FaRegCheckCircle size={30} color="green" />
+                        <FaRegCheckCircle size={30} color="#007a96" />
                       ) : (
                         <FaRegCircle size={30} color="grey" />
                       )}
@@ -161,7 +161,7 @@ const AddAttribute = () => {
         <Button
           name="Add"
           type="rectangular"
-          bgColor="green"
+          styles={{ backgroundColor: "#007a96" }}
           isDisabled={attribute === ""}
           onClick={handleAdd}
         />

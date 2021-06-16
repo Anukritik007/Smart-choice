@@ -8,6 +8,7 @@ import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
+import { MdAdd } from "react-icons/md";
 // import PerfectScrollbar from "react-perfect-scrollbar";
 
 const GettingStarted = () => {
@@ -69,7 +70,7 @@ const GettingStarted = () => {
   return (
     <div className="getting-started">
       <section className="card shadow">
-        <h2 className="pt-5">Add Choices:</h2>
+        <h2 className="pt-5">Add Choices</h2>
         <form className="add-choices-form" onSubmit={handleSubmit}>
           {/* <PerfectScrollbar> */}
           <div className="form-elements p-4">
@@ -100,8 +101,13 @@ const GettingStarted = () => {
 
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
-                <div className="d-flex justify-content-center align-item-center py-3">
-                  <Button name="+" type="circular" onClick={handleAddMore} />
+                <div
+                  className="d-flex justify-content-center py-3"
+                  onClick={handleAddMore}
+                >
+                  <div className="add-more-button d-flex justify-content-center align-items-center">
+                    <MdAdd color="white" size={30} />
+                  </div>
                 </div>
               ) : (
                 ""
@@ -110,11 +116,11 @@ const GettingStarted = () => {
           </div>
 
           <Button
-            name="PROCEED"
+            name="Proceed"
             type="rectangular"
             isDisabled={addedChoices.some((choice) => choice.name === "")}
             role="submit"
-            bgColor="green"
+            styles={{ backgroundColor: "#007a96" }}
           />
           {/* </PerfectScrollbar> */}
         </form>

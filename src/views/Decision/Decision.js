@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import { useSelector, useDispatch } from "react-redux";
 import "./Decision.css";
-import { FaRegCheckCircle } from "react-icons/fa";
+import { FaTrophy } from "react-icons/fa";
 import { resetState } from "../../redux/choices/choiceActions";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Decision = () => {
   const history = useHistory();
@@ -35,26 +36,48 @@ const Decision = () => {
   };
 
   return (
-    <div className="decision-view h-100 d-flex align-items-center justify-content-center">
-      <div className="body">
-        <h3>Your points are in favour of</h3>
-        {winners.map((ch_, index_) => (
-          <div className="p-3" key={index_}>
-            <FaRegCheckCircle color="green" />
-            <span className="px-3">{ch_}</span>
+    <div className="decision-view h-100">
+      <div className="row top-nav pt-2 px-2">
+        <div className="col-10"></div>
+        <div className="col-2">
+          <div
+            className="back-button d-flex justify-content-center align-items-center shadow"
+            onClick={handleNavigateBack}
+          >
+            <FaArrowLeft size={20} color="white" />
           </div>
-        ))}
+        </div>
+      </div>
+      <div className="h-75 d-flex justify-content-center align-items-center">
+        <div className="content p-2">
+          <h3>Your smart choice should be</h3>
+          <div className="d-flex justify-content-center">
+            <div>
+              {winners.map((ch_, index_) => (
+                <div className="p-3 text-left" key={index_}>
+                  <FaTrophy
+                    color={winners.length > 1 ? "#b1bade" : "#f9bc4b"}
+                    size={30}
+                  />
+                  <span className="px-3 font-bold">{ch_}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="pt-3">
+            {winners.length > 1
+              ? "You still have contenders. Wanna go for a toss?"
+              : "Wish you luck!"}
+          </div>
 
-        <div className="pt-3">
-          {winners.length > 1
-            ? "You still have contenders. Wanna go for a toss?"
-            : "Wish you luck!"}
-        </div>
-        <div className="bottom-nav mt-5">
-          <Button name="Back" onClick={handleNavigateBack} />
-        </div>
-        <div className="bottom-nav mt-5">
-          <Button name="Restart" onClick={handleRestart} />
+          {winners.length > 1 && (
+            <div className="bottom-nav mt-5">
+              <Button name="Toss" />
+            </div>
+          )}
+          <div className="bottom-nav mt-5">
+            <Button name="Restart" onClick={handleRestart} />
+          </div>
         </div>
       </div>
     </div>

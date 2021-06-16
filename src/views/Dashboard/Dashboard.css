@@ -6,3 +6,11 @@
     height: 75vh;
     overflow: scroll;
 }
+
+.dashboard .back-button {
+    background-color: #5c46cc;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    cursor: pointer;
+}

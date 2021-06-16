@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "./ChoiceDetails";
 import AddAttribute from "./AddAttribute";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -26,8 +27,8 @@ const Dashboard = () => {
       jsx_ = attributes.map((attr) => {
         return (
           <div key={attr.id} className="d-flex justify-content-between">
-            <p style={{ textAlign: "left" }}>{attr.name}</p>
-            <p>{attr.score}</p>
+            <p className="text-left font-em-8">{attr.name}</p>
+            <p className="font-em-8">{attr.score}</p>
           </div>
         );
       });
@@ -77,7 +78,12 @@ const Dashboard = () => {
       <div className="main-content h-100 p-3">
         <div className="d-flex justify-content-between">
           <h3>{question ? question + "?" : ""}</h3>
-          <Button name="Back" onClick={handleNavigateBack} />
+          <div
+            className="back-button d-flex justify-content-center align-items-center shadow"
+            onClick={handleNavigateBack}
+          >
+            <FaArrowLeft size={20} color="white" />
+          </div>
         </div>
         <div className="body row">
           {choices.map((choice) => {
@@ -100,14 +106,25 @@ const Dashboard = () => {
         </div>
         <div className="bottom-nav d-flex">
           <Button
-            name="Proceed to Decision"
+            name="Decide now!"
             type="rectangular"
-            bgColor="green"
+            styles={{
+              backgroundColor: "#007a96",
+              borderBottomRightRadius: 0,
+              borderTopRightRadius: 0,
+            }}
+            isDisabled={choices.every(
+              (choice_) => choice_.attributes.length === 0
+            )}
             onClick={handleProceed}
           />
           <Button
             name="Add attribute"
             type="rectangular"
+            styles={{
+              borderBottomLeftRadius: 0,
+              borderTopLeftRadius: 0,
+            }}
             onClick={handleAddAttribute}
           />
         </div>

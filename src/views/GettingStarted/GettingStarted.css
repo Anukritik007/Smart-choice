@@ -18,3 +18,11 @@
     overflow: scroll;
     min-height: 52vh;
 }
+
+.getting-started .add-more-button {
+    background-color: #5c46cc;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    cursor: pointer;
+}
