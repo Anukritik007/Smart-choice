@@ -75,8 +75,8 @@ const Dashboard = () => {
           onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       )}
-      <div className="main-content h-100 p-3">
-        <div className="d-flex justify-content-between">
+      <div className="scrollable-content p-3">
+        <div className="top-nav d-flex justify-content-between">
           <h3>{question ? question + "?" : ""}</h3>
           <div
             className="back-button d-flex justify-content-center align-items-center shadow"
@@ -85,7 +85,7 @@ const Dashboard = () => {
             <FaArrowLeft size={20} color="white" />
           </div>
         </div>
-        <div className="body row">
+        <div className="main-content h-100 row">
           {choices.every((choice_) => choice_.name) ? (
             choices.map((choice) => {
               return (
@@ -107,37 +107,37 @@ const Dashboard = () => {
           ) : (
             <div
               className="align-items-center d-flex h-50 justify-content-center"
-              style={{ color: "grey" }}
+              style={{ color: "#9fa9b9" }}
             >
               Go back to add your choices
             </div>
           )}
         </div>
-        <div className="bottom-nav d-flex">
-          <Button
-            name="Decide now!"
-            type="rectangular"
-            styles={{
-              backgroundColor: "#007a96",
-              borderBottomRightRadius: 0,
-              borderTopRightRadius: 0,
-            }}
-            isDisabled={choices.every(
-              (choice_) => choice_.attributes.length === 0
-            )}
-            onClick={handleProceed}
-          />
-          <Button
-            name="Add attribute"
-            type="rectangular"
-            styles={{
-              borderBottomLeftRadius: 0,
-              borderTopLeftRadius: 0,
-            }}
-            isDisabled={choices.every((choice_) => choice_.name === "")}
-            onClick={handleAddAttribute}
-          />
-        </div>
+      </div>
+      <div className="bottom-nav d-flex px-3 pt-2">
+        <Button
+          name="Decide now!"
+          type="rectangular"
+          styles={{
+            backgroundColor: "#38aeca",
+            borderBottomRightRadius: 0,
+            borderTopRightRadius: 0,
+          }}
+          isDisabled={choices.every(
+            (choice_) => choice_.attributes.length === 0
+          )}
+          onClick={handleProceed}
+        />
+        <Button
+          name="Add attribute"
+          type="rectangular"
+          styles={{
+            borderBottomLeftRadius: 0,
+            borderTopLeftRadius: 0,
+          }}
+          isDisabled={choices.every((choice_) => choice_.name === "")}
+          onClick={handleAddAttribute}
+        />
       </div>
     </div>
   );

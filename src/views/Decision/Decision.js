@@ -49,7 +49,7 @@ const Decision = () => {
         </div>
       </div>
       <div className="h-75 d-flex justify-content-center align-items-center">
-        <div className="content p-2">
+        <div className="p-2">
           <h3>Your smart choice should be</h3>
           <div className="d-flex justify-content-center">
             <div>

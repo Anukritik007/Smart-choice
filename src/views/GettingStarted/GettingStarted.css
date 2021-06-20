@@ -14,13 +14,13 @@
 
 .add-choices-form .form-elements {
     text-align: left;
-    max-height: 60vh;
+    max-height: 70vh;
     overflow: scroll;
     min-height: 52vh;
 }
 
 .getting-started .add-more-button {
-    background-color: #5c46cc;
+    background-color: #38aeca;
     height: 3em;
     width: 3em;
     border-radius: 50%;

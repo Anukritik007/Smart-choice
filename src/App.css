@@ -7,7 +7,7 @@
 .view-container {
   height: calc(100vh - 3em);
   /* Since the header's height is 3em */
-  background-image: linear-gradient(to right, #c8bdff, #8173d0);
+  background: #dadaea;
 }
 
 

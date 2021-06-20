@@ -128,7 +128,7 @@ const AddAttribute = () => {
                       {choiceScoreMap[choice.id].isSelected ? (
                         <FaRegCheckCircle size={30} color="#007a96" />
                       ) : (
-                        <FaRegCircle size={30} color="grey" />
+                        <FaRegCircle size={30} color="#9fa9b9" />
                       )}
                     </div>
                   </div>

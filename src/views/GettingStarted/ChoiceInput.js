@@ -9,7 +9,7 @@ const ChoiceInput = ({
   onInputDelete,
 }) => {
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center py-1">
       <input
         type="text"
         placeholder={placeholder}
@@ -21,7 +21,7 @@ const ChoiceInput = ({
         style={{ width: "15%", cursor: "pointer" }}
       >
         {disableDelete ? (
-          <FaTrashAlt size={25} color="grey" />
+          <FaTrashAlt size={25} color="#9fa9b9" />
         ) : (
           <FaTrashAlt size={25} color="#de4653" onClick={onInputDelete} />
         )}

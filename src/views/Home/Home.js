@@ -24,7 +24,7 @@ const Home = () => {
           </p>
         </article>
         <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
-          Let's get started !!
+          Let's get started !
         </h3>
 
         <div className="d-flex justify-content-center align-item-center">

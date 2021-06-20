@@ -1,14 +1,14 @@
 .dashboard {
-    background: white;
+    background: #dadaea;
 }
 
-.dashboard .body {
-    height: 75vh;
+.scrollable-content {
+    height: 80vh;
     overflow: scroll;
 }
 
 .dashboard .back-button {
-    background-color: #5c46cc;
+    background-color: #007a96;
     height: 2.5em;
     width: 2.5em;
     border-radius: 50%;

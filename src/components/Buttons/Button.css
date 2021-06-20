@@ -3,7 +3,7 @@
     width: 3em;
     border-radius: 50%;
     border: none;
-    background-color: #5c46cc;
+    background-color: #007a96;
     color: white
 }
 
@@ -11,13 +11,13 @@
     width: 100%;
     border: none;
     height: 3em;
-    background-color: #5c46cc;
+    background-color: #007a96;
     color: white;
     border-radius: 0.25rem;
 }
 
 button:disabled {
-    background-color: grey !important;
+    background-color: #9fa9b9 !important;
 }
 
 .default-button.btn-primary {

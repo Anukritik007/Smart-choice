@@ -68,7 +68,7 @@ const ScoreCard = ({
         </div>
       )}
       <div className="body p-2">
-        {children ? children : <p style={{ color: "grey" }}>Empty</p>}
+        {children ? children : <p style={{ color: "#9fa9b9" }}>Empty</p>}
       </div>
     </div>
   );

@@ -68,29 +68,28 @@ const GettingStarted = () => {
   return (
     <div className="getting-started">
       <section className="card shadow">
-        <h2 className="pt-5">Add Choices</h2>
         <form className="add-choices-form" onSubmit={handleSubmit}>
           {/* <PerfectScrollbar> */}
-          <div className="form-elements p-4">
+          <div className="form-elements pt-5 p-4">
             <section className="question pb-3">
-              <label>What are you confused about?</label>
+              <label className="pb-1">What are you considering?</label>
               <input
                 type="text"
-                placeholder="Like which organisation to join?"
+                placeholder="Which company should I join?"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value.trimStart())}
               />
             </section>
             {/* inputing choices */}
             <section className="choices">
-              <label>Who are the contenders in your mind?</label>
+              <label>What are the options?</label>
               {addedChoices.map((choice, index) => {
                 return (
                   <ChoiceInput
                     key={choice.id}
                     value={choice.name}
                     disableDelete={addedChoices.length === 2}
-                    placeholder={`Choice ${index + 1}`}
+                    placeholder={`Option ${index + 1}`}
                     onInputChange={(e) => handleChoiceChange(e, choice.id)}
                     onInputDelete={() => handleChoiceDelete(choice.id)}
                   />
@@ -99,11 +98,11 @@ const GettingStarted = () => {
 
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
-                <div
-                  className="d-flex justify-content-center py-3"
-                  onClick={handleAddMore}
-                >
-                  <div className="add-more-button d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center py-3">
+                  <div
+                    className="add-more-button d-flex justify-content-center align-items-center"
+                    onClick={handleAddMore}
+                  >
                     <MdAdd color="white" size={30} />
                   </div>
                 </div>

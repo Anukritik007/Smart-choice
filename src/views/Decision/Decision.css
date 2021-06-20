@@ -1,9 +1,9 @@
 .decision-view {
-    background: white;
+    background: #dadaea;
 }
 
 .decision-view .back-button {
-    background-color: #5c46cc;
+    background-color: #007a96;
     height: 2.5em;
     width: 2.5em;
     border-radius: 50%;
