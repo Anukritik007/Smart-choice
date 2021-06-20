@@ -112,13 +112,16 @@ const GettingStarted = () => {
             </section>
           </div>
 
-          <Button
-            name="Proceed"
-            type="rectangular"
-            isDisabled={addedChoices.some((choice) => choice.name === "")}
-            role="submit"
-            styles={{ backgroundColor: "#007a96" }}
-          />
+          <div className="p-2">
+            <Button
+              name="Proceed"
+              type="rectangular"
+              isDisabled={addedChoices.some((choice) => choice.name === "")}
+              role="submit"
+              styles={{ backgroundColor: "#007a96" }}
+            />
+          </div>
+
           {/* </PerfectScrollbar> */}
         </form>
       </section>
