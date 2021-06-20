@@ -26,8 +26,9 @@ const initialState_ = {
   ],
   leaders: [],
 };
+const getIntialStateCopy_ = () => JSON.parse(JSON.stringify(initialState_));
 
-const choiceReducer = (state = initialState_, action) => {
+const choiceReducer = (state = getIntialStateCopy_(), action) => {
   switch (action.type) {
     case ADD_CHOICE:
       const newChoices_ = [...state.choices];
@@ -61,7 +62,7 @@ const choiceReducer = (state = initialState_, action) => {
       };
 
     case RESET:
-      return initialState_;
+      return getIntialStateCopy_();
 
     default:
       return state;
