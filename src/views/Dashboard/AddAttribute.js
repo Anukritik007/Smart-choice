@@ -79,7 +79,7 @@ const AddAttribute = () => {
   };
 
   const onInputChange = (attr_) => {
-    setAttribute(attr_);
+    setAttribute(attr_.trimStart());
   };
 
   const onSelectionChange = (choiceId_) => {

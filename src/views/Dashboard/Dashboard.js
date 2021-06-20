@@ -86,23 +86,32 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="body row">
-          {choices.map((choice) => {
-            return (
-              <div
-                className="col-6 py-3 d-flex justify-content-center"
-                key={choice.id}
-              >
-                <ScoreCard
-                  choiceId={choice.id}
-                  background={mapProbabilityToBackground(choice.probability)}
-                  onClick={() => handleCardClick(choice.id)}
-                  showClose={choices.length > 2}
+          {choices.every((choice_) => choice_.name) ? (
+            choices.map((choice) => {
+              return (
+                <div
+                  className="col-6 py-3 d-flex justify-content-center"
+                  key={choice.id}
                 >
-                  {getCardContent(choice.attributes)}
-                </ScoreCard>
-              </div>
-            );
-          })}
+                  <ScoreCard
+                    choiceId={choice.id}
+                    background={mapProbabilityToBackground(choice.probability)}
+                    onClick={() => handleCardClick(choice.id)}
+                    showClose={choices.length > 2}
+                  >
+                    {getCardContent(choice.attributes)}
+                  </ScoreCard>
+                </div>
+              );
+            })
+          ) : (
+            <div
+              className="align-items-center d-flex h-50 justify-content-center"
+              style={{ color: "grey" }}
+            >
+              Go back to add your choices
+            </div>
+          )}
         </div>
         <div className="bottom-nav d-flex">
           <Button
@@ -125,6 +134,7 @@ const Dashboard = () => {
               borderBottomLeftRadius: 0,
               borderTopLeftRadius: 0,
             }}
+            isDisabled={choices.every((choice_) => choice_.name === "")}
             onClick={handleAddAttribute}
           />
         </div>

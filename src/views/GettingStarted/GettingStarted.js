@@ -31,7 +31,6 @@ const GettingStarted = () => {
   };
 
   const handleChoiceDelete = (choiceId) => {
-    console.log("Choice delete");
     const newChoices_ = [...addedChoices];
     newChoices_.splice(
       newChoices_.findIndex((choice_) => choice_.id === choiceId),
@@ -41,7 +40,6 @@ const GettingStarted = () => {
   };
 
   const handleAddMore = () => {
-    console.log("Add new Choice");
     const newAdd_ = [...addedChoices];
     newAdd_.push({
       id: generateId(),
@@ -60,7 +58,7 @@ const GettingStarted = () => {
       return choice.id === choiceId
         ? {
             ...choice,
-            name: e,
+            name: e.trimStart(),
           }
         : choice;
     });
@@ -80,7 +78,7 @@ const GettingStarted = () => {
                 type="text"
                 placeholder="Like which organisation to join?"
                 value={question}
-                onChange={(e) => setQuestion(e.target.value)}
+                onChange={(e) => setQuestion(e.target.value.trimStart())}
               />
             </section>
             {/* inputing choices */}
