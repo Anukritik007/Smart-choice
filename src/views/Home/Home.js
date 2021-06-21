@@ -2,9 +2,11 @@ import React from "react";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
 import { MdSend } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const history = useHistory();
+  const choices = useSelector((state) => state.choices);
   const onNextClick = () => {
     history.push("/getting-started");
   };
@@ -22,9 +24,15 @@ const Home = () => {
             it will better serve you in staying with it, and defending it.
           </p>
         </article>
-        <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
-          Let&apos;s get started !
-        </h3>
+        {choices.some((choice) => choice.name === "") ? (
+          <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
+            Let&apos;s get started !
+          </h3>
+        ) : (
+          <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
+            Continue with current
+          </h3>
+        )}
 
         <div className="d-flex justify-content-center align-item-center">
           <div

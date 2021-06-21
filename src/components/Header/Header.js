@@ -1,11 +1,22 @@
 import React from "react";
 import "./Header.css";
+import { useHistory } from "react-router-dom";
 import { APP_NAME } from "../../Constants";
 
 const Header = () => {
+  const history = useHistory();
+
   return (
     <header className="header-container d-flex justify-content-center">
-      <h2 className="brand-name align-self-center">{APP_NAME}</h2>
+      <div
+        role="button"
+        tabIndex={0}
+        className="brand-name font-em-15 align-self-center"
+        onClick={() => history.push("/home")}
+        onKeyPress={() => history.push("/home")}
+      >
+        {APP_NAME}
+      </div>
     </header>
   );
 };
