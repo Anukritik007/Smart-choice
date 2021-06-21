@@ -1,14 +1,15 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from "react";
 import "./GettingStarted.css";
-import Button from "../../components/Buttons/Button";
 import { useHistory } from "react-router-dom";
-import ChoiceInput from "./ChoiceInput";
 import { useSelector, useDispatch } from "react-redux";
+import { MdAdd } from "react-icons/md";
+import Button from "../../components/Buttons/Button";
+import ChoiceInput from "./ChoiceInput";
 import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
-import { MdAdd } from "react-icons/md";
 // import PerfectScrollbar from "react-perfect-scrollbar";
 
 const GettingStarted = () => {
@@ -46,13 +47,13 @@ const GettingStarted = () => {
       name: "",
       attributes: [],
       score: 0,
-      probability: "medium", //TODO: calculate from utility
+      probability: "medium", // TODO: calculate from utility
     });
     setAddedChoices(newAdd_);
   };
 
   const handleChoiceChange = (e, choiceId) => {
-    //TODO: debounce
+    // TODO: debounce
     // console.log("handleChoiceChange", e, choiceId);
     const newChoices_ = addedChoices.map((choice) => {
       return choice.id === choiceId
@@ -72,9 +73,10 @@ const GettingStarted = () => {
           {/* <PerfectScrollbar> */}
           <div className="form-elements pt-5 p-4">
             <section className="question pb-3">
-              <label className="pb-1">What are you considering?</label>
+              <p className="pb-1 m-0">What are you considering?</p>
               <input
                 type="text"
+                id="questionInput"
                 placeholder="Which company should I join?"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value.trimStart())}
@@ -82,7 +84,7 @@ const GettingStarted = () => {
             </section>
             {/* inputing choices */}
             <section className="choices">
-              <label>What are the options?</label>
+              <p className="m-0">What are the options?</p>
               {addedChoices.map((choice, index) => {
                 return (
                   <ChoiceInput
@@ -99,12 +101,15 @@ const GettingStarted = () => {
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
                 <div className="d-flex justify-content-center py-3">
-                  <div
-                    className="add-more-button d-flex justify-content-center align-items-center"
+                  <button
+                    type="button"
+                    className="add-more-button border-0 d-flex justify-content-center align-items-center"
+                    tabIndex={0}
                     onClick={handleAddMore}
+                    onKeyPress={handleAddMore}
                   >
                     <MdAdd color="white" size={30} />
-                  </div>
+                  </button>
                 </div>
               ) : (
                 ""
@@ -112,12 +117,12 @@ const GettingStarted = () => {
             </section>
           </div>
 
-          <div className="p-2">
+          <div className="pt-2 p-4">
             <Button
               name="Proceed"
               type="rectangular"
               isDisabled={addedChoices.some((choice) => choice.name === "")}
-              role="submit"
+              action="submit"
               styles={{ backgroundColor: "#007a96" }}
             />
           </div>

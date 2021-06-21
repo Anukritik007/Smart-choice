@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import choiceReducer from "./choices/choiceReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
+import choiceReducer from "./choices/choiceReducer";
 
 const store = createStore(choiceReducer, composeWithDevTools());
 

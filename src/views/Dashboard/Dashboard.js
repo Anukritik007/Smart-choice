@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Button from "../../components/Buttons/Button";
 import { useHistory } from "react-router-dom";
-import "./Dashboard.css";
 import { useSelector } from "react-redux";
+import { FaArrowLeft } from "react-icons/fa";
+import "./Dashboard.css";
+import Button from "../../components/Buttons/Button";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "./ChoiceDetails";
 import AddAttribute from "./AddAttribute";
-import { FaArrowLeft } from "react-icons/fa";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -22,9 +22,8 @@ const Dashboard = () => {
   };
 
   const getCardContent = (attributes) => {
-    let jsx_;
     if (attributes.length > 0) {
-      jsx_ = attributes.map((attr) => {
+      return attributes.map((attr) => {
         return (
           <div key={attr.id} className="d-flex justify-content-between">
             <p className="text-left font-em-8">{attr.name}</p>
@@ -33,7 +32,7 @@ const Dashboard = () => {
         );
       });
     }
-    return jsx_;
+    return undefined;
   };
 
   const mapProbabilityToBackground = (probability_) => {
@@ -50,16 +49,8 @@ const Dashboard = () => {
   };
 
   const handleCardClick = (id_) => {
-    console.log("Card clicked:", id_);
     setSelectedChoice(id_);
     setShowChoiceDetails(!showChoiceDetails);
-  };
-
-  const handleAddAttribute = () => {
-    setShowAddAttributes(!showAddAttributes);
-  };
-  const handleProceed = () => {
-    history.push("/decision");
   };
 
   return (
@@ -77,13 +68,16 @@ const Dashboard = () => {
       )}
       <div className="scrollable-content p-3">
         <div className="top-nav d-flex justify-content-between">
-          <h3>{question ? question + "?" : ""}</h3>
-          <div
+          <h3>{question ? `${question}?` : ""}</h3>
+          <button
+            type="button"
             className="back-button d-flex justify-content-center align-items-center shadow"
             onClick={handleNavigateBack}
+            tabIndex={0}
+            onKeyPress={handleNavigateBack}
           >
             <FaArrowLeft size={20} color="white" />
-          </div>
+          </button>
         </div>
         <div className="main-content h-100 row">
           {choices.every((choice_) => choice_.name) ? (
@@ -126,17 +120,17 @@ const Dashboard = () => {
           isDisabled={choices.every(
             (choice_) => choice_.attributes.length === 0
           )}
-          onClick={handleProceed}
+          onClick={() => history.push("/decision")}
         />
         <Button
-          name="Add attribute"
+          name="Add criterion"
           type="rectangular"
           styles={{
             borderBottomLeftRadius: 0,
             borderTopLeftRadius: 0,
           }}
           isDisabled={choices.every((choice_) => choice_.name === "")}
-          onClick={handleAddAttribute}
+          onClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       </div>
     </div>

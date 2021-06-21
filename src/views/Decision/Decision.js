@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Button from "../../components/Buttons/Button";
 import { useSelector, useDispatch } from "react-redux";
 import "./Decision.css";
-import { FaTrophy } from "react-icons/fa";
+import { FaTrophy, FaArrowLeft } from "react-icons/fa";
 import { resetState } from "../../redux/choices/choiceActions";
-import { FaArrowLeft } from "react-icons/fa";
+import Button from "../../components/Buttons/Button";
 
 const Decision = () => {
   const history = useHistory();
@@ -14,17 +13,17 @@ const Decision = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let max_ = -Infinity;
-    let winners_ = [];
-    for (const choice of choices) {
-      if (choice.score > max_) {
-        winners_ = [choice.name];
-        max_ = choice.score;
-      } else if (choice.score === max_) {
-        winners_.push(choice.name);
+    let maxScore = -Infinity;
+    let leaders = [];
+    choices.forEach((choice) => {
+      if (choice.score > maxScore) {
+        leaders = [choice.name];
+        maxScore = choice.score;
+      } else if (choice.score === maxScore) {
+        leaders.push(choice.name);
       }
-    }
-    setWinners(winners_);
+    });
+    setWinners(leaders);
   }, [choices]);
 
   const handleNavigateBack = () => {
@@ -38,14 +37,17 @@ const Decision = () => {
   return (
     <div className="decision-view h-100">
       <div className="row top-nav pt-2 px-2">
-        <div className="col-10"></div>
+        <div className="col-10" />
         <div className="col-2">
-          <div
+          <button
+            type="button"
             className="back-button d-flex justify-content-center align-items-center shadow"
             onClick={handleNavigateBack}
+            tabIndex={0}
+            onKeyPress={handleNavigateBack}
           >
             <FaArrowLeft size={20} color="white" />
-          </div>
+          </button>
         </div>
       </div>
       <div className="h-75 d-flex justify-content-center align-items-center">

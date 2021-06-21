@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import "./AddAttribute.css";
-import withOverlay from "../../HOCs/WithOverlay/WithOverlay";
-import Button from "../../components/Buttons/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { updateChoices } from "../../redux/choices/choiceActions";
 import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
 import Slider from "@material-ui/core/Slider";
+import withOverlay from "../../HOCs/WithOverlay/WithOverlay";
+import Button from "../../components/Buttons/Button";
+import { updateChoices } from "../../redux/choices/choiceActions";
 import { SCORE_MARKS } from "../../Constants";
 
 const AddAttribute = () => {
   const choices = useSelector((state) => state.choices);
   const dispatch = useDispatch();
   const [attribute, setAttribute] = useState("");
-  const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
-
   function initialChoiceScoreMap() {
     const obj = {};
     choices.forEach((choice) => {
@@ -24,10 +22,11 @@ const AddAttribute = () => {
     });
     return obj;
   }
+  const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
 
   const handleAdd = () => {
-    let updatedChoices_ = choices.map((choice) => {
-      //add attribute to choices which are selected
+    let updatedChoices = choices.map((choice) => {
+      // add attribute to choices which are selected
       if (
         choiceScoreMap[choice.id].isSelected &&
         choiceScoreMap[choice.id].score !== undefined
@@ -38,31 +37,33 @@ const AddAttribute = () => {
           score: choiceScoreMap[choice.id].score,
         });
       }
-      //find sum of all attributes score
-      const totalScore_ = choice.attributes.reduce(
+      // find sum of all attributes score
+      const totalScore = choice.attributes.reduce(
         (acc, curr) => acc + curr.score,
         0
       );
+      // eslint-disable-next-line no-param-reassign
       delete choice.selected;
       return {
         ...choice,
         attributes: choice.attributes,
-        score: totalScore_,
+        score: totalScore,
       };
     });
     let min = Infinity;
     let max = -Infinity;
-    //find probability based on highest & lowest score choices
-    updatedChoices_.forEach((choice) => {
+    // find probability based on highest & lowest score choices
+    updatedChoices.forEach((choice) => {
       min = choice.score < min ? choice.score : min;
       max = choice.score > max ? choice.score : max;
     });
-    const range_ = max - min;
-    const mark1 = min + Math.floor(range_ / 3),
-      mark2 = min + Math.floor(range_ / 3) * 2;
-    console.log("range:,marks", range_, mark1, mark2);
-    updatedChoices_ = updatedChoices_.map((choice) => {
-      const probability_ =
+    const range = max - min;
+    const mark1 = min + Math.floor(range / 3);
+    const mark2 = min + Math.floor(range / 3) * 2;
+
+    updatedChoices = updatedChoices.map((choice) => {
+      const probability =
+        // eslint-disable-next-line no-nested-ternary
         choice.score < mark1
           ? "low"
           : choice.score >= mark1 && choice.score <= mark2
@@ -70,10 +71,10 @@ const AddAttribute = () => {
           : "high";
       return {
         ...choice,
-        probability: probability_,
+        probability,
       };
     });
-    dispatch(updateChoices(updatedChoices_));
+    dispatch(updateChoices(updatedChoices));
     setAttribute("");
     setChoiceScoreMap(initialChoiceScoreMap);
   };
@@ -82,23 +83,28 @@ const AddAttribute = () => {
     setAttribute(attr_.trimStart());
   };
 
-  const onSelectionChange = (choiceId_) => {
-    const newObj_ = JSON.parse(JSON.stringify(choiceScoreMap));
-    newObj_[choiceId_].isSelected = !newObj_[choiceId_].isSelected;
-    setChoiceScoreMap(newObj_);
+  const onSelectionChange = (choiceId) => {
+    const newObj = JSON.parse(JSON.stringify(choiceScoreMap));
+    newObj[choiceId].isSelected = !newObj[choiceId].isSelected;
+    setChoiceScoreMap(newObj);
   };
 
   const handleSliderChange = (e, val, choiceId) => {
-    //TODO: use debouncing
+    // TODO: use debouncing
     // console.log(val, choiceId);
-    const newObj_ = JSON.parse(JSON.stringify(choiceScoreMap));
-    newObj_[choiceId].score = val;
-    setChoiceScoreMap(newObj_);
+    const newObj = JSON.parse(JSON.stringify(choiceScoreMap));
+    newObj[choiceId].score = val;
+    setChoiceScoreMap(newObj);
   };
   return (
     <section
+      role="button"
+      tabIndex={-1}
       className="add-attribute p-2"
       onClick={(e) => {
+        e.stopPropagation();
+      }}
+      onKeyPress={(e) => {
         e.stopPropagation();
       }}
     >
@@ -120,8 +126,11 @@ const AddAttribute = () => {
               return (
                 <div className="card my-2 p-3" key={choice.id}>
                   <div
+                    role="button"
+                    tabIndex={0}
                     className="d-flex justify-content-between"
                     onClick={() => onSelectionChange(choice.id)}
+                    onKeyPress={() => onSelectionChange(choice.id)}
                   >
                     <p>{choice.name}</p>
                     <div className="check-button">
@@ -157,7 +166,7 @@ const AddAttribute = () => {
             })}
         </section>
       </div>
-      <div className="bottom-nav">
+      <div className="bottom-nav p-2">
         <Button
           name="Add"
           type="rectangular"

@@ -6,7 +6,7 @@ import {
   RESET,
 } from "./actionTypes";
 
-const initialState_ = {
+const initialState = {
   question: "",
   choices: [
     {
@@ -26,17 +26,18 @@ const initialState_ = {
   ],
   leaders: [],
 };
-const getIntialStateCopy_ = () => JSON.parse(JSON.stringify(initialState_));
+const getIntialStateCopy = () => JSON.parse(JSON.stringify(initialState));
 
-const choiceReducer = (state = getIntialStateCopy_(), action) => {
+const choiceReducer = (state = getIntialStateCopy(), action) => {
   switch (action.type) {
-    case ADD_CHOICE:
-      const newChoices_ = [...state.choices];
-      newChoices_.push(action.payload);
+    case ADD_CHOICE: {
+      const newChoices = [...state.choices];
+      newChoices.push(action.payload);
       return {
         ...state,
-        choices: newChoices_,
+        choices: newChoices,
       };
+    }
 
     case UPDATE_CHOICES:
       return {
@@ -44,16 +45,17 @@ const choiceReducer = (state = getIntialStateCopy_(), action) => {
         choices: action.payload,
       };
 
-    case DELETE_CHOICE:
-      const splicedChoices_ = [...state.choices];
-      splicedChoices_.splice(
-        splicedChoices_.findIndex((choice) => choice.id === action.payload),
+    case DELETE_CHOICE: {
+      const splicedChoices = [...state.choices];
+      splicedChoices.splice(
+        splicedChoices.findIndex((choice) => choice.id === action.payload),
         1
       );
       return {
         ...state,
-        choices: splicedChoices_,
+        choices: splicedChoices,
       };
+    }
 
     case UPDATE_QUESTION:
       return {
@@ -62,7 +64,7 @@ const choiceReducer = (state = getIntialStateCopy_(), action) => {
       };
 
     case RESET:
-      return getIntialStateCopy_();
+      return getIntialStateCopy();
 
     default:
       return state;

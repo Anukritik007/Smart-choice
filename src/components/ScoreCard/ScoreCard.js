@@ -1,8 +1,9 @@
+/* eslint-disable no-nested-ternary */
 import "./ScoreCard.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BsFillXCircleFill } from "react-icons/bs";
-import PropTypes from "prop-types";
+import PropTypes, { element } from "prop-types";
 import { deleteChoice } from "../../redux/choices/choiceActions";
 
 /**
@@ -23,19 +24,18 @@ const ScoreCard = ({
   const [choiceInfo, setChoiceInfo] = useState(null);
 
   useEffect(() => {
-    console.log("useEffect");
     const current = choices.find((choice) => choice.id === choiceId);
     setChoiceInfo(current);
   }, [choices, choiceId]);
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    console.log("deleting:", choiceInfo.name);
     dispatch(deleteChoice(choiceInfo.id));
   };
 
   return (
     <div
+      role="button"
       className={`score-card shadow card position-relative p-2 ${
         background === "success"
           ? "bg--success"
@@ -45,8 +45,10 @@ const ScoreCard = ({
           ? "bg--danger"
           : ""
       }`}
-      style={{ height: height, width: width }}
+      style={{ height, width }}
       onClick={onClick}
+      tabIndex={0}
+      onKeyPress={onClick}
     >
       {showClose && (
         <div className="delete-choice position-absolute">
@@ -67,9 +69,7 @@ const ScoreCard = ({
           </div>
         </div>
       )}
-      <div className="body p-2">
-        {children ? children : <p style={{ color: "#9fa9b9" }}>Empty</p>}
-      </div>
+      <div className="body p-2">{children}</div>
     </div>
   );
 };
@@ -79,11 +79,22 @@ export default ScoreCard;
 ScoreCard.defaultProps = {
   height: "10em",
   width: "10em",
+  background: "warning",
   showClose: true,
+  onClick: () => {},
+  children: [
+    <p key="defPault" style={{ color: "#9fa9b9" }}>
+      Empty
+    </p>,
+  ],
 };
 
 ScoreCard.propTypes = {
+  choiceId: PropTypes.string.isRequired,
   height: PropTypes.string,
   width: PropTypes.string,
   background: PropTypes.oneOf(["success", "warning", "danger"]),
+  showClose: PropTypes.bool,
+  onClick: PropTypes.func,
+  children: PropTypes.arrayOf(element),
 };

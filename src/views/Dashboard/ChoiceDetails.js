@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ChoiceDetails.css";
+import Slider from "@material-ui/core/Slider";
+import PropTypes from "prop-types";
 import Button from "../../components/Buttons/Button";
 import withOverlay from "../../HOCs/WithOverlay/WithOverlay";
-import Slider from "@material-ui/core/Slider";
 import { SCORE_MARKS } from "../../Constants";
 import { updateChoices } from "../../redux/choices/choiceActions";
-import { mapScoreToProbabilities } from "../../utils/utils";
+import mapScoreToProbabilities from "../../utils/utils";
 
 const ChoiceDetails = ({ choiceId }) => {
-  const allChoices_ = useSelector((state) => state.choices);
-  const choice_ = useSelector((state) =>
+  const choices = useSelector((state) => state.choices);
+  const activeChoice = useSelector((state) =>
     state.choices.find((choice) => choice.id === choiceId)
   );
-  const [state, setstate] = useState(choice_);
+  const [state, setstate] = useState(activeChoice);
   const [allowEdit, setAllowEdit] = useState(false);
   const dispatch = useDispatch();
 
@@ -22,48 +23,53 @@ const ChoiceDetails = ({ choiceId }) => {
   };
 
   const handleSliderChange = (e, val, attrId) => {
-    //TODO: debounce
-    const updatedAttr_ = state.attributes.map((attr) => {
+    // TODO: debounce
+    const updatedAttr = state.attributes.map((attr) => {
       if (attr.id === attrId) {
         return { ...attr, score: val };
       }
       return attr;
     });
-    const scoreSum_ = updatedAttr_.reduce((acc, attr) => acc + attr.score, 0);
-    setstate({ ...state, attributes: updatedAttr_, score: scoreSum_ });
+    const scoreSum = updatedAttr.reduce((acc, attr) => acc + attr.score, 0);
+    setstate({ ...state, attributes: updatedAttr, score: scoreSum });
   };
 
   const onAttrChange = (val, attrId) => {
-    const new_ = state.attributes.map((attr) => {
+    const updatedAttr = state.attributes.map((attr) => {
       if (attr.id === attrId) {
         return { ...attr, name: val };
       }
       return attr;
     });
-    setstate({ ...state, attributes: new_ });
+    setstate({ ...state, attributes: updatedAttr });
   };
 
   const handleUpdateAttributes = () => {
-    console.log("Updating attributes...");
-    const allUpdatedChoices_ = allChoices_.map((choice) =>
+    const updatedChoices = choices.map((choice) =>
       choice.id === choiceId ? state : choice
     );
-    const updatedProb_ = mapScoreToProbabilities(allUpdatedChoices_);
-    dispatch(updateChoices(updatedProb_));
+    const updatedProb = mapScoreToProbabilities(updatedChoices);
+    dispatch(updateChoices(updatedProb));
     toggleAllowEdit();
   };
 
   return (
+    // TODO: find better approach
     <section
+      role="button"
+      tabIndex={-1}
       className="content position-relative p-2"
       onClick={(e) => {
         e.stopPropagation();
       }}
+      onKeyPress={(e) => {
+        e.stopPropagation();
+      }}
     >
       <div className="header p-2 d-flex justify-content-between align-items-center">
-        <h3 className="m-0 text-left">{choice_.name}</h3>
+        <h3 className="m-0 text-left">{activeChoice.name}</h3>
         <h3 className="total-score m-0 d-flex justify-content-center align-items-center">
-          {choice_.score}
+          {activeChoice.score}
         </h3>
       </div>
 
@@ -96,8 +102,8 @@ const ChoiceDetails = ({ choiceId }) => {
         </div>
       ) : (
         <div className="display-body p-2">
-          {choice_ && choice_.attributes.length > 0 ? (
-            choice_.attributes.map((attr) => (
+          {activeChoice && activeChoice.attributes.length > 0 ? (
+            activeChoice.attributes.map((attr) => (
               <div key={attr.id} className="row">
                 <div className="col-10 text-left">{attr.name}</div>
                 <div className="col-2 p-0">{attr.score}</div>
@@ -106,16 +112,16 @@ const ChoiceDetails = ({ choiceId }) => {
           ) : (
             <div className="empty-state">
               <p>No points added yet.</p>
-              <p>Click on "Add attribute" to add your points</p>
+              <p>Click on &quot;Add attribute&quot; to add your points</p>
             </div>
           )}
         </div>
       )}
 
-      <div className="bottom-nav">
-        {choice_.attributes.length > 0 && (
+      <div className="bottom-nav p-2">
+        {activeChoice.attributes.length > 0 && (
           <Button
-            name={allowEdit ? "Update" : "Edit"}
+            name={allowEdit ? "Update" : "Edit criteria"}
             type="rectangular"
             styles={{ backgroundColor: "#007a96" }}
             onClick={allowEdit ? handleUpdateAttributes : toggleAllowEdit}
@@ -127,3 +133,7 @@ const ChoiceDetails = ({ choiceId }) => {
 };
 
 export default withOverlay(ChoiceDetails);
+
+ChoiceDetails.propTypes = {
+  choiceId: PropTypes.string.isRequired,
+};

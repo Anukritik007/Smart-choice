@@ -9,8 +9,9 @@
 
 .dashboard .back-button {
     background-color: #007a96;
+    border: none;
+    border-radius: 50%;
     height: 2.5em;
     width: 2.5em;
-    border-radius: 50%;
     cursor: pointer;
 }

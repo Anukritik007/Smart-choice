@@ -1,19 +1,21 @@
 import React from "react";
 import "./Button.css";
+import PropTypes from "prop-types";
 
-const Button = ({ name, type, role, styles, isDisabled, onClick }) => {
-  const renderButton = (name, type, styles) => {
-    switch (type) {
+/* eslint-disable react/button-has-type */
+const Button = ({ name, type, action, styles, isDisabled, onClick }) => {
+  const renderButton = (text, shape, css) => {
+    switch (shape) {
       case "circular":
         return (
           <button
             className="circular-button"
             onClick={onClick}
             disabled={isDisabled}
-            type={role}
-            style={styles}
+            type={action}
+            style={css}
           >
-            {name}
+            {text}
           </button>
         );
 
@@ -22,11 +24,11 @@ const Button = ({ name, type, role, styles, isDisabled, onClick }) => {
           <button
             className="rectangular-button"
             onClick={onClick}
-            type={role}
+            type={action}
             disabled={isDisabled}
-            style={styles}
+            style={css}
           >
-            {name}
+            {text}
           </button>
         );
 
@@ -37,8 +39,9 @@ const Button = ({ name, type, role, styles, isDisabled, onClick }) => {
             type="button"
             disabled={isDisabled}
             onClick={onClick}
+            style={css}
           >
-            {name}
+            {text}
           </button>
         );
     }
@@ -49,5 +52,19 @@ const Button = ({ name, type, role, styles, isDisabled, onClick }) => {
 export default Button;
 
 Button.defaultProps = {
-  role: "button",
+  action: "button",
+  type: "",
+  styles: {},
+  isDisabled: false,
+  onClick: () => {},
+};
+
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  action: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  styles: PropTypes.object,
+  isDisabled: PropTypes.bool,
+  onClick: PropTypes.func,
 };

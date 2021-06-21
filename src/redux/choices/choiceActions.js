@@ -6,7 +6,7 @@ import {
   RESET,
 } from "./actionTypes";
 
-//action creators
+// action creators
 export const addChoice = (choice) => {
   return {
     type: ADD_CHOICE,
