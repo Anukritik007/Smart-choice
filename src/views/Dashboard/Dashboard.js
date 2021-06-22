@@ -54,7 +54,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard h-100 position-relative">
+    <div className="dashboard h-100 row position-relative">
       {showChoiceDetails && (
         <ChoiceDetails
           choiceId={selectedChoice}
@@ -66,74 +66,80 @@ const Dashboard = () => {
           onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       )}
-      <div className="scrollable-content p-3">
-        <div className="top-nav d-flex justify-content-between">
-          <h3>{question ? `${question}?` : ""}</h3>
-          <button
-            type="button"
-            className="back-button d-flex justify-content-center align-items-center shadow"
-            onClick={handleNavigateBack}
-            tabIndex={0}
-            onKeyPress={handleNavigateBack}
-            aria-label="go back"
-          >
-            <FaArrowLeft size={20} color="white" />
-          </button>
-        </div>
-        <div className="main-content h-100 row">
-          {choices.every((choice_) => choice_.name) ? (
-            choices.map((choice) => {
-              return (
-                <div
-                  className="col-6 py-3 d-flex justify-content-center"
-                  key={choice.id}
-                >
-                  <ScoreCard
-                    choiceId={choice.id}
-                    background={mapProbabilityToBackground(choice.probability)}
-                    onClick={() => handleCardClick(choice.id)}
-                    showClose={choices.length > 2}
-                  >
-                    {getCardContent(choice.attributes)}
-                  </ScoreCard>
-                </div>
-              );
-            })
-          ) : (
-            <div
-              className="align-items-center d-flex h-50 justify-content-center"
-              style={{ color: "#9fa9b9" }}
+      <div className="col-md-3 col-sm-0" />
+      <div className="col-md-6 col-sm-12">
+        <div className="scrollable-content p-3">
+          <div className="top-nav d-flex justify-content-between">
+            <h3>{question ? `${question}?` : ""}</h3>
+            <button
+              type="button"
+              className="back-button d-flex justify-content-center align-items-center shadow"
+              onClick={handleNavigateBack}
+              tabIndex={0}
+              onKeyPress={handleNavigateBack}
+              aria-label="go back"
             >
-              Go back to add your choices
-            </div>
-          )}
+              <FaArrowLeft size={20} color="white" />
+            </button>
+          </div>
+          <div className="main-content h-100 row">
+            {choices.every((choice_) => choice_.name) ? (
+              choices.map((choice) => {
+                return (
+                  <div
+                    className="col-6 py-3 d-flex justify-content-center"
+                    key={choice.id}
+                  >
+                    <ScoreCard
+                      choiceId={choice.id}
+                      background={mapProbabilityToBackground(
+                        choice.probability
+                      )}
+                      onClick={() => handleCardClick(choice.id)}
+                      showClose={choices.length > 2}
+                    >
+                      {getCardContent(choice.attributes)}
+                    </ScoreCard>
+                  </div>
+                );
+              })
+            ) : (
+              <div
+                className="align-items-center d-flex h-50 justify-content-center"
+                style={{ color: "#9fa9b9" }}
+              >
+                Go back to add your choices
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="bottom-nav d-flex px-3 pt-2">
+          <Button
+            name="Decide now!"
+            type="rectangular"
+            styles={{
+              backgroundColor: "#38aeca",
+              borderBottomRightRadius: 0,
+              borderTopRightRadius: 0,
+            }}
+            isDisabled={choices.every(
+              (choice_) => choice_.attributes.length === 0
+            )}
+            onClick={() => history.push("/decision")}
+          />
+          <Button
+            name="Add criterion"
+            type="rectangular"
+            styles={{
+              borderBottomLeftRadius: 0,
+              borderTopLeftRadius: 0,
+            }}
+            isDisabled={choices.every((choice_) => choice_.name === "")}
+            onClick={() => setShowAddAttributes(!showAddAttributes)}
+          />
         </div>
       </div>
-      <div className="bottom-nav d-flex px-3 pt-2">
-        <Button
-          name="Decide now!"
-          type="rectangular"
-          styles={{
-            backgroundColor: "#38aeca",
-            borderBottomRightRadius: 0,
-            borderTopRightRadius: 0,
-          }}
-          isDisabled={choices.every(
-            (choice_) => choice_.attributes.length === 0
-          )}
-          onClick={() => history.push("/decision")}
-        />
-        <Button
-          name="Add criterion"
-          type="rectangular"
-          styles={{
-            borderBottomLeftRadius: 0,
-            borderTopLeftRadius: 0,
-          }}
-          isDisabled={choices.every((choice_) => choice_.name === "")}
-          onClick={() => setShowAddAttributes(!showAddAttributes)}
-        />
-      </div>
+      <div className="col-md-3 col-sm-0" />
     </div>
   );
 };

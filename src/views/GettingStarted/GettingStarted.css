@@ -1,5 +1,6 @@
 .getting-started {
     padding: 1em;
+    --bs-gutter-x: 0 !important;
 }
 
 .add-choices-form input {

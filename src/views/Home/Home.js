@@ -13,8 +13,9 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
-      <section className="about card shadow p-4">
+    <div className="home row">
+      <div className="col-md-3 col-sm-0" />
+      <section className="about col-md-6 col-sm-12 card shadow p-4">
         <h2 style={{ fontFamily: "Courgette" }}>{`Good ${getTimeOfDay()}`}</h2>
         <article className="my-3">
           <p className="guide-text">
@@ -48,6 +49,7 @@ const Home = () => {
           </button>
         </div>
       </section>
+      <div className="col-md-3 col-sm-0" />
     </div>
   );
 };
