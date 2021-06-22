@@ -73,14 +73,16 @@ const GettingStarted = () => {
           {/* <PerfectScrollbar> */}
           <div className="form-elements pt-5 p-4">
             <section className="question pb-3">
-              <p className="pb-1 m-0">What are you considering?</p>
-              <input
-                type="text"
-                id="questionInput"
-                placeholder="Which company should I join?"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value.trimStart())}
-              />
+              <label htmlFor="questionInput" className="pb-1 m-0">
+                What are you considering?
+                <input
+                  type="text"
+                  id="questionInput"
+                  placeholder="Which company should I join?"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value.trimStart())}
+                />
+              </label>
             </section>
             {/* inputing choices */}
             <section className="choices">
@@ -105,6 +107,7 @@ const GettingStarted = () => {
                     type="button"
                     className="add-more-button border-0 d-flex justify-content-center align-items-center"
                     tabIndex={0}
+                    aria-label="Add more options"
                     onClick={handleAddMore}
                     onKeyPress={handleAddMore}
                   >

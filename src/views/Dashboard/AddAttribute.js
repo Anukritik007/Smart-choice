@@ -108,15 +108,19 @@ const AddAttribute = () => {
         e.stopPropagation();
       }}
     >
-      <h3 className="header py-2">Add Attribute</h3>
       <div className="display-body p-2">
-        <input
-          type="text"
-          className="w-100 p-2"
-          value={attribute}
-          placeholder="Your point goes here..."
-          onChange={(e) => onInputChange(e.target.value)}
-        />
+        <label className="header pt-2 text-left" htmlFor="newAttr">
+          Add Attribute
+          <input
+            type="text"
+            id="newAttr"
+            className="w-100 p-2 mt-2"
+            value={attribute}
+            placeholder="Your point goes here..."
+            onChange={(e) => onInputChange(e.target.value)}
+          />
+        </label>
+
         <section>
           <p className="description pt-3 text-left">
             Select choices to add this to and provide a score:

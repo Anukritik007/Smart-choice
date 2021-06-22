@@ -45,6 +45,7 @@ const Decision = () => {
             onClick={handleNavigateBack}
             tabIndex={0}
             onKeyPress={handleNavigateBack}
+            aria-label="go back"
           >
             <FaArrowLeft size={20} color="white" />
           </button>

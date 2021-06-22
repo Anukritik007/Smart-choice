@@ -27,6 +27,5 @@
 .add-more-button:focus,
 .add-more-button:hover {
     box-shadow: 0 0 10px rgba(46 150 181);
-    border: 4px solid rgb(46 150 181 / 55%);
     border-radius: 50%;
 }
