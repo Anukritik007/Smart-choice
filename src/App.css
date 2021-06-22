@@ -34,3 +34,11 @@ textarea:focus {
 .font-em-15 {
   font-size: 1.5em;
 }
+
+.text-alert {
+  color: #de4653;
+}
+
+.text-disabled {
+  color: #9fa9b9;
+}

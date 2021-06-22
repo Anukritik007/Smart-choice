@@ -104,7 +104,7 @@ const ChoiceDetails = ({ choiceId }) => {
         <div className="display-body p-2">
           {activeChoice && activeChoice.attributes.length > 0 ? (
             activeChoice.attributes.map((attr) => (
-              <div key={attr.id} className="row">
+              <div key={attr.id} className="row py-1">
                 <div className="col-10 text-left">{attr.name}</div>
                 <div className="col-2 p-0">{attr.score}</div>
               </div>

@@ -83,7 +83,7 @@ ScoreCard.defaultProps = {
   showClose: true,
   onClick: () => {},
   children: [
-    <p key="defPault" style={{ color: "#9fa9b9" }}>
+    <p key="NA" className="text-disabled">
       Empty
     </p>,
   ],

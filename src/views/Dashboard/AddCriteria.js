@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import "./AddAttribute.css";
+import "./AddCriteria.css";
 import { useSelector, useDispatch } from "react-redux";
-import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
+import {
+  FaRegCheckCircle,
+  FaRegCircle,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import Slider from "@material-ui/core/Slider";
 import withOverlay from "../../HOCs/WithOverlay/WithOverlay";
 import Button from "../../components/Buttons/Button";
 import { updateChoices } from "../../redux/choices/choiceActions";
 import { SCORE_MARKS } from "../../Constants";
 
-const AddAttribute = () => {
+const AddCriteria = () => {
   const choices = useSelector((state) => state.choices);
   const dispatch = useDispatch();
-  const [attribute, setAttribute] = useState("");
+  const [criteria, setCriteria] = useState("");
   function initialChoiceScoreMap() {
     const obj = {};
     choices.forEach((choice) => {
@@ -24,15 +28,23 @@ const AddAttribute = () => {
   }
   const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
 
+  const isAnyOptionSelected = () => {
+    return Object.keys(choiceScoreMap).some(
+      (key) =>
+        choiceScoreMap[key].isSelected &&
+        choiceScoreMap[key].score !== undefined
+    );
+  };
+
   const handleAdd = () => {
     let updatedChoices = choices.map((choice) => {
-      // add attribute to choices which are selected
+      // add criteria to choices which are selected
       if (
         choiceScoreMap[choice.id].isSelected &&
         choiceScoreMap[choice.id].score !== undefined
       ) {
         choice.attributes.push({
-          name: attribute,
+          name: criteria,
           id: Date.now().toString(),
           score: choiceScoreMap[choice.id].score,
         });
@@ -75,17 +87,18 @@ const AddAttribute = () => {
       };
     });
     dispatch(updateChoices(updatedChoices));
-    setAttribute("");
+    setCriteria("");
     setChoiceScoreMap(initialChoiceScoreMap);
   };
 
   const onInputChange = (attr_) => {
-    setAttribute(attr_.trimStart());
+    setCriteria(attr_.trimStart());
   };
 
   const onSelectionChange = (choiceId) => {
     const newObj = JSON.parse(JSON.stringify(choiceScoreMap));
     newObj[choiceId].isSelected = !newObj[choiceId].isSelected;
+    newObj[choiceId].score = undefined;
     setChoiceScoreMap(newObj);
   };
 
@@ -100,7 +113,7 @@ const AddAttribute = () => {
     <section
       role="button"
       tabIndex={-1}
-      className="add-attribute p-2"
+      className="add-criteria p-2"
       onClick={(e) => {
         e.stopPropagation();
       }}
@@ -109,13 +122,21 @@ const AddAttribute = () => {
       }}
     >
       <div className="display-body p-2">
-        <label className="header pt-2 text-left" htmlFor="newAttr">
-          Add Attribute
+        <label className="header pt-2 w-100 text-left" htmlFor="newAttr">
+          What is your Criterion for judgement?
+          {isAnyOptionSelected() && criteria === "" ? (
+            <p className="m-0 text-alert font-em-8">
+              <FaExclamationCircle />
+              &nbsp;This field is required
+            </p>
+          ) : (
+            <p className="mt-2" />
+          )}
           <input
             type="text"
             id="newAttr"
-            className="w-100 p-2 mt-2"
-            value={attribute}
+            className="w-100 p-2"
+            value={criteria}
             placeholder="Your point goes here..."
             onChange={(e) => onInputChange(e.target.value)}
           />
@@ -123,7 +144,7 @@ const AddAttribute = () => {
 
         <section>
           <p className="description pt-3 text-left">
-            Select choices to add this to and provide a score:
+            Select options to add this criteria and a score for each:
           </p>
           {choices &&
             choices.map((choice) => {
@@ -149,7 +170,18 @@ const AddAttribute = () => {
                   {choiceScoreMap[choice.id].isSelected && (
                     <div>
                       <div className="d-flex justify-content-between">
-                        <p>Score</p> <p>{choiceScoreMap[choice.id].score}</p>
+                        <p id="discrete-slider">Score</p>{" "}
+                        <p
+                          className={
+                            choiceScoreMap[choice.id].score === undefined
+                              ? "text-disabled"
+                              : ""
+                          }
+                        >
+                          {choiceScoreMap[choice.id].score !== undefined
+                            ? choiceScoreMap[choice.id].score
+                            : "not selected"}
+                        </p>
                       </div>
                       <Slider
                         defaultValue={0}
@@ -175,7 +207,7 @@ const AddAttribute = () => {
           name="Add"
           type="rectangular"
           styles={{ backgroundColor: "#007a96" }}
-          isDisabled={attribute === ""}
+          isDisabled={criteria === "" || !isAnyOptionSelected()}
           onClick={handleAdd}
         />
       </div>
@@ -183,4 +215,4 @@ const AddAttribute = () => {
   );
 };
 
-export default withOverlay(AddAttribute);
+export default withOverlay(AddCriteria);

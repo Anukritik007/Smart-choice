@@ -6,7 +6,7 @@ import "./Dashboard.css";
 import Button from "../../components/Buttons/Button";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "./ChoiceDetails";
-import AddAttribute from "./AddAttribute";
+import AddCriteria from "./AddCriteria";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -62,7 +62,7 @@ const Dashboard = () => {
         />
       )}
       {showAddAttributes && (
-        <AddAttribute
+        <AddCriteria
           onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       )}
@@ -104,10 +104,7 @@ const Dashboard = () => {
                 );
               })
             ) : (
-              <div
-                className="align-items-center d-flex h-50 justify-content-center"
-                style={{ color: "#9fa9b9" }}
-              >
+              <div className="align-items-center d-flex h-50 justify-content-center text-disabled">
                 Go back to add your choices
               </div>
             )}

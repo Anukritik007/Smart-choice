@@ -1,9 +1,9 @@
-.add-attribute {
+.add-criteria {
     border-radius: 4px;
     background: white;
 }
 
-.add-attribute .display-body {
+.add-criteria .display-body {
     min-height: 30vh;
     max-height: 55vh;
     overflow: scroll;

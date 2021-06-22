@@ -7,6 +7,7 @@
     min-height: 30vh;
     max-height: 55vh;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .content .display-body .empty-state {
