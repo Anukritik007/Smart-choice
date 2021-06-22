@@ -17,10 +17,10 @@ const Decision = () => {
     let leaders = [];
     choices.forEach((choice) => {
       if (choice.score > maxScore) {
-        leaders = [choice.name];
+        leaders = [{ id: choice.id, name: choice.name }];
         maxScore = choice.score;
       } else if (choice.score === maxScore) {
-        leaders.push(choice.name);
+        leaders.push({ id: choice.id, name: choice.name });
       }
     });
     setWinners(leaders);
@@ -55,13 +55,13 @@ const Decision = () => {
           <h3>Your smart choice should be</h3>
           <div className="d-flex justify-content-center">
             <div>
-              {winners.map((ch_, index_) => (
-                <div className="p-3 text-left" key={index_}>
+              {winners.map((ch_) => (
+                <div className="p-3 text-left" key={ch_.id}>
                   <FaTrophy
                     color={winners.length > 1 ? "#b1bade" : "#f9bc4b"}
                     size={30}
                   />
-                  <span className="px-3 font-bold">{ch_}</span>
+                  <span className="px-3 font-bold">{ch_.name}</span>
                 </div>
               ))}
             </div>

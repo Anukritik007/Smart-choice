@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const ChoiceInput = ({
   value,
@@ -31,3 +32,16 @@ const ChoiceInput = ({
 };
 
 export default ChoiceInput;
+
+ChoiceInput.defaultProps = {
+  placeholder: "Start typing...",
+  disableDelete: false,
+};
+
+ChoiceInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  onInputChange: PropTypes.func.isRequired,
+  disableDelete: PropTypes.bool,
+  onInputDelete: PropTypes.func.isRequired,
+};
