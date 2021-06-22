@@ -78,7 +78,7 @@ const ChoiceDetails = ({ choiceId }) => {
           {state &&
             state.attributes.map((attr) => {
               return (
-                <div key={attr.id} className="card attribute-info p-2 my-4">
+                <div key={attr.id} className="attribute-info p-2 my-4">
                   <input
                     type="text"
                     className="w-100 p-2"

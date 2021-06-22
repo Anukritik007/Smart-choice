@@ -66,7 +66,7 @@ const Dashboard = () => {
           onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
         />
       )}
-      <div className="col-md-3 col-sm-0" />
+      <div className="d-none d-md-block col-md-3" />
       <div className="col-md-6 col-sm-12">
         <div className="scrollable-content p-3">
           <div className="top-nav d-flex justify-content-between">
@@ -82,7 +82,7 @@ const Dashboard = () => {
               <FaArrowLeft size={20} color="white" />
             </button>
           </div>
-          <div className="main-content h-100 row">
+          <div className="main-content row">
             {choices.every((choice_) => choice_.name) ? (
               choices.map((choice) => {
                 return (
@@ -136,7 +136,7 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <div className="col-md-3 col-sm-0" />
+      <div className="d-none d-md-block col-md-3" />
     </div>
   );
 };

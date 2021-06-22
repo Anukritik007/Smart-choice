@@ -43,7 +43,7 @@ const AddCriteria = () => {
         choiceScoreMap[choice.id].isSelected &&
         choiceScoreMap[choice.id].score !== undefined
       ) {
-        choice.attributes.push({
+        choice.attributes.unshift({
           name: criteria,
           id: Date.now().toString(),
           score: choiceScoreMap[choice.id].score,
