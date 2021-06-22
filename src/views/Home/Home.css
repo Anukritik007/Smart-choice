@@ -8,4 +8,12 @@
     width: 3em;
     border-radius: 50%;
     cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.start-button:focus,
+.start-button:hover {
+    box-shadow: 0 0 10px rgba(46 150 181);
+    border-radius: 50%;
 }

@@ -7,7 +7,7 @@ import Button from "../../components/Buttons/Button";
 import withOverlay from "../../HOCs/WithOverlay/WithOverlay";
 import { SCORE_MARKS } from "../../Constants";
 import { updateChoices } from "../../redux/choices/choiceActions";
-import mapScoreToProbabilities from "../../utils/utils";
+import { mapScoreToProbabilities } from "../../utils/utils";
 
 const ChoiceDetails = ({ choiceId }) => {
   const choices = useSelector((state) => state.choices);

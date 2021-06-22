@@ -1,4 +1,4 @@
-const mapScoreToProbabilities = (choices_) => {
+export const mapScoreToProbabilities = (choices_) => {
   let min = Infinity;
   let max = -Infinity;
   // find probability based on highest & lowest score choices
@@ -24,4 +24,12 @@ const mapScoreToProbabilities = (choices_) => {
   });
 };
 
-export default mapScoreToProbabilities;
+export const getTimeOfDay = () => {
+  const date = new Date();
+  const hours = date.getHours();
+  if ((hours >= 0 && hours <= 4) || hours > 21) return "Night";
+  if (hours > 4 && hours < 12) return "Morning";
+  if (hours >= 12 && hours <= 16) return "Afternoon";
+  if (hours > 16 && hours <= 21) return "Evening";
+  return "Day";
+};

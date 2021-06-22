@@ -3,6 +3,7 @@ import "./Home.css";
 import { useHistory } from "react-router-dom";
 import { MdSend } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { getTimeOfDay } from "../../utils/utils";
 
 const Home = () => {
   const history = useHistory();
@@ -14,7 +15,7 @@ const Home = () => {
   return (
     <div className="home">
       <section className="about card shadow p-4">
-        <h2 style={{ fontFamily: "Courgette" }}>Welcome Fella</h2>
+        <h2 style={{ fontFamily: "Courgette" }}>{`Good ${getTimeOfDay()}`}</h2>
         <article className="my-3">
           <p className="guide-text">
             Confused with some choices ? We&apos;ll help you make the decision.
@@ -26,7 +27,7 @@ const Home = () => {
         </article>
         {choices.some((choice) => choice.name === "") ? (
           <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
-            Let&apos;s get started !
+            Let&apos;s get started!
           </h3>
         ) : (
           <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
@@ -35,15 +36,16 @@ const Home = () => {
         )}
 
         <div className="d-flex justify-content-center align-item-center">
-          <div
-            className="start-button d-flex justify-content-center align-items-center shadow"
-            role="button"
+          <button
+            type="button"
+            className="start-button d-flex justify-content-center align-items-center"
             tabIndex={0}
             onClick={onNextClick}
             onKeyPress={onNextClick}
+            aria-label="get started"
           >
             <MdSend size={20} color="white" />
-          </div>
+          </button>
         </div>
       </section>
     </div>
