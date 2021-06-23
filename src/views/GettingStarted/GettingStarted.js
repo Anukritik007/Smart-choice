@@ -69,7 +69,7 @@ const GettingStarted = () => {
   return (
     <div className="getting-started row position relative animate__animated animate__slideInRight">
       <div className="col-md-3 col-sm-0" />
-      <section className="card shadow col-md-6 col-sm-12">
+      <section className="getting-started-card shadow col-md-6 col-sm-12">
         <form className="add-choices-form" onSubmit={handleSubmit}>
           {/* <PerfectScrollbar> */}
           <div className="form-elements pt-5 p-4">

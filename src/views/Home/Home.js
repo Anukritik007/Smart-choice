@@ -23,8 +23,8 @@ const Home = () => {
       }`}
     >
       <div className="col-md-3 col-sm-0" />
-      <section className="about col-md-6 col-sm-12 card shadow p-4">
-        <h2 style={{ fontFamily: "Courgette" }}>{`Good ${getTimeOfDay()}`}</h2>
+      <section className="about col-md-6 col-sm-12 shadow p-4">
+        <h2 style={{ fontFamily: "Courgette" }}>{`Good ${getTimeOfDay()}!`}</h2>
         <article className="my-3">
           <p className="guide-text">
             Confused with some choices ? We&apos;ll help you make the decision.

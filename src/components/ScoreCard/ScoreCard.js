@@ -36,7 +36,7 @@ const ScoreCard = ({
   return (
     <div
       role="button"
-      className={`score-card shadow card p-2 ${
+      className={`score-card shadow position-relative p-2 ${
         background === "success"
           ? "bg--success"
           : background === "warning"
@@ -60,7 +60,7 @@ const ScoreCard = ({
         </div>
       )}
       {choiceInfo && (
-        <div className="header py-2 d-flex justify-content-between">
+        <div className="header pb-2 d-flex justify-content-between">
           <div className="text-left">
             {choiceInfo.name !== "" ? choiceInfo.name : "Add name"}
           </div>

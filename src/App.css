@@ -10,13 +10,26 @@
   background: #dadaea;
 }
 
+.view-container.theme-dark {
+  background: #111618;
+}
 
 input[type=text]:focus,
 textarea:focus {
   box-shadow: 0 0 5px rgba(46 150 181);
   border: 2px solid rgb(46 150 181 / 55%);
-  border-radius: 2px;
+  border-radius: 4px;
   outline: none;
+}
+
+input {
+  background: transparent;
+  border: 1px solid #dadaea;
+  border-radius: 5px;
+}
+
+.theme-dark input {
+  color: white
 }
 
 .font-bold {

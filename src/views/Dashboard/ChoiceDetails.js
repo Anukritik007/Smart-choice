@@ -58,7 +58,7 @@ const ChoiceDetails = ({ choiceId }) => {
     <section
       role="button"
       tabIndex={-1}
-      className="content position-relative p-2"
+      className="choice-content position-relative p-2"
       onClick={(e) => {
         e.stopPropagation();
       }}

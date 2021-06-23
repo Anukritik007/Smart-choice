@@ -1,17 +1,29 @@
 .score-card {
-    border: none !important;
+    border-radius: 10%;
+    background: white;
+}
+
+.theme-dark .score-card {
+    background: #213842;
+    color: white;
 }
 
 .score-card.bg--success {
-    background-image: radial-gradient(white 20%, #6ab76a);
+    /* background: #6ab76a; */
+    border-top: 10px solid #6ab76a;
+
 }
 
 .score-card.bg--warning {
-    background-image: radial-gradient(white 20%, #f5f168);
+    /* background: #fdc51b; */
+    border-top: 10px solid #fdc51b;
+
 }
 
 .score-card.bg--danger {
-    background-image: radial-gradient(white 20%, #ff9595);
+    /* background: #f16d77; */
+    border-top: 10px solid #f16d77;
+
 }
 
 .total-score {
@@ -20,6 +32,11 @@
     background: white;
     border: 1px solid black;
     border-radius: 50%;
+}
+
+.theme-dark .total-score {
+    background: #152529;
+    color: white;
 }
 
 .score-card .delete-choice {

@@ -15,3 +15,7 @@
 .score-card-div {
     animation-duration: 0.5s !important;
 }
+
+.theme-dark .top-nav {
+    color: white;
+}

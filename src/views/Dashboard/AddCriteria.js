@@ -149,7 +149,7 @@ const AddCriteria = () => {
           {choices &&
             choices.map((choice) => {
               return (
-                <div className="card my-2 p-3" key={choice.id}>
+                <div className="option-group my-2 p-3" key={choice.id}>
                   <div
                     role="button"
                     tabIndex={0}

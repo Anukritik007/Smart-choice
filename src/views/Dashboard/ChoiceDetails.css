@@ -1,15 +1,20 @@
-.content {
+.choice-content {
     border-radius: 4px;
     background: white;
 }
 
-.content .display-body {
+.choice-content .display-body {
     min-height: 30vh;
     max-height: 55vh;
     overflow: scroll;
     overflow-x: hidden;
 }
 
-.content .display-body .empty-state {
+.choice-content .display-body .empty-state {
     color: #9fa9b9
+}
+
+.theme-dark .choice-content {
+    background: #213842;
+    color: white;
 }

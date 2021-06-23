@@ -4,6 +4,16 @@
     animation-duration: 0.2s;
 }
 
+.about {
+    border-radius: 5%;
+    background: white;
+}
+
+.theme-dark .about {
+    background: #213842;
+    color: white;
+}
+
 .home .start-button {
     background-color: #007a96;
     height: 3em;

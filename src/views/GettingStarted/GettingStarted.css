@@ -4,6 +4,16 @@
     animation-duration: 0.2s;
 }
 
+.getting-started-card {
+    border-radius: 15px;
+    background: white;
+}
+
+.theme-dark .getting-started-card {
+    background: #213842;
+    color: white;
+}
+
 .add-choices-form input {
     width: 100%;
     padding: 0.5em 0.5em;

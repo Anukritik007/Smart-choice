@@ -1,7 +1,3 @@
-.decision-view {
-    background: #dadaea;
-}
-
 .decision-view .back-button {
     background-color: #007a96;
     height: 2.5em;
@@ -9,4 +5,8 @@
     border-radius: 50%;
     cursor: pointer;
     border: none;
+}
+
+.theme-dark .decision-view {
+    color: white;
 }
