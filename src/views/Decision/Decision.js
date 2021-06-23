@@ -36,7 +36,7 @@ const Decision = () => {
 
   return (
     <div className="decision-view h-100">
-      <div className="row top-nav pt-2 px-2">
+      <div className="row top-nav pt-3 px-3 m-0">
         <div className="col-10" />
         <div className="col-2">
           <button
@@ -51,7 +51,7 @@ const Decision = () => {
           </button>
         </div>
       </div>
-      <div className="h-75 d-flex justify-content-center align-items-center">
+      <div className="h-75 d-flex justify-content-center align-items-center animate__animated animate__fadeIn">
         <div className="p-2">
           <h3>Your smart choice should be</h3>
           <div className="d-flex justify-content-center">

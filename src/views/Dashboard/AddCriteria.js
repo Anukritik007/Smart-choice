@@ -113,7 +113,7 @@ const AddCriteria = () => {
     <section
       role="button"
       tabIndex={-1}
-      className="add-criteria p-2"
+      className="add-criteria p-2 position relative animate__animated animate__slideInUp"
       onClick={(e) => {
         e.stopPropagation();
       }}

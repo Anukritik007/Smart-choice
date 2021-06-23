@@ -1,6 +1,7 @@
 .getting-started {
     padding: 1em;
     --bs-gutter-x: 0 !important;
+    animation-duration: 0.2s;
 }
 
 .add-choices-form input {

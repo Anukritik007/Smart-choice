@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
 import { MdSend } from "react-icons/md";
@@ -8,12 +8,20 @@ import { getTimeOfDay } from "../../utils/utils";
 const Home = () => {
   const history = useHistory();
   const choices = useSelector((state) => state.choices);
+  const [navigate, setNavigate] = useState(false);
   const onNextClick = () => {
-    history.push("/getting-started");
+    setNavigate(true);
+    setTimeout(() => {
+      history.push("/getting-started");
+    }, 100);
   };
 
   return (
-    <div className="home row">
+    <div
+      className={`home row position relative animate__animated ${
+        navigate ? "animate__slideOutLeft" : ""
+      }`}
+    >
       <div className="col-md-3 col-sm-0" />
       <section className="about col-md-6 col-sm-12 card shadow p-4">
         <h2 style={{ fontFamily: "Courgette" }}>{`Good ${getTimeOfDay()}`}</h2>

@@ -36,7 +36,7 @@ const ScoreCard = ({
   return (
     <div
       role="button"
-      className={`score-card shadow card position-relative p-2 ${
+      className={`score-card shadow card p-2 ${
         background === "success"
           ? "bg--success"
           : background === "warning"

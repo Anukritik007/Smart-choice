@@ -1,6 +1,7 @@
 .add-criteria {
     border-radius: 4px;
     background: white;
+    animation-duration: 0.5s;
 }
 
 .add-criteria .display-body {

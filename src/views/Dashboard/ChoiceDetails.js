@@ -74,14 +74,14 @@ const ChoiceDetails = ({ choiceId }) => {
       </div>
 
       {allowEdit ? (
-        <div className="display-body p-2">
+        <div className="display-body p-2 animate__animated animate__fadeIn">
           {state &&
             state.attributes.map((attr) => {
               return (
-                <div key={attr.id} className="attribute-info p-2 my-4">
+                <div key={attr.id} className="attribute-info p-2 mb-4">
                   <input
                     type="text"
-                    className="w-100 p-2"
+                    className="w-100 p-2 mb-4"
                     value={attr.name}
                     onChange={(e) => onAttrChange(e.target.value, attr.id)}
                   />
@@ -90,7 +90,8 @@ const ChoiceDetails = ({ choiceId }) => {
                     value={attr.score}
                     onChange={(e, val) => handleSliderChange(e, val, attr.id)}
                     aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay="on"
+                    // track="normal"
                     step={1}
                     marks={SCORE_MARKS}
                     min={-10}

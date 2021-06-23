@@ -14,7 +14,7 @@ const WithOverlay = (WrappedComponent) => {
           <div
             role="button"
             tabIndex={0}
-            className="backdrop h-100 p-5"
+            className="backdrop animate__animated animate__fadeIn h-100 p-5"
             onClick={this.props.onBackdropClick}
             onKeyPress={this.props.onBackdropClick}
           >

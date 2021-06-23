@@ -84,10 +84,11 @@ const Dashboard = () => {
           </div>
           <div className="main-content row">
             {choices.every((choice_) => choice_.name) ? (
-              choices.map((choice) => {
+              choices.map((choice, index) => {
                 return (
                   <div
-                    className="col-6 py-3 d-flex justify-content-center"
+                    className="col-6 py-3 score-card-div d-flex justify-content-center animate__animated animate__fadeIn"
+                    style={{ animationDelay: `${index / 2}s` }}
                     key={choice.id}
                   >
                     <ScoreCard
