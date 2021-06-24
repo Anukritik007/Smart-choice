@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "./AddCriteria.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -28,13 +28,13 @@ const AddCriteria = () => {
   }
   const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
 
-  const isAnyOptionSelected = () => {
+  const isAnyOptionSelected = useMemo(() => {
     return Object.keys(choiceScoreMap).some(
       (key) =>
         choiceScoreMap[key].isSelected &&
         choiceScoreMap[key].score !== undefined
     );
-  };
+  }, [choiceScoreMap]);
 
   const handleAdd = () => {
     let updatedChoices = choices.map((choice) => {
@@ -124,7 +124,7 @@ const AddCriteria = () => {
       <div className="display-body p-2">
         <label className="header pt-2 w-100 text-left" htmlFor="newAttr">
           What is your Criterion for judgement?
-          {isAnyOptionSelected() && criteria === "" ? (
+          {isAnyOptionSelected && criteria === "" ? (
             <p className="m-0 text-alert font-em-8">
               <FaExclamationCircle />
               &nbsp;This field is required
@@ -134,6 +134,11 @@ const AddCriteria = () => {
           )}
           <input
             type="text"
+            style={
+              isAnyOptionSelected && criteria === ""
+                ? { borderColor: "#de4653" }
+                : {}
+            }
             id="newAttr"
             className="w-100 p-2"
             value={criteria}
@@ -149,7 +154,14 @@ const AddCriteria = () => {
           {choices &&
             choices.map((choice) => {
               return (
-                <div className="option-group my-2 p-3" key={choice.id}>
+                <div
+                  className={`option-group my-2 p-3 ${
+                    choiceScoreMap[choice.id].isSelected
+                      ? "expanded"
+                      : "collapsed"
+                  }`}
+                  key={choice.id}
+                >
                   <div
                     role="button"
                     tabIndex={0}
@@ -168,19 +180,24 @@ const AddCriteria = () => {
                   </div>
 
                   {choiceScoreMap[choice.id].isSelected && (
-                    <div>
+                    <>
                       <div className="d-flex justify-content-between">
                         <p id="discrete-slider">Score</p>{" "}
                         <p
                           className={
                             choiceScoreMap[choice.id].score === undefined
-                              ? "text-disabled"
+                              ? "text-alert"
                               : ""
                           }
                         >
-                          {choiceScoreMap[choice.id].score !== undefined
-                            ? choiceScoreMap[choice.id].score
-                            : "not selected"}
+                          {choiceScoreMap[choice.id].score !== undefined ? (
+                            choiceScoreMap[choice.id].score
+                          ) : (
+                            <span>
+                              <FaExclamationCircle />
+                              {" not selected"}
+                            </span>
+                          )}
                         </p>
                       </div>
                       <Slider
@@ -195,7 +212,7 @@ const AddCriteria = () => {
                         min={-10}
                         max={10}
                       />
-                    </div>
+                    </>
                   )}
                 </div>
               );
@@ -207,7 +224,7 @@ const AddCriteria = () => {
           name="Add"
           type="rectangular"
           styles={{ backgroundColor: "#007a96" }}
-          isDisabled={criteria === "" || !isAnyOptionSelected()}
+          isDisabled={criteria === "" || !isAnyOptionSelected}
           onClick={handleAdd}
         />
       </div>

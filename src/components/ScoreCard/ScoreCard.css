@@ -9,34 +9,29 @@
 }
 
 .score-card.bg--success {
-    /* background: #6ab76a; */
     border-top: 10px solid #6ab76a;
-
 }
 
 .score-card.bg--warning {
-    /* background: #fdc51b; */
     border-top: 10px solid #fdc51b;
-
 }
 
 .score-card.bg--danger {
-    /* background: #f16d77; */
     border-top: 10px solid #f16d77;
-
 }
 
 .total-score {
     height: 2em;
     width: 2em;
     background: white;
-    border: 1px solid black;
+    box-shadow: 0 0 8px 0 #c1c1ca inset;
     border-radius: 50%;
 }
 
 .theme-dark .total-score {
-    background: #152529;
+    background: #111618;
     color: white;
+    box-shadow: none;
 }
 
 .score-card .delete-choice {

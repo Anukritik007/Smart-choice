@@ -113,7 +113,7 @@ const ChoiceDetails = ({ choiceId }) => {
           ) : (
             <div className="empty-state">
               <p>No points added yet.</p>
-              <p>Click on &quot;Add attribute&quot; to add your points</p>
+              <p>Click on &quot;Add criterion&quot; to add your points</p>
             </div>
           )}
         </div>

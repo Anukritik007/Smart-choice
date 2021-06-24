@@ -7,6 +7,17 @@
 .option-group {
     border: 1px solid #dadaea;
     border-radius: 5px;
+    overflow: hidden;
+}
+
+.option-group.collapsed {
+    height: 74px;
+    transition: height 0.2s;
+}
+
+.option-group.expanded {
+    height: 170px;
+    transition: height 0.2s;
 }
 
 .MuiSlider-root>span {

@@ -11,7 +11,7 @@ import Dashboard from "./views/Dashboard/Dashboard";
 import Decision from "./views/Decision/Decision";
 
 const App = () => {
-  const [isThemeDark, toggleThemeDark] = useState(false);
+  const [isThemeDark, toggleThemeDark] = useState(true);
   const themeContextValue = {
     isThemeDark,
     toggleTheme: () => toggleThemeDark(!isThemeDark),
