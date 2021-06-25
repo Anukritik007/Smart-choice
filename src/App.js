@@ -9,9 +9,13 @@ import GettingStarted from "./views/GettingStarted/GettingStarted";
 import store from "./redux/store";
 import Dashboard from "./views/Dashboard/Dashboard";
 import Decision from "./views/Decision/Decision";
+import { getTimeOfDay } from "./utils/utils";
 
 const App = () => {
-  const [isThemeDark, toggleThemeDark] = useState(false);
+  const [isThemeDark, toggleThemeDark] = useState(() => {
+    const timeOfDay = getTimeOfDay();
+    return timeOfDay === "Evening" || timeOfDay === "Night";
+  });
   const themeContextValue = {
     isThemeDark,
     toggleTheme: () => toggleThemeDark(!isThemeDark),
