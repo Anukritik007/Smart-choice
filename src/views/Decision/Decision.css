@@ -7,6 +7,11 @@
     border: none;
 }
 
+.winner-list {
+    max-height: 10em;
+    overflow: scroll;
+}
+
 .theme-dark .decision-view {
     color: white;
 }

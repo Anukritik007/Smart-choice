@@ -2,11 +2,10 @@
 const CACHE_NAME = "smart-choice-cache-v1";
 const urlsToCache = ["/", "/index.html"];
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", (event) => {
   // Perform install steps
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      console.log("Opened cache");
+    caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urlsToCache);
     })
   );
@@ -15,10 +14,10 @@ self.addEventListener("install", function (event) {
   self.skipWaiting();
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", (event) => {
   // inform what to do with cached files
   event.respondWith(
-    caches.match(event.request).then(function (response) {
+    caches.match(event.request).then((response) => {
       if (response) {
         return response;
       }

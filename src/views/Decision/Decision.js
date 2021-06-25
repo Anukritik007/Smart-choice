@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,10 +17,10 @@ const Decision = () => {
     let maxScore = -Infinity;
     let leaders = [];
     choices.forEach((choice) => {
-      if (choice.score > maxScore) {
+      if (choice.name && choice.score > maxScore) {
         leaders = [{ id: choice.id, name: choice.name }];
         maxScore = choice.score;
-      } else if (choice.score === maxScore) {
+      } else if (choice.name && choice.score === maxScore) {
         leaders.push({ id: choice.id, name: choice.name });
       }
     });
@@ -53,9 +54,15 @@ const Decision = () => {
       </div>
       <div className="h-75 d-flex justify-content-center align-items-center animate__animated animate__fadeIn">
         <div className="p-2">
-          <h3>Your smart choice should be</h3>
+          <h3>
+            {winners.length > 0
+              ? winners.length > 1
+                ? "Your top options are:"
+                : "Your smart choice should be"
+              : "Invalid route"}
+          </h3>
           <div className="d-flex justify-content-center">
-            <div>
+            <div className="winner-list">
               {winners.map((ch_) => (
                 <div className="p-3 text-left" key={ch_.id}>
                   <FaTrophy
@@ -68,13 +75,11 @@ const Decision = () => {
             </div>
           </div>
           <div className="pt-3">
-            {winners.length > 1
-              ? "You still have contenders. Wanna go for a toss?"
-              : "Wish you luck!"}
+            {winners.length > 1 ? "May be go for a toss?" : "Wish you luck!"}
           </div>
 
           {winners.length > 1 && (
-            <div className="bottom-nav mt-5">
+            <div className="bottom-nav mt-3">
               <Button name="Toss" />
             </div>
           )}
