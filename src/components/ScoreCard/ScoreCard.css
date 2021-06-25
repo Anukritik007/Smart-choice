@@ -1,6 +1,7 @@
 .score-card {
     border-radius: 10%;
     background: white;
+    overflow: hidden;
 }
 
 .theme-dark .score-card {
@@ -41,8 +42,4 @@
 
 .score-card .header {
     font-weight: bold;
-}
-
-.score-card .body {
-    overflow: hidden;
 }
