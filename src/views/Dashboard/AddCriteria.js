@@ -28,12 +28,19 @@ const AddCriteria = () => {
   }
   const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
 
-  const isAnyOptionSelected = useMemo(() => {
-    return Object.keys(choiceScoreMap).some(
-      (key) =>
-        choiceScoreMap[key].isSelected &&
-        choiceScoreMap[key].score !== undefined
-    );
+  const isOptionSelectionsValid = useMemo(() => {
+    let count = 0;
+    // selection is valid if either no option selected or option selected along along with score
+    const isSelectionsValid = Object.keys(choiceScoreMap).every((key) => {
+      if (choiceScoreMap[key].isSelected) count += 1;
+      return (
+        !choiceScoreMap[key].isSelected ||
+        (choiceScoreMap[key].isSelected &&
+          choiceScoreMap[key].score !== undefined)
+      );
+    });
+    // atleast one option should be selected along with selections being valid
+    return isSelectionsValid && count > 0;
   }, [choiceScoreMap]);
 
   const handleAdd = () => {
@@ -124,7 +131,7 @@ const AddCriteria = () => {
       <div className="display-body p-2">
         <label className="header pt-2 w-100 text-left" htmlFor="newAttr">
           What is your Criterion for judgement?
-          {isAnyOptionSelected && criteria === "" ? (
+          {isOptionSelectionsValid && criteria === "" ? (
             <p className="m-0 text-alert font-em-8">
               <FaExclamationCircle />
               &nbsp;This field is required
@@ -135,7 +142,7 @@ const AddCriteria = () => {
           <input
             type="text"
             style={
-              isAnyOptionSelected && criteria === ""
+              isOptionSelectionsValid && criteria === ""
                 ? { borderColor: "#de4653" }
                 : {}
             }
@@ -224,7 +231,7 @@ const AddCriteria = () => {
           name="Add"
           type="rectangular"
           styles={{ backgroundColor: "#007a96" }}
-          isDisabled={criteria === "" || !isAnyOptionSelected}
+          isDisabled={criteria === "" || !isOptionSelectionsValid}
           onClick={handleAdd}
         />
       </div>
