@@ -23,6 +23,7 @@ const Header = () => {
       <button
         type="button"
         onClick={toggleTheme}
+        aria-label="toggle theme"
         className="border-0 bg-transparent px-2"
       >
         {isThemeDark ? (

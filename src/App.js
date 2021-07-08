@@ -4,11 +4,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import themeContext from "./themeContext";
 import Header from "./components/Header/Header";
-import Home from "./views/Home/Home";
-import GettingStarted from "./views/GettingStarted/GettingStarted";
+import Home from "./containers/Home/Home";
+import GettingStarted from "./containers/GettingStarted/GettingStarted";
 import store from "./redux/store";
-import Dashboard from "./views/Dashboard/Dashboard";
-import Decision from "./views/Decision/Decision";
+import Dashboard from "./containers/Dashboard/Dashboard";
+import Decision from "./containers/Decision/Decision";
 import { getTimeOfDay } from "./utils/utils";
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
         <BrowserRouter>
           <div className="App">
             <Header />
-            <div
+            <main
               className={`view-container ${
                 isThemeDark ? "theme-dark" : "theme-light"
               }`}
@@ -49,7 +49,7 @@ const App = () => {
                   <Home />
                 </Route>
               </Switch>
-            </div>
+            </main>
           </div>
         </BrowserRouter>
       </Provider>

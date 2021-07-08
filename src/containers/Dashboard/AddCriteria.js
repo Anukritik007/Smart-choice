@@ -82,7 +82,6 @@ const AddCriteria = () => {
 
     updatedChoices = updatedChoices.map((choice) => {
       const probability =
-        // eslint-disable-next-line no-nested-ternary
         choice.score < mark1
           ? "low"
           : choice.score >= mark1 && choice.score <= mark2

@@ -11,7 +11,6 @@ export const mapScoreToProbabilities = (choices_) => {
   const mark2 = min + Math.floor(range / 3) * 2;
   return choices_.map((choice) => {
     const probability =
-      // eslint-disable-next-line no-nested-ternary
       choice.score < mark1
         ? "low"
         : choice.score >= mark1 && choice.score <= mark2

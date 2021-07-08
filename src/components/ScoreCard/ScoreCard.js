@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import "./ScoreCard.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";

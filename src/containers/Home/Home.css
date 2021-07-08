@@ -16,16 +16,20 @@
 
 .home .start-button {
     background-color: #007a96;
-    height: 3em;
-    width: 3em;
-    border-radius: 50%;
+    border-radius: 10px;
+    padding: 0.5em;
     cursor: pointer;
     border: none;
     outline: none;
+    color: white;
+}
+
+.home .start-button p {
+    margin: 0;
+    margin: 0 1em;
 }
 
 .start-button:focus,
 .start-button:hover {
     box-shadow: 0 0 10px rgba(46 150 181);
-    border-radius: 50%;
 }

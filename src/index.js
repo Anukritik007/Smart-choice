@@ -17,4 +17,4 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-// npx i-peerdeps --dev eslint-config-airbnb && npm i eslint
+// npx install-peerdeps --dev eslint-config-airbnb && npm i eslint

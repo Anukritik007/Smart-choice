@@ -36,15 +36,6 @@ const Home = () => {
             it will better serve you in staying with it, and defending it.
           </p>
         </article>
-        {choices.some((choice) => choice.name === "") ? (
-          <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
-            Let&apos;s get started!
-          </h3>
-        ) : (
-          <h3 className="pb-3" style={{ fontFamily: "Courgette" }}>
-            Continue with current
-          </h3>
-        )}
 
         <div className="d-flex justify-content-center align-item-center">
           <button
@@ -53,8 +44,12 @@ const Home = () => {
             tabIndex={0}
             onClick={onNextClick}
             onKeyPress={onNextClick}
-            aria-label="get started"
           >
+            <p>
+              {choices.some((choice) => choice.name === "")
+                ? "Let's get started"
+                : "Continue with current"}
+            </p>
             <MdSend size={20} color="white" />
           </button>
         </div>

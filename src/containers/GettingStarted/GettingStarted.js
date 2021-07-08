@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React, { useState } from "react";
 import "./GettingStarted.css";
 import { useHistory } from "react-router-dom";
@@ -15,9 +14,9 @@ import {
 const GettingStarted = () => {
   const history = useHistory();
   const choiceList = useSelector((state) => state.choices);
-  const question_ = useSelector((state) => state.question);
+  const storedQuestion = useSelector((state) => state.question);
   const dispatch = useDispatch();
-  const [question, setQuestion] = useState(question_);
+  const [question, setQuestion] = useState(storedQuestion);
   const [addedChoices, setAddedChoices] = useState(choiceList);
 
   const handleSubmit = (e) => {
@@ -32,30 +31,30 @@ const GettingStarted = () => {
   };
 
   const handleChoiceDelete = (choiceId) => {
-    const newChoices_ = [...addedChoices];
-    newChoices_.splice(
-      newChoices_.findIndex((choice_) => choice_.id === choiceId),
+    const newChoices = [...addedChoices];
+    newChoices.splice(
+      newChoices.findIndex((choice_) => choice_.id === choiceId),
       1
     );
-    setAddedChoices(newChoices_);
+    setAddedChoices(newChoices);
   };
 
   const handleAddMore = () => {
-    const newAdd_ = [...addedChoices];
-    newAdd_.push({
+    const newAdd = [...addedChoices];
+    newAdd.push({
       id: generateId(),
       name: "",
       attributes: [],
       score: 0,
       probability: "medium", // TODO: calculate from utility
     });
-    setAddedChoices(newAdd_);
+    setAddedChoices(newAdd);
   };
 
   const handleChoiceChange = (e, choiceId) => {
     // TODO: debounce
     // console.log("handleChoiceChange", e, choiceId);
-    const newChoices_ = addedChoices.map((choice) => {
+    const newChoices = addedChoices.map((choice) => {
       return choice.id === choiceId
         ? {
             ...choice,
@@ -63,7 +62,7 @@ const GettingStarted = () => {
           }
         : choice;
     });
-    setAddedChoices(newChoices_);
+    setAddedChoices(newChoices);
   };
 
   return (
