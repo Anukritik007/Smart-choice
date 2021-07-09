@@ -41,7 +41,7 @@ const Decision = () => {
         <div className="col-2">
           <button
             type="button"
-            className="back-button d-flex justify-content-center align-items-center shadow"
+            className="back-button d-flex justify-content-center align-items-center"
             onClick={handleNavigateBack}
             tabIndex={0}
             onKeyPress={handleNavigateBack}

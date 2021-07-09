@@ -16,8 +16,8 @@
 
 .add-choices-form input {
     width: 100%;
-    padding: 0.5em 0.5em;
-    margin: 0.5em 0;
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem 0;
 }
 
 .add-choices-form .form-elements {
@@ -39,5 +39,20 @@
 .add-more-button:focus,
 .add-more-button:hover {
     box-shadow: 0 0 10px rgba(46 150 181);
-    border-radius: 50%;
+}
+
+.choice-input-delete {
+    cursor: pointer;
+    display: inline;
+    padding: 0 0 0 1.5em;
+}
+
+.choice-input-field {
+    width: 80%;
+}
+
+.choice-input-field input {
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
 }

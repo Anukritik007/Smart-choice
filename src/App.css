@@ -53,6 +53,15 @@ input {
   color: #de4653;
 }
 
-.text-disabled {
+.text-success {
+  color: #317931;
+}
+
+.text-disabled,
+.theme-dark .text-minor {
   color: #9fa9b9;
+}
+
+.text-minor {
+  color: #6b717b;
 }

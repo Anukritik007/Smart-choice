@@ -9,7 +9,6 @@ import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
-// import PerfectScrollbar from "react-perfect-scrollbar";
 
 const GettingStarted = () => {
   const history = useHistory();
@@ -70,19 +69,23 @@ const GettingStarted = () => {
       <div className="col-md-3 col-sm-0" />
       <section className="getting-started-card shadow col-md-6 col-sm-12">
         <form className="add-choices-form" onSubmit={handleSubmit}>
-          {/* <PerfectScrollbar> */}
-          <div className="form-elements pt-5 p-4">
+          <div className="form-elements p-4">
             <section className="question pb-3">
-              <label htmlFor="questionInput" className="pb-1 m-0">
+              <label htmlFor="questionInput" className="m-0 w-100">
                 What are you considering?
                 <input
                   type="text"
                   id="questionInput"
-                  placeholder="Which company should I join?"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value.trimStart())}
                 />
               </label>
+              <p className="font-em-8 text-minor m-0">For example:</p>
+              <ul className="hint-list text-minor font-em-8">
+                <li>Which car should I buy?</li>
+                <li>Which company should I join?</li>
+                <li>Where to go on holiday?</li>
+              </ul>
             </section>
             {/* inputing choices */}
             <section className="choices">
@@ -92,8 +95,9 @@ const GettingStarted = () => {
                   <ChoiceInput
                     key={choice.id}
                     value={choice.name}
+                    label={`Option ${index + 1}`}
                     disableDelete={addedChoices.length === 2}
-                    placeholder={`Option ${index + 1}`}
+                    placeholder=""
                     onInputChange={(e) => handleChoiceChange(e, choice.id)}
                     onInputDelete={() => handleChoiceDelete(choice.id)}
                   />
@@ -129,8 +133,6 @@ const GettingStarted = () => {
               styles={{ backgroundColor: "#007a96" }}
             />
           </div>
-
-          {/* </PerfectScrollbar> */}
         </form>
       </section>
       <div className="col-md-3 col-sm-0" />

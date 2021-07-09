@@ -69,7 +69,9 @@ const ScoreCard = ({
           </div>
         </div>
       )}
-      <div className="body p-2">{children}</div>
+      <div className="body p-2" style={{ height: "5em" }}>
+        {children}
+      </div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ const AddCriteria = () => {
   const choices = useSelector((state) => state.choices);
   const dispatch = useDispatch();
   const [criteria, setCriteria] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
   function initialChoiceScoreMap() {
     const obj = {};
     choices.forEach((choice) => {
@@ -42,6 +43,13 @@ const AddCriteria = () => {
     // atleast one option should be selected along with selections being valid
     return isSelectionsValid && count > 0;
   }, [choiceScoreMap]);
+
+  const showStatusMessage = () => {
+    setStatusMessage("Criteria Added, You can continue adding more.");
+    setTimeout(() => {
+      setStatusMessage("");
+    }, 2000);
+  };
 
   const handleAdd = () => {
     let updatedChoices = choices.map((choice) => {
@@ -95,6 +103,7 @@ const AddCriteria = () => {
     dispatch(updateChoices(updatedChoices));
     setCriteria("");
     setChoiceScoreMap(initialChoiceScoreMap);
+    showStatusMessage();
   };
 
   const onInputChange = (attr_) => {
@@ -119,7 +128,7 @@ const AddCriteria = () => {
     <section
       role="button"
       tabIndex={-1}
-      className="add-criteria p-2 position relative animate__animated animate__slideInUp"
+      className="add-criteria p-2 animate__animated animate__slideInUp"
       onClick={(e) => {
         e.stopPropagation();
       }}
@@ -148,7 +157,7 @@ const AddCriteria = () => {
             id="newAttr"
             className="w-100 p-2"
             value={criteria}
-            placeholder="Your point goes here..."
+            placeholder="Type here..."
             onChange={(e) => onInputChange(e.target.value)}
           />
         </label>
@@ -234,6 +243,7 @@ const AddCriteria = () => {
           onClick={handleAdd}
         />
       </div>
+      <p className="text-success">{statusMessage}</p>
     </section>
   );
 };

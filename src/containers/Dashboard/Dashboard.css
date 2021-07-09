@@ -10,6 +10,8 @@
     height: 2.5em;
     width: 2.5em;
     cursor: pointer;
+    outline: none;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .40)
 }
 
 .score-card-div {
@@ -18,4 +20,16 @@
 
 .theme-dark .top-nav {
     color: white;
+}
+
+.back-button:focus,
+.back-button:hover {
+    box-shadow: 0 0 10px rgba(46 150 181);
+}
+
+.back-button:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
 }

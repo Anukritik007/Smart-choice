@@ -5,22 +5,27 @@ import PropTypes from "prop-types";
 const ChoiceInput = ({
   value,
   placeholder,
+  label,
   onInputChange,
   disableDelete,
   onInputDelete,
 }) => {
   return (
-    <div className="d-flex align-items-center py-1">
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onInputChange(e.target.value)}
-      />
-      <div
-        className="d-flex justify-content-end align-item-center"
-        style={{ width: "15%", cursor: "pointer" }}
+    <div className="py-1">
+      <label
+        className="choice-input-field font-em-8 text-minor"
+        htmlFor="choiceInput"
       >
+        {label}
+        <input
+          type="text"
+          id="choiceInput"
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onInputChange(e.target.value)}
+        />
+      </label>
+      <div className="choice-input-delete">
         {disableDelete ? (
           <FaTrashAlt size={25} color="#9fa9b9" />
         ) : (
@@ -35,12 +40,14 @@ export default ChoiceInput;
 
 ChoiceInput.defaultProps = {
   placeholder: "Start typing...",
+  label: "",
   disableDelete: false,
 };
 
 ChoiceInput.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
   onInputChange: PropTypes.func.isRequired,
   disableDelete: PropTypes.bool,
   onInputDelete: PropTypes.func.isRequired,
