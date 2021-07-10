@@ -1,0 +1,19 @@
+@import './commonStyles.scss';
+@import './globalStyles.scss';
+
+.App {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.view-container {
+  height: calc(100vh - 3em);
+  /* Since the header's height is 3em */
+  background: #dadaea;
+}
+
+.view-container.theme-dark,
+body {
+  background: #111618;
+}

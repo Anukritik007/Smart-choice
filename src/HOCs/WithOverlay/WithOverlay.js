@@ -2,8 +2,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
+import "./WithOverlay.scss";
 import React from "react";
-import "./WithOverlay.css";
 
 const WithOverlay = (WrappedComponent) => {
   // eslint-disable-next-line react/prefer-stateless-function

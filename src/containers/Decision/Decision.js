@@ -1,7 +1,7 @@
+import "./Decision.scss";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./Decision.css";
 import { FaTrophy, FaArrowLeft } from "react-icons/fa";
 import { resetState } from "../../redux/choices/choiceActions";
 import Button from "../../components/Buttons/Button";

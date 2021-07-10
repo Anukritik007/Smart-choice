@@ -1,5 +1,5 @@
+import "./Button.scss";
 import React from "react";
-import "./Button.css";
 import PropTypes from "prop-types";
 
 /* eslint-disable react/button-has-type */

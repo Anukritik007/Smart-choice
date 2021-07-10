@@ -1,6 +1,6 @@
+import "./ChoiceDetails.scss";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./ChoiceDetails.css";
 import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
 import Button from "../../components/Buttons/Button";

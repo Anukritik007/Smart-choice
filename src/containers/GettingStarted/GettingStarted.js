@@ -1,5 +1,5 @@
+import "./GettingStarted.scss";
 import React, { useState } from "react";
-import "./GettingStarted.css";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MdAdd } from "react-icons/md";

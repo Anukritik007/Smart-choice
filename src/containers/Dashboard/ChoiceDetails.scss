@@ -1,0 +1,40 @@
+.choice-content {
+    border-radius: 4px;
+    background: white;
+
+    .header {
+        font-weight: bold;
+
+        .total-score {
+            height: 2em;
+            width: 2em;
+            background: white;
+            box-shadow: 0 0 8px 0 #c1c1ca inset;
+            border-radius: 50%;
+        }
+    }
+
+    .display-body {
+        min-height: 30vh;
+        max-height: 55vh;
+        overflow: scroll;
+        overflow-x: hidden;
+
+        .empty-state {
+            color: #9fa9b9
+        }
+    }
+}
+
+.theme-dark {
+    .choice-content {
+        background: #213842;
+        color: white;
+
+        .total-score {
+            background: #111618;
+            color: white;
+            box-shadow: none;
+        }
+    }
+}

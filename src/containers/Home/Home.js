@@ -1,5 +1,5 @@
+import "./Home.scss";
 import React, { useState } from "react";
-import "./Home.css";
 import { useHistory } from "react-router-dom";
 import { MdSend } from "react-icons/md";
 import { useSelector } from "react-redux";

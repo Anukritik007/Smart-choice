@@ -33,7 +33,7 @@ button:disabled {
 .circular-button:hover:enabled,
 .default-button:focus:enabled,
 .default-button:hover:enabled {
-    box-shadow: 0 0 10px rgba(46 150 181);
+    box-shadow: 0 0 10px rgba(46, 150, 181, 0.7);
 }
 
 .rectangular-button:active,

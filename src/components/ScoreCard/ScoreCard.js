@@ -1,4 +1,4 @@
-import "./ScoreCard.css";
+import "./ScoreCard.scss";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BsFillXCircleFill } from "react-icons/bs";

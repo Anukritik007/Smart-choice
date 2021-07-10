@@ -1,8 +1,8 @@
+import "./Dashboard.scss";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
-import "./Dashboard.css";
 import Button from "../../components/Buttons/Button";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "./ChoiceDetails";
@@ -87,7 +87,7 @@ const Dashboard = () => {
               choices.map((choice, index) => {
                 return (
                   <div
-                    className="col-6 py-3 score-card-div d-flex justify-content-center animate__animated animate__fadeIn"
+                    className="score-card-div col-6 py-3 d-flex justify-content-center animate__animated animate__fadeIn"
                     style={{ animationDelay: `${index / 2}s` }}
                     key={choice.id}
                   >

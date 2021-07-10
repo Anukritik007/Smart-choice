@@ -1,0 +1,43 @@
+.dashboard {
+    .back-button {
+        background-color: #007a96;
+        border: none;
+        border-radius: 50%;
+        height: 2.5em;
+        width: 2.5em;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .40);
+
+        :active {
+            transform: scale(0.98);
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            /* Lowering the shadow */
+        }
+
+        :focus,
+        :hover {
+            box-shadow: 0 0 10px rgba(46, 150, 181, 0.7);
+        }
+    }
+
+    .scrollable-content {
+        height: 80vh;
+        overflow: scroll;
+
+        .main-content {
+            .score-card-div {
+                animation-duration: 0.5s !important;
+            }
+        }
+    }
+}
+
+.theme-dark {
+    .dashboard {
+        .top-nav {
+            color: white;
+        }
+    }
+}

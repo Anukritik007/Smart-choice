@@ -1,5 +1,5 @@
+import "./Header.scss";
 import React, { useContext } from "react";
-import "./Header.css";
 import { useHistory } from "react-router-dom";
 import { FaRegMoon } from "react-icons/fa";
 import { MdWbSunny } from "react-icons/md";

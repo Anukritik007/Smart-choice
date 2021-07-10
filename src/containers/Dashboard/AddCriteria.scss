@@ -1,0 +1,52 @@
+.add-criteria {
+    border-radius: 4px;
+    background: white;
+    animation-duration: 0.5s;
+
+    .display-body {
+        min-height: 30vh;
+        max-height: 55vh;
+        overflow: scroll;
+    }
+
+    .option-group {
+        border: 1px solid #dadaea;
+        border-radius: 5px;
+        overflow: hidden;
+
+        &.collapsed {
+            height: 67px;
+            transition: height 0.2s;
+        }
+
+        &.expanded {
+            height: 170px;
+            transition: height 0.2s;
+        }
+
+        .check-button {
+            display: inline-block;
+        }
+    }
+
+    .MuiSlider-root {
+        >span {
+            color: #007a96;
+        }
+
+        .MuiSlider-markLabel {
+            color: black;
+        }
+    }
+}
+
+.theme-dark {
+    .add-criteria {
+        background: #213842;
+        color: white;
+
+        .MuiSlider-markLabel {
+            color: white;
+        }
+    }
+}

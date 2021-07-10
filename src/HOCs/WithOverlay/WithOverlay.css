@@ -1,8 +1,0 @@
-.overlay {
-    z-index: 10;
-}
-
-.overlay .backdrop {
-    background: rgba(0, 0, 0, 0.7);
-    animation-duration: 0.5s;
-}

@@ -1,5 +1,5 @@
+import "./AddCriteria.scss";
 import React, { useState, useMemo } from "react";
-import "./AddCriteria.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   FaRegCheckCircle,
@@ -124,6 +124,7 @@ const AddCriteria = () => {
     newObj[choiceId].score = val;
     setChoiceScoreMap(newObj);
   };
+
   return (
     <section
       role="button"

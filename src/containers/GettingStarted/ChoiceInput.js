@@ -11,11 +11,8 @@ const ChoiceInput = ({
   onInputDelete,
 }) => {
   return (
-    <div className="py-1">
-      <label
-        className="choice-input-field font-em-8 text-minor"
-        htmlFor="choiceInput"
-      >
+    <div className="choice-input py-1">
+      <label className="field font-em-8 text-minor" htmlFor="choiceInput">
         {label}
         <input
           type="text"
@@ -25,7 +22,7 @@ const ChoiceInput = ({
           onChange={(e) => onInputChange(e.target.value)}
         />
       </label>
-      <div className="choice-input-delete">
+      <div className="delete">
         {disableDelete ? (
           <FaTrashAlt size={25} color="#9fa9b9" />
         ) : (

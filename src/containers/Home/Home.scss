@@ -1,0 +1,39 @@
+.home {
+    padding: 1em;
+    --bs-gutter-x: 0 !important;
+    animation-duration: 0.2s;
+
+    .about {
+        border-radius: 15px;
+        background: white;
+    }
+
+    .start-button {
+        background-color: #007a96;
+        border-radius: 10px;
+        padding: 0.5em;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        color: white;
+
+        p {
+            margin: 0;
+            margin: 0 1em;
+        }
+
+        :focus,
+        :hover {
+            box-shadow: 0 0 10px rgba(46, 150, 181, 0.7);
+        }
+    }
+}
+
+.theme-dark {
+    .home {
+        .about {
+            background: #213842;
+            color: white;
+        }
+    }
+}
