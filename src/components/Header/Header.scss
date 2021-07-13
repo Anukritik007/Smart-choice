@@ -2,9 +2,39 @@
     height: 3em;
     background-image: linear-gradient(to right, #007a96, #111618);
 
-    .brand-name {
-        color: white;
-        font-family: 'Courgette', cursive;
+    nav {
+        button {
+            background: transparent;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Courgette', cursive;
+            font-size: 1.5em;
+        }
+
+        .menu-hamburger {
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            flex-grow: 3
+        }
+
+        .theme-button {
+            flex-grow: 1
+        }
 
     }
+
+    aside {
+        position: absolute;
+        top: 3em;
+        height: 100%;
+        width: 50vw;
+        background: whitesmoke;
+    }
+
 }

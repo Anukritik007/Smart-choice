@@ -1,37 +1,49 @@
 import "./Header.scss";
-import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaRegMoon } from "react-icons/fa";
 import { MdWbSunny } from "react-icons/md";
+import { BsList } from "react-icons/bs";
 import themeContext from "../../themeContext";
 import { APP_NAME } from "../../Constants";
+import MenuDrawer from "./MenuDrawer";
 
 const Header = () => {
-  const history = useHistory();
   const { isThemeDark, toggleTheme } = useContext(themeContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   return (
-    <header className="header-container d-flex justify-content-around">
-      <div
-        role="button"
-        tabIndex={0}
-        className="brand-name font-em-15 align-self-center"
-        onClick={() => history.push("/home")}
-        onKeyPress={() => history.push("/home")}
-      >
-        {APP_NAME}
-      </div>
-      <button
-        type="button"
-        onClick={toggleTheme}
-        aria-label="toggle theme"
-        className="border-0 bg-transparent px-2"
-      >
-        {isThemeDark ? (
-          <FaRegMoon color="white" size={20} />
-        ) : (
-          <MdWbSunny color="white" size={20} />
-        )}
-      </button>
+    <header className="header-container d-flex align-items-center">
+      <nav className="d-flex w-100">
+        <button
+          className="menu-hamburger"
+          type="button"
+          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        >
+          <BsList color="white" size={40} />
+        </button>
+        <div className="brand-name">
+          <Link to="/home">{APP_NAME}</Link>
+        </div>
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label="toggle theme"
+          className="theme-button border-0 bg-transparent px-2"
+        >
+          {isThemeDark ? (
+            <FaRegMoon color="white" size={20} />
+          ) : (
+            <MdWbSunny color="white" size={20} />
+          )}
+        </button>
+      </nav>
+      <MenuDrawer
+        isOpen={isDrawerOpen}
+        isThemeDark={isThemeDark}
+        onClose={() => setIsDrawerOpen(!isDrawerOpen)}
+        onOpen={() => setIsDrawerOpen(!isDrawerOpen)}
+      />
     </header>
   );
 };

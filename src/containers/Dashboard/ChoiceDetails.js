@@ -54,10 +54,8 @@ const ChoiceDetails = ({ choiceId }) => {
   };
 
   return (
-    // TODO: find better approach
     <section
-      role="button"
-      tabIndex={-1}
+      role="presentation"
       className="choice-content position-relative p-2"
       onClick={(e) => {
         e.stopPropagation();

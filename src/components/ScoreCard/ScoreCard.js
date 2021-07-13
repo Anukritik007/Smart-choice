@@ -1,8 +1,7 @@
 import "./ScoreCard.scss";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { BsFillXCircleFill } from "react-icons/bs";
-import { FaTasks } from "react-icons/fa";
+import { BsFillXCircleFill, BsListTask } from "react-icons/bs";
 import PropTypes, { element } from "prop-types";
 import { deleteChoice } from "../../redux/choices/choiceActions";
 
@@ -86,7 +85,7 @@ ScoreCard.defaultProps = {
   onClick: () => {},
   children: [
     <p key="NA" className="text-disabled">
-      <FaTasks size={30} />
+      <BsListTask size={30} />
     </p>,
   ],
 };

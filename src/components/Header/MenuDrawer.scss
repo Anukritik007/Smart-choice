@@ -1,0 +1,30 @@
+ .MuiDrawer-root {
+     text-align: center;
+     font-family: "Poppins", sans-serif;
+     overflow: hidden;
+
+     .MuiList-root {
+         flex-grow: 1;
+     }
+ }
+
+ .drawer-header {
+     height: 3rem;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+
+     div {
+         flex-grow: 1;
+
+         img {
+             border-radius: 50%;
+             background: #213842;
+             width: "auto";
+         }
+     }
+
+     span {
+         padding: 0 2em;
+     }
+ }

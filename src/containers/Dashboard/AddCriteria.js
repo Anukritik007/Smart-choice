@@ -127,8 +127,7 @@ const AddCriteria = () => {
 
   return (
     <section
-      role="button"
-      tabIndex={-1}
+      role="presentation"
       className="add-criteria p-2 animate__animated animate__slideInUp"
       onClick={(e) => {
         e.stopPropagation();

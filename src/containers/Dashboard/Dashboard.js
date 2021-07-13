@@ -23,14 +23,12 @@ const Dashboard = () => {
 
   const getCardContent = (attributes) => {
     if (attributes.length > 0) {
-      return attributes.map((attr) => {
-        return (
-          <div key={attr.id} className="d-flex justify-content-between">
-            <p className="text-left font-em-8">{attr.name}</p>
-            <p className="font-em-8">{attr.score}</p>
-          </div>
-        );
-      });
+      return attributes.map((attr) => (
+        <div key={attr.id} className="d-flex justify-content-between">
+          <p className="text-left font-em-8">{attr.name}</p>
+          <p className="font-em-8">{attr.score}</p>
+        </div>
+      ));
     }
     return undefined;
   };

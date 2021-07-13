@@ -90,19 +90,17 @@ const GettingStarted = () => {
             {/* inputing choices */}
             <section className="choices">
               <p className="m-0">What are the options?</p>
-              {addedChoices.map((choice, index) => {
-                return (
-                  <ChoiceInput
-                    key={choice.id}
-                    value={choice.name}
-                    label={`Option ${index + 1}`}
-                    disableDelete={addedChoices.length === 2}
-                    placeholder=""
-                    onInputChange={(e) => handleChoiceChange(e, choice.id)}
-                    onInputDelete={() => handleChoiceDelete(choice.id)}
-                  />
-                );
-              })}
+              {addedChoices.map((choice, index) => (
+                <ChoiceInput
+                  key={choice.id}
+                  value={choice.name}
+                  label={`Option ${index + 1}`}
+                  disableDelete={addedChoices.length === 2}
+                  placeholder=""
+                  onInputChange={(e) => handleChoiceChange(e, choice.id)}
+                  onInputDelete={() => handleChoiceDelete(choice.id)}
+                />
+              ))}
 
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
