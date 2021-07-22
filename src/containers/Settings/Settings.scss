@@ -1,0 +1,24 @@
+.settings {
+    padding: 2em;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    ul {
+        text-align: left;
+        padding: 2em;
+
+        li {
+            padding: 1em 0;
+        }
+    }
+}
+
+.theme-dark {
+    .settings {
+        background: #213842;
+        color: white;
+    }
+}

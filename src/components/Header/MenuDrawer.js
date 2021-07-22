@@ -10,6 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   listDark: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
 
 const MenuDrawer = ({ isOpen, onClose, onOpen, isThemeDark }) => {
   const classes = useStyles();
+  const history = useHistory();
   const list = () => (
     <div
       role="presentation"
@@ -43,18 +45,30 @@ const MenuDrawer = ({ isOpen, onClose, onOpen, isThemeDark }) => {
       </div>
       <Divider />
       <List>
-        {["Settings", "Choice history"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? (
-                <BsGear color={isThemeDark ? "white" : "black"} />
-              ) : (
-                <BsClockHistory color={isThemeDark ? "white" : "black"} />
-              )}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem
+          button
+          onClick={() => {
+            history.push("/settings");
+            onClose();
+          }}
+        >
+          <ListItemIcon>
+            <BsGear color={isThemeDark ? "white" : "black"} />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => {
+            history.push("/history");
+            onClose();
+          }}
+        >
+          <ListItemIcon>
+            <BsClockHistory color={isThemeDark ? "white" : "black"} />
+          </ListItemIcon>
+          <ListItemText primary="Choice history" />
+        </ListItem>
       </List>
       <Divider />
       <p className="p-4">

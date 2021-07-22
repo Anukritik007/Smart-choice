@@ -1,0 +1,15 @@
+.history {
+    padding: 2em;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.theme-dark {
+    .history {
+        background: #213842;
+        // color: white;
+    }
+}

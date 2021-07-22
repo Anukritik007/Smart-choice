@@ -31,7 +31,13 @@ const Decision = () => {
   };
   const handleRestart = () => {
     dispatch(resetState());
-    history.push("/home");
+    history.push("/getting-started");
+  };
+
+  const handleToss = () => {
+    const n = winners.length;
+    const randomChoice = Math.floor(Math.random() * n); // returns random no. btwn 0 to n-1
+    setWinners([winners[randomChoice]]);
   };
 
   return (
@@ -78,12 +84,13 @@ const Decision = () => {
           </div>
 
           {winners.length > 1 && (
-            <div className="bottom-nav mt-3">
-              <Button name="Toss" />
+            <div className="mt-3">
+              <Button name="Toss" onClick={handleToss} />
             </div>
           )}
-          <div className="bottom-nav mt-5">
-            <Button name="Restart" onClick={handleRestart} />
+          <div className="mt-5">
+            <Button name="Save my choice" isDisabled="true" />
+            <Button name="Discard &amp; Start over" onClick={handleRestart} />
           </div>
         </div>
       </div>

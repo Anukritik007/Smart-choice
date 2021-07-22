@@ -10,6 +10,8 @@ import store from "./redux/store";
 import Dashboard from "./containers/Dashboard/Dashboard";
 import Decision from "./containers/Decision/Decision";
 import { getTimeOfDay } from "./utils/utils";
+import Settings from "./containers/Settings/Settings";
+import History from "./containers/History/History";
 
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {
@@ -44,6 +46,12 @@ const App = () => {
                 </Route>
                 <Route path="/decision">
                   <Decision />
+                </Route>
+                <Route path="/settings">
+                  <Settings />
+                </Route>
+                <Route path="/history">
+                  <History />
                 </Route>
                 <Route path="*">
                   <Home />
