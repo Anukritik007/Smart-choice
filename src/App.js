@@ -4,14 +4,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import themeContext from "./themeContext";
 import Header from "./components/Header/Header";
-import Home from "./containers/Home/Home";
-import GettingStarted from "./containers/GettingStarted/GettingStarted";
+import Home from "./pages/Home/Home";
+import GettingStarted from "./pages/GettingStarted/GettingStarted";
 import store from "./redux/store";
-import Dashboard from "./containers/Dashboard/Dashboard";
-import Decision from "./containers/Decision/Decision";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Decision from "./pages/Decision/Decision";
 import { getTimeOfDay } from "./utils/utils";
-import Settings from "./containers/Settings/Settings";
-import History from "./containers/History/History";
+import Settings from "./pages/Settings/Settings";
+import History from "./pages/History/History";
 
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {

@@ -24,6 +24,16 @@
             color: #9fa9b9
         }
     }
+
+    .MuiSlider-root {
+        >span {
+            color: #007a96;
+        }
+
+        .MuiSlider-markLabel {
+            color: black;
+        }
+    }
 }
 
 .theme-dark {
@@ -35,6 +45,10 @@
             background: #111618;
             color: white;
             box-shadow: none;
+        }
+
+        .MuiSlider-markLabel {
+            color: white;
         }
     }
 }

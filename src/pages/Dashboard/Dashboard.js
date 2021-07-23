@@ -5,15 +5,15 @@ import { useSelector } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
 import Button from "../../components/Buttons/Button";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
-import ChoiceDetails from "./ChoiceDetails";
-import AddCriteria from "./AddCriteria";
+import ChoiceDetails from "../../components/ChoiceDetails/ChoiceDetails";
+import AddCriteria from "../../components/AddCriteria/AddCriteria";
 
 const Dashboard = () => {
   const history = useHistory();
   const choices = useSelector((state) => state.choices);
   const question = useSelector((state) => state.question);
   const [showChoiceDetails, setShowChoiceDetails] = useState(false);
-  const [showAddAttributes, setShowAddAttributes] = useState(false);
+  const [showAddCriteria, setShowAddCriteria] = useState(false);
 
   const [selectedChoice, setSelectedChoice] = useState("");
 
@@ -21,9 +21,9 @@ const Dashboard = () => {
     history.push("/getting-started");
   };
 
-  const getCardContent = (attributes) => {
-    if (attributes.length > 0) {
-      return attributes.map((attr) => (
+  const getCardContent = (criteria) => {
+    if (criteria.length > 0) {
+      return criteria.map((attr) => (
         <div key={attr.id} className="d-flex justify-content-between">
           <p className="text-left font-em-8">{attr.name}</p>
           <p className="font-em-8">{attr.score}</p>
@@ -59,9 +59,9 @@ const Dashboard = () => {
           onBackdropClick={() => setShowChoiceDetails(!showChoiceDetails)}
         />
       )}
-      {showAddAttributes && (
+      {showAddCriteria && (
         <AddCriteria
-          onBackdropClick={() => setShowAddAttributes(!showAddAttributes)}
+          onBackdropClick={() => setShowAddCriteria(!showAddCriteria)}
         />
       )}
       <div className="d-none d-md-block col-md-3" />
@@ -131,7 +131,7 @@ const Dashboard = () => {
               borderTopLeftRadius: 0,
             }}
             isDisabled={choices.every((choice_) => choice_.name === "")}
-            onClick={() => setShowAddAttributes(!showAddAttributes)}
+            onClick={() => setShowAddCriteria(!showAddCriteria)}
           />
         </div>
       </div>
