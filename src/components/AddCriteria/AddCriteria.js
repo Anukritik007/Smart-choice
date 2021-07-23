@@ -1,5 +1,5 @@
 import "./AddCriteria.scss";
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -16,6 +16,7 @@ import Overlay from "../Overlay/Overlay";
 const AddCriteria = ({ onBackdropClick }) => {
   const choices = useSelector((state) => state.choices);
   const dispatch = useDispatch();
+  const infoTimer = useRef();
   const [criteria, setCriteria] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   function initialChoiceScoreMap() {
@@ -29,6 +30,12 @@ const AddCriteria = ({ onBackdropClick }) => {
     return obj;
   }
   const [choiceScoreMap, setChoiceScoreMap] = useState(initialChoiceScoreMap);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(infoTimer.current);
+    };
+  });
 
   const isOptionSelectionsValid = useMemo(() => {
     let count = 0;
@@ -47,7 +54,7 @@ const AddCriteria = ({ onBackdropClick }) => {
 
   const showStatusMessage = () => {
     setStatusMessage("Criteria Added, You can continue adding more.");
-    setTimeout(() => {
+    infoTimer.current = setTimeout(() => {
       setStatusMessage("");
     }, 2000);
   };

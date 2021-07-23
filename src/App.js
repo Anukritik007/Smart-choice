@@ -12,6 +12,7 @@ import Decision from "./pages/Decision/Decision";
 import { getTimeOfDay } from "./utils/utils";
 import Settings from "./pages/Settings/Settings";
 import History from "./pages/History/History";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {
@@ -41,18 +42,14 @@ const App = () => {
                 <Route path="/getting-started">
                   <GettingStarted />
                 </Route>
-                <Route path="/dashboard">
-                  <Dashboard />
-                </Route>
-                <Route path="/decision">
-                  <Decision />
-                </Route>
                 <Route path="/settings">
                   <Settings />
                 </Route>
                 <Route path="/history">
                   <History />
                 </Route>
+                <ProtectedRoute path="/dashboard" component={Dashboard} />
+                <ProtectedRoute path="/decision" component={Decision} />
                 <Route path="*">
                   <Home />
                 </Route>

@@ -64,7 +64,7 @@ const Decision = () => {
               ? winners.length > 1
                 ? "Your top options are:"
                 : "Your smart choice should be"
-              : "Invalid route"}
+              : "Redirecting..."}
           </h3>
           <div className="d-flex justify-content-center">
             <div className="winner-list">
@@ -89,7 +89,7 @@ const Decision = () => {
             </div>
           )}
           <div className="mt-5">
-            <Button name="Save my choice" isDisabled="true" />
+            <Button name="Save my choice" isDisabled />
             <Button name="Discard &amp; Start over" onClick={handleRestart} />
           </div>
         </div>
