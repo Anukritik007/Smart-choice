@@ -13,6 +13,7 @@ import { getTimeOfDay } from "./utils/utils";
 import Settings from "./pages/Settings/Settings";
 import History from "./pages/History/History";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import LeftNav from "./components/LeftNav/LeftNav";
 
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {
@@ -35,6 +36,7 @@ const App = () => {
                 isThemeDark ? "theme-dark" : "theme-light"
               }`}
             >
+              {/* <LeftNav /> */}
               <Switch>
                 <Route exact path="/">
                   <Home />

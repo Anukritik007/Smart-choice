@@ -64,78 +64,72 @@ const Dashboard = () => {
           onBackdropClick={() => setShowAddCriteria(!showAddCriteria)}
         />
       )}
-      <div className="d-none d-md-block col-md-3" />
-      <div className="col-md-6 col-sm-12">
-        <div className="scrollable-content p-3">
-          <div className="top-nav d-flex justify-content-between">
-            <h3>{question ? `${question}?` : ""}</h3>
-            <button
-              type="button"
-              className="back-button d-flex justify-content-center align-items-center"
-              onClick={handleNavigateBack}
-              tabIndex={0}
-              onKeyPress={handleNavigateBack}
-              aria-label="go back"
-            >
-              <FaArrowLeft size={20} color="white" />
-            </button>
-          </div>
-          <div className="main-content row">
-            {choices.every((choice_) => choice_.name) ? (
-              choices.map((choice, index) => {
-                return (
-                  <div
-                    className="score-card-div col-6 py-3 d-flex justify-content-center animate__animated animate__fadeIn"
-                    style={{ animationDelay: `${index / 2}s` }}
-                    key={choice.id}
-                  >
-                    <ScoreCard
-                      choiceId={choice.id}
-                      background={mapProbabilityToBackground(
-                        choice.probability
-                      )}
-                      onClick={() => handleCardClick(choice.id)}
-                      showClose={choices.length > 2}
-                    >
-                      {getCardContent(choice.attributes)}
-                    </ScoreCard>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="align-items-center d-flex h-50 justify-content-center text-disabled">
-                Go back to add your choices
-              </div>
-            )}
-          </div>
+      <div className="scrollable-content p-3">
+        <div className="top-nav d-flex justify-content-between">
+          <h3>{question ? `${question}?` : ""}</h3>
+          <button
+            type="button"
+            className="back-button d-flex justify-content-center align-items-center"
+            onClick={handleNavigateBack}
+            tabIndex={0}
+            onKeyPress={handleNavigateBack}
+            aria-label="go back"
+          >
+            <FaArrowLeft size={20} color="white" />
+          </button>
         </div>
-        <div className="bottom-nav d-flex px-3 pt-2">
-          <Button
-            name="Decide now!"
-            type="rectangular"
-            styles={{
-              backgroundColor: "#38aeca",
-              borderBottomRightRadius: 0,
-              borderTopRightRadius: 0,
-            }}
-            isDisabled={choices.every(
-              (choice_) => choice_.attributes.length === 0
-            )}
-            onClick={() => history.push("/decision")}
-          />
-          <Button
-            name="Add criterion"
-            type="rectangular"
-            styles={{
-              borderBottomLeftRadius: 0,
-              borderTopLeftRadius: 0,
-            }}
-            isDisabled={choices.every((choice_) => choice_.name === "")}
-            onClick={() => setShowAddCriteria(!showAddCriteria)}
-          />
+        <div className="main-content row">
+          {choices.every((choice_) => choice_.name) ? (
+            choices.map((choice, index) => {
+              return (
+                <div
+                  className="score-card-div col-6 py-3 d-flex justify-content-center animate__animated animate__fadeIn"
+                  style={{ animationDelay: `${index / 2}s` }}
+                  key={choice.id}
+                >
+                  <ScoreCard
+                    choiceId={choice.id}
+                    background={mapProbabilityToBackground(choice.probability)}
+                    onClick={() => handleCardClick(choice.id)}
+                    showClose={choices.length > 2}
+                  >
+                    {getCardContent(choice.attributes)}
+                  </ScoreCard>
+                </div>
+              );
+            })
+          ) : (
+            <div className="align-items-center d-flex h-50 justify-content-center text-disabled">
+              Go back to add your choices
+            </div>
+          )}
         </div>
       </div>
-      <div className="d-none d-md-block col-md-3" />
+      <div className="bottom-nav d-flex px-3 pt-2">
+        <Button
+          name="Decide now!"
+          type="rectangular"
+          styles={{
+            backgroundColor: "#38aeca",
+            borderBottomRightRadius: 0,
+            borderTopRightRadius: 0,
+          }}
+          isDisabled={choices.every(
+            (choice_) => choice_.attributes.length === 0
+          )}
+          onClick={() => history.push("/decision")}
+        />
+        <Button
+          name="Add criterion"
+          type="rectangular"
+          styles={{
+            borderBottomLeftRadius: 0,
+            borderTopLeftRadius: 0,
+          }}
+          isDisabled={choices.every((choice_) => choice_.name === "")}
+          onClick={() => setShowAddCriteria(!showAddCriteria)}
+        />
+      </div>
     </div>
   );
 };

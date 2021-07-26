@@ -17,11 +17,12 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   // inform what to do with cached files
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request);
-    })
+    // caches.match(event.request).then((response) => {
+    //   if (response) {
+    //     return response;
+    //   }
+    //   return fetch(event.request);
+    // })
+    fetch(event.request)
   );
 });

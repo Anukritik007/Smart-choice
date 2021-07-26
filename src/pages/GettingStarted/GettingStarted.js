@@ -66,8 +66,7 @@ const GettingStarted = () => {
 
   return (
     <div className="getting-started row position relative animate__animated animate__slideInRight">
-      <div className="col-md-3 col-sm-0" />
-      <section className="getting-started-card shadow col-md-6 col-sm-12">
+      <section className="getting-started-card shadow">
         <form className="add-choices-form" onSubmit={handleSubmit}>
           <div className="form-elements p-4">
             <section className="question pb-3">
@@ -133,7 +132,6 @@ const GettingStarted = () => {
           </div>
         </form>
       </section>
-      <div className="col-md-3 col-sm-0" />
     </div>
   );
 };
