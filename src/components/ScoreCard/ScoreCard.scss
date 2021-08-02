@@ -1,6 +1,8 @@
 .score-card {
-    border-radius: 10%;
+    border-radius: 10px;
     background: white;
+    width: 100%;
+    max-width: 20em;
 
     &.bg--success {
         border-top: 10px solid #6ab76a;

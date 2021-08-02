@@ -17,6 +17,7 @@ const ChoiceInput = ({
         <input
           type="text"
           id="choiceInput"
+          autoComplete="off"
           placeholder={placeholder}
           value={value}
           onChange={(e) => onInputChange(e.target.value)}

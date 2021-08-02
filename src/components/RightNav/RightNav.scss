@@ -1,0 +1,10 @@
+.right-nav {
+    width: 20%;
+}
+
+//mobile
+@media only screen and (max-width:600px) {
+    .right-nav {
+        display: none;
+    }
+}

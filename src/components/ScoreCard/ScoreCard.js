@@ -9,15 +9,7 @@ import { deleteChoice } from "../../redux/choices/choiceActions";
  * Component to create a card for choice with body content as passed in children
  * @param {*} { choiceId, height, width, showClose, children }
  */
-const ScoreCard = ({
-  choiceId,
-  height,
-  width,
-  background,
-  showClose,
-  onClick,
-  children,
-}) => {
+const ScoreCard = ({ choiceId, background, showClose, onClick, children }) => {
   const choices = useSelector((state) => state.choices);
   const dispatch = useDispatch();
   const [choiceInfo, setChoiceInfo] = useState(null);
@@ -44,7 +36,7 @@ const ScoreCard = ({
           ? "bg--danger"
           : ""
       }`}
-      style={{ height, width }}
+      // style={{ height, width }}
       onClick={onClick}
       tabIndex={0}
       onKeyPress={onClick}
@@ -78,8 +70,6 @@ const ScoreCard = ({
 export default ScoreCard;
 
 ScoreCard.defaultProps = {
-  height: "10em",
-  width: "10em",
   background: "warning",
   showClose: true,
   onClick: () => {},
@@ -92,8 +82,6 @@ ScoreCard.defaultProps = {
 
 ScoreCard.propTypes = {
   choiceId: PropTypes.string.isRequired,
-  height: PropTypes.string,
-  width: PropTypes.string,
   background: PropTypes.oneOf(["success", "warning", "danger"]),
   showClose: PropTypes.bool,
   onClick: PropTypes.func,

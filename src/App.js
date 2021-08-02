@@ -13,7 +13,8 @@ import { getTimeOfDay } from "./utils/utils";
 import Settings from "./pages/Settings/Settings";
 import History from "./pages/History/History";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-// import LeftNav from "./components/LeftNav/LeftNav";
+import LeftNav from "./components/LeftNav/LeftNav";
+import RightNav from "./components/RightNav/RightNav";
 
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {
@@ -31,32 +32,35 @@ const App = () => {
         <BrowserRouter>
           <div className="App">
             <Header />
-            <main
+            <div
               className={`view-container ${
                 isThemeDark ? "theme-dark" : "theme-light"
               }`}
             >
-              {/* <LeftNav /> */}
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/getting-started">
-                  <GettingStarted />
-                </Route>
-                <Route path="/settings">
-                  <Settings />
-                </Route>
-                <Route path="/history">
-                  <History />
-                </Route>
-                <ProtectedRoute path="/dashboard" component={Dashboard} />
-                <ProtectedRoute path="/decision" component={Decision} />
-                <Route path="*">
-                  <Home />
-                </Route>
-              </Switch>
-            </main>
+              <LeftNav />
+              <main>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route path="/getting-started">
+                    <GettingStarted />
+                  </Route>
+                  <Route path="/settings">
+                    <Settings />
+                  </Route>
+                  <Route path="/history">
+                    <History />
+                  </Route>
+                  <ProtectedRoute path="/dashboard" component={Dashboard} />
+                  <ProtectedRoute path="/decision" component={Decision} />
+                  <Route path="*">
+                    <Home />
+                  </Route>
+                </Switch>
+              </main>
+              <RightNav />
+            </div>
           </div>
         </BrowserRouter>
       </Provider>

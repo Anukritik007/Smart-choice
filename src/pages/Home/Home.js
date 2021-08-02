@@ -3,12 +3,12 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { MdSend } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { getTimeOfDay } from "../../utils/utils";
+import { getTimeOfDay, isMobile } from "../../utils/utils";
 
 const Home = () => {
   const history = useHistory();
   const choices = useSelector((state) => state.choices);
-  const [navigate, setNavigate] = useState(false);
+  const [exitAnimation, setExitAnimation] = useState(false);
   const [showNext, setshowNext] = useState(false);
   const steps = [
     "Put down your options & criteria",
@@ -29,7 +29,7 @@ const Home = () => {
   }, []);
 
   const onNextClick = () => {
-    setNavigate(true);
+    setExitAnimation(true);
     setTimeout(() => {
       history.push("/getting-started");
     }, 100);
@@ -37,8 +37,8 @@ const Home = () => {
 
   return (
     <div
-      className={`home row position relative animate__animated ${
-        navigate ? "animate__slideOutLeft" : ""
+      className={`home animate__animated ${
+        exitAnimation && isMobile ? "animate__slideOutLeft" : ""
       }`}
     >
       <section className="about shadow p-4">

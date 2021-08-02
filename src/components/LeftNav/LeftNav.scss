@@ -1,3 +1,29 @@
 .left-nav {
     height: 100%;
+    width: 20%;
+    padding: 1em;
+
+    .list {
+        background-color: white;
+        border-radius: 5px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+}
+
+//mobile
+@media only screen and (max-width:600px) {
+    .left-nav {
+        display: none;
+    }
+}
+
+.theme-dark {
+    .left-nav {
+        .list {
+            background: #213842;
+            color: white;
+        }
+    }
 }

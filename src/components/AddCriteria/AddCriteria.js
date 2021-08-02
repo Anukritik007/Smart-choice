@@ -158,6 +158,7 @@ const AddCriteria = ({ onBackdropClick }) => {
             )}
             <input
               type="text"
+              autoComplete="off"
               style={
                 isOptionSelectionsValid && criteria === ""
                   ? { borderColor: "#de4653" }

@@ -14,30 +14,32 @@ const LeftNav = () => {
 
   return (
     <section className="left-nav">
-      <List>
-        <ListItem
-          button
-          onClick={() => {
-            history.push("/settings");
-          }}
-        >
-          <ListItemIcon>
-            <BsGear color={isThemeDark ? "white" : "black"} />
-          </ListItemIcon>
-          <ListItemText primary="Settings" />
-        </ListItem>
-        <ListItem
-          button
-          onClick={() => {
-            history.push("/history");
-          }}
-        >
-          <ListItemIcon>
-            <BsClockHistory color={isThemeDark ? "white" : "black"} />
-          </ListItemIcon>
-          <ListItemText primary="Choice history" />
-        </ListItem>
-      </List>
+      <div className="list">
+        <List>
+          <ListItem
+            button
+            onClick={() => {
+              history.push("/settings");
+            }}
+          >
+            <ListItemIcon>
+              <BsGear color={isThemeDark ? "white" : "black"} />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => {
+              history.push("/history");
+            }}
+          >
+            <ListItemIcon>
+              <BsClockHistory color={isThemeDark ? "white" : "black"} />
+            </ListItemIcon>
+            <ListItemText primary="Choice history" />
+          </ListItem>
+        </List>
+      </div>
     </section>
   );
 };

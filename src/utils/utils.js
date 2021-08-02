@@ -32,3 +32,9 @@ export const getTimeOfDay = () => {
   if (hours > 16 && hours <= 21) return "Evening";
   return "Day";
 };
+
+export const isMobile = window.matchMedia(
+  "only screen and (max-width: 760px)"
+).matches;
+
+// export const isMobile = window.innerWidth <= 600;

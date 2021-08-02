@@ -1,5 +1,5 @@
 import "./Dashboard.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
@@ -7,6 +7,7 @@ import Button from "../../components/Buttons/Button";
 import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "../../components/ChoiceDetails/ChoiceDetails";
 import AddCriteria from "../../components/AddCriteria/AddCriteria";
+import { isMobile } from "../../utils/utils";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -15,8 +16,10 @@ const Dashboard = () => {
   const [showChoiceDetails, setShowChoiceDetails] = useState(false);
   const [showAddCriteria, setShowAddCriteria] = useState(false);
 
+  useEffect(() => {
+    console.log("isMobile", isMobile);
+  });
   const [selectedChoice, setSelectedChoice] = useState("");
-
   const handleNavigateBack = () => {
     history.push("/getting-started");
   };
@@ -52,7 +55,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard h-100 row position-relative">
+    <div className="dashboard h-100 position-relative">
       {showChoiceDetails && (
         <ChoiceDetails
           choiceId={selectedChoice}
@@ -78,12 +81,14 @@ const Dashboard = () => {
             <FaArrowLeft size={20} color="white" />
           </button>
         </div>
-        <div className="main-content row">
+        <div className="main-content row p-2">
           {choices.every((choice_) => choice_.name) ? (
             choices.map((choice, index) => {
               return (
                 <div
-                  className="score-card-div col-6 py-3 d-flex justify-content-center animate__animated animate__fadeIn"
+                  className={`score-card-div py-3 d-flex justify-content-center animate__animated animate__fadeIn ${
+                    choices.length === 2 && isMobile ? "col-12" : "col-6"
+                  }`}
                   style={{ animationDelay: `${index / 2}s` }}
                   key={choice.id}
                 >

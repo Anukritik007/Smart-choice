@@ -65,7 +65,7 @@ const GettingStarted = () => {
   };
 
   return (
-    <div className="getting-started row position relative animate__animated animate__slideInRight">
+    <div className="getting-started animate__animated animate__slideInRight">
       <section className="getting-started-card shadow">
         <form className="add-choices-form" onSubmit={handleSubmit}>
           <div className="form-elements p-4">
@@ -74,6 +74,7 @@ const GettingStarted = () => {
                 What are you considering?
                 <input
                   type="text"
+                  autoComplete="off"
                   id="questionInput"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value.trimStart())}

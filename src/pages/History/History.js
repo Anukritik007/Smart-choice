@@ -4,7 +4,9 @@ import React from "react";
 const History = () => {
   return (
     <div className="history">
-      <h3 className="text-disabled">Coming soon</h3>
+      <div className="history-card">
+        <h3 className="text-disabled">Coming soon</h3>
+      </div>
     </div>
   );
 };
