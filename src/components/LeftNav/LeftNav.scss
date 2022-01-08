@@ -1,19 +1,24 @@
 .left-nav {
     height: 100%;
     width: 20%;
-    padding: 1em;
+    border-right: 3px solid white;
 
     .list {
-        background-color: white;
         border-radius: 5px;
         height: 100%;
         overflow: hidden;
+
+        ul {
+            >div {
+                padding: 1.5em 1.5em;
+            }
+        }
     }
 
 }
 
-//mobile
-@media only screen and (max-width:600px) {
+//mobile, i-pad, i-pad pro 
+@media only screen and (max-width:1024px) {
     .left-nav {
         display: none;
     }
@@ -21,8 +26,9 @@
 
 .theme-dark {
     .left-nav {
+        border-right: 3px solid #213842;
+
         .list {
-            background: #213842;
             color: white;
         }
     }

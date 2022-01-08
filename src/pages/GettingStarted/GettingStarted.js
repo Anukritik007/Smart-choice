@@ -68,7 +68,7 @@ const GettingStarted = () => {
     <div className="getting-started animate__animated animate__slideInRight">
       <section className="getting-started-card shadow">
         <form className="add-choices-form" onSubmit={handleSubmit}>
-          <div className="form-elements p-4">
+          <div className="form-elements">
             <section className="question pb-3">
               <label htmlFor="questionInput" className="m-0 w-100">
                 What are you considering?

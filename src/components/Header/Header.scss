@@ -19,8 +19,21 @@
             flex-shrink: 0;
         }
 
+        .home-icon {
+            flex-grow: 1;
+            padding: 1em;
+
+            @media only screen and (max-width:1024px) {
+                display: none;
+            }
+        }
+
         .brand-name {
-            flex-grow: 3
+            flex-grow: 3;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .theme-button {
@@ -37,8 +50,10 @@
         background: whitesmoke;
     }
 
-    /* ipad & above */
-    @media only screen and (min-width:600px) {
+    /* desktop */
+    @media only screen and (min-width:1025px) {
+        height: 4em;
+
         .menu-hamburger {
             display: none;
         }

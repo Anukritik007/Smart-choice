@@ -1,10 +1,17 @@
 .right-nav {
     width: 20%;
+    border-left: 3px solid white;
 }
 
-//mobile
-@media only screen and (max-width:600px) {
+//mobile & i-pad, i-pad pro
+@media only screen and (max-width:1024px) {
     .right-nav {
         display: none;
+    }
+}
+
+.theme-dark {
+    .right-nav {
+        border-left: 3px solid #213842;
     }
 }

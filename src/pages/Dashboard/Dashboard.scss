@@ -23,7 +23,7 @@
     }
 
     .scrollable-content {
-        height: 80vh;
+        height: calc(100vh - 4em);
         overflow: scroll;
 
         .main-content {
@@ -31,6 +31,13 @@
                 animation-duration: 0.5s !important;
             }
         }
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        bottom: 2.5em;
     }
 }
 

@@ -36,5 +36,3 @@ export const getTimeOfDay = () => {
 export const isMobile = window.matchMedia(
   "only screen and (max-width: 760px)"
 ).matches;
-
-// export const isMobile = window.innerWidth <= 600;

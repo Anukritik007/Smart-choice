@@ -1,5 +1,5 @@
 import "./Dashboard.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
@@ -16,9 +16,6 @@ const Dashboard = () => {
   const [showChoiceDetails, setShowChoiceDetails] = useState(false);
   const [showAddCriteria, setShowAddCriteria] = useState(false);
 
-  useEffect(() => {
-    console.log("isMobile", isMobile);
-  });
   const [selectedChoice, setSelectedChoice] = useState("");
   const handleNavigateBack = () => {
     history.push("/getting-started");
@@ -110,14 +107,15 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <div className="bottom-nav d-flex px-3 pt-2">
+      <div className="action-buttons mx-3 pt-2 mb-4">
         <Button
           name="Decide now!"
-          type="rectangular"
+          type="circular"
           styles={{
             backgroundColor: "#38aeca",
-            borderBottomRightRadius: 0,
-            borderTopRightRadius: 0,
+            height: "5em",
+            width: "5em",
+            boxShadow: "0 .5rem 1rem rgb(0 0 0 / 40%)",
           }}
           isDisabled={choices.every(
             (choice_) => choice_.attributes.length === 0
@@ -126,10 +124,11 @@ const Dashboard = () => {
         />
         <Button
           name="Add criterion"
-          type="rectangular"
+          type="circular"
           styles={{
-            borderBottomLeftRadius: 0,
-            borderTopLeftRadius: 0,
+            height: "5em",
+            width: "5em",
+            boxShadow: "0 .5rem 1rem rgb(0 0 0 / 40%)",
           }}
           isDisabled={choices.every((choice_) => choice_.name === "")}
           onClick={() => setShowAddCriteria(!showAddCriteria)}

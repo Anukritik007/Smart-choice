@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegMoon } from "react-icons/fa";
 import { MdWbSunny } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 import { BsList } from "react-icons/bs";
 import themeContext from "../../themeContext";
 import { APP_NAME } from "../../Constants";
@@ -22,6 +23,11 @@ const Header = () => {
         >
           <BsList color="white" size={40} />
         </button>
+        <div className="home-icon">
+          <Link to="/home">
+            <AiOutlineHome />
+          </Link>
+        </div>
         <div className="brand-name">
           <Link to="/home">{APP_NAME}</Link>
         </div>
