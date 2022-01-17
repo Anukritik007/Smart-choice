@@ -7,7 +7,10 @@ import Button from "../Buttons/Button";
 import Overlay from "../Overlay/Overlay";
 import { SCORE_MARKS } from "../../Constants";
 import { updateChoices } from "../../redux/choices/choiceActions";
-import { mapScoreToProbabilities } from "../../utils/utils";
+import {
+  mapScoreToProbabilities,
+  updateLocalStorageWithCurrentState,
+} from "../../utils/utils";
 
 const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
   const choices = useSelector((state) => state.choices);
@@ -50,6 +53,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
     );
     const updatedProb = mapScoreToProbabilities(updatedChoices);
     dispatch(updateChoices(updatedProb));
+    updateLocalStorageWithCurrentState(updatedProb);
     toggleAllowEdit();
   };
 

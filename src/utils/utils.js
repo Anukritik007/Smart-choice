@@ -36,3 +36,8 @@ export const getTimeOfDay = () => {
 export const isMobile = window.matchMedia(
   "only screen and (max-width: 760px)"
 ).matches;
+
+export const updateLocalStorageWithCurrentState = (choices, question) => {
+  if (choices) localStorage.setItem("choices", JSON.stringify(choices));
+  if (question) localStorage.setItem("question", JSON.stringify(question));
+};

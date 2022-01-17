@@ -9,6 +9,7 @@ import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
+import { updateLocalStorageWithCurrentState } from "../../utils/utils";
 
 const GettingStarted = () => {
   const history = useHistory();
@@ -22,6 +23,7 @@ const GettingStarted = () => {
     e.preventDefault();
     dispatch(updateChoices(addedChoices));
     dispatch(updateQuestion(question));
+    updateLocalStorageWithCurrentState(addedChoices, question);
     history.push("/dashboard");
   };
 

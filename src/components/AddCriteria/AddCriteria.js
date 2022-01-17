@@ -12,6 +12,7 @@ import Button from "../Buttons/Button";
 import { updateChoices } from "../../redux/choices/choiceActions";
 import { SCORE_MARKS } from "../../Constants";
 import Overlay from "../Overlay/Overlay";
+import { updateLocalStorageWithCurrentState } from "../../utils/utils";
 
 const AddCriteria = ({ onBackdropClick }) => {
   const choices = useSelector((state) => state.choices);
@@ -111,6 +112,7 @@ const AddCriteria = ({ onBackdropClick }) => {
     dispatch(updateChoices(updatedChoices));
     setCriteria("");
     setChoiceScoreMap(initialChoiceScoreMap);
+    updateLocalStorageWithCurrentState(updatedChoices);
     showStatusMessage();
   };
 
