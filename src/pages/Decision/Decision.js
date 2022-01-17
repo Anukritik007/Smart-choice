@@ -30,6 +30,7 @@ const Decision = () => {
     history.push("/dashboard");
   };
   const handleRestart = () => {
+    localStorage.clear();
     dispatch(resetState());
     history.push("/getting-started");
   };

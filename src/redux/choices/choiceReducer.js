@@ -7,8 +7,8 @@ import {
 } from "./actionTypes";
 
 const initialState = {
-  question: "",
-  choices: [
+  question: JSON.parse(localStorage.getItem("question")) || "",
+  choices: JSON.parse(localStorage.getItem("choices")) || [
     {
       id: "a101",
       name: "",
@@ -26,9 +26,8 @@ const initialState = {
   ],
   leaders: [],
 };
-const getIntialStateCopy = () => JSON.parse(JSON.stringify(initialState));
 
-const choiceReducer = (state = getIntialStateCopy(), action) => {
+const choiceReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CHOICE: {
       const newChoices = [...state.choices];
@@ -64,7 +63,26 @@ const choiceReducer = (state = getIntialStateCopy(), action) => {
       };
 
     case RESET:
-      return getIntialStateCopy();
+      return {
+        question: "",
+        choices: [
+          {
+            id: "a101",
+            name: "",
+            attributes: [],
+            score: 0,
+            probability: "medium",
+          },
+          {
+            id: "a102",
+            name: "",
+            attributes: [],
+            score: 0,
+            probability: "medium",
+          },
+        ],
+        leaders: [],
+      };
 
     default:
       return state;

@@ -126,7 +126,7 @@ const GettingStarted = () => {
             <Button
               name="Proceed"
               type="rectangular"
-              isDisabled={addedChoices.some((choice) => choice.name === "")}
+              isDisabled={addedChoices.some((choice) => !choice.name)}
               action="submit"
               styles={{ backgroundColor: "#007a96" }}
             />
