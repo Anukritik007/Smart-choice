@@ -3,11 +3,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegMoon } from "react-icons/fa";
 import { MdWbSunny } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
 import { BsList } from "react-icons/bs";
 import themeContext from "../../themeContext";
 import { APP_NAME } from "../../Constants";
-import MenuDrawer from "./MenuDrawer";
+import MenuDrawer from "../MenuDrawer/MenuDrawer";
 
 const Header = () => {
   const { isThemeDark, toggleTheme } = useContext(themeContext);
@@ -15,7 +14,7 @@ const Header = () => {
 
   return (
     <header className="header-container d-flex align-items-center">
-      <nav className="d-flex w-100">
+      <nav>
         <button
           className="menu-hamburger"
           type="button"
@@ -23,11 +22,6 @@ const Header = () => {
         >
           <BsList color="white" size={40} />
         </button>
-        <div className="home-icon">
-          <Link to="/home">
-            <AiOutlineHome />
-          </Link>
-        </div>
         <div className="brand-name">
           <Link to="/home">{APP_NAME}</Link>
         </div>
@@ -35,7 +29,7 @@ const Header = () => {
           type="button"
           onClick={toggleTheme}
           aria-label="toggle theme"
-          className="theme-button border-0 bg-transparent px-2"
+          className="theme-button border-0 bg-transparent"
         >
           {isThemeDark ? (
             <FaRegMoon color="white" size={20} />

@@ -1,6 +1,7 @@
 import "./LeftNav.scss";
 import React, { useContext } from "react";
 import { BsGear, BsClockHistory } from "react-icons/bs";
+import { AiOutlineHome } from "react-icons/ai";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -16,6 +17,17 @@ const LeftNav = () => {
     <section className="left-nav">
       <div className="list">
         <List>
+          <ListItem
+            button
+            onClick={() => {
+              history.push("/home");
+            }}
+          >
+            <ListItemIcon>
+              <AiOutlineHome color={isThemeDark ? "white" : "black"} />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
           <ListItem
             button
             onClick={() => {

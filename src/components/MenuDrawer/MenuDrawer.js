@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { BsGear, BsClockHistory } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
+import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -47,6 +48,18 @@ const MenuDrawer = ({ isOpen, onClose, onOpen, isThemeDark }) => {
       </div>
       <Divider />
       <List className="drawer-item-list">
+        <ListItem
+          button
+          onClick={() => {
+            history.push("/home");
+            onClose();
+          }}
+        >
+          <ListItemIcon>
+            <AiOutlineHome color={isThemeDark ? "white" : "black"} />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
         <ListItem
           button
           onClick={() => {

@@ -3,6 +3,10 @@
     background-image: linear-gradient(to right, #007a96, #111618);
 
     nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
         button {
             background: transparent;
             border: none;
@@ -19,25 +23,16 @@
             flex-shrink: 0;
         }
 
-        .home-icon {
-            flex-grow: 1;
-            padding: 1em;
-
-            @media only screen and (max-width:1024px) {
-                display: none;
-            }
-        }
-
         .brand-name {
-            flex-grow: 3;
-
+            padding: 0 2em;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .theme-button {
-            flex-grow: 1
+            padding: 0 1em;
+            margin: 0 1em;
         }
 
     }
@@ -54,8 +49,19 @@
     @media only screen and (min-width:1025px) {
         height: 4em;
 
-        .menu-hamburger {
-            display: none;
+        nav {
+            .brand-name {
+                padding: 0 5em;
+            }
+
+            .theme-button {
+                padding: 0 2em;
+                margin: 0 3em;
+            }
+
+            .menu-hamburger {
+                display: none;
+            }
         }
     }
 }
