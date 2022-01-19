@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { BsGear, BsClockHistory } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
@@ -10,7 +11,6 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   listDark: {
@@ -32,19 +32,21 @@ const useStyles = makeStyles({
 const MenuDrawer = ({ isOpen, onClose, onOpen, isThemeDark }) => {
   const classes = useStyles();
   const history = useHistory();
+  const imageUrl = `${process.env.PUBLIC_URL}/images/NoUser.png`;
+
   const list = () => (
     <div
       role="presentation"
       className={isThemeDark ? classes.listDark : classes.listLight}
     >
       <div className="drawer-header">
-        <div>
-          <img src="#" alt="user" />
+        <div className="image-wrapper">
+          <img src={imageUrl} alt="user" />
         </div>
-        <span>Smart choice User</span>
+        <span>User</span>
       </div>
       <Divider />
-      <List>
+      <List className="drawer-item-list">
         <ListItem
           button
           onClick={() => {

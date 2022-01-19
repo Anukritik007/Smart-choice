@@ -9,15 +9,17 @@
  }
 
  .drawer-header {
-     height: 3rem;
      display: flex;
-     justify-content: space-around;
+     justify-content: flex-start;
      align-items: center;
+     padding: 1rem;
+     border-bottom: 0.5px solid #007a96;
 
-     div {
-         flex-grow: 1;
+     .image-wrapper {
+         margin: 0 1rem;
 
          img {
+             max-height: 3rem;
              border-radius: 50%;
              background: #213842;
              width: "auto";
@@ -25,6 +27,12 @@
      }
 
      span {
-         padding: 0 2em;
+         padding: 0 1.5em;
+     }
+ }
+
+ .drawer-item-list {
+     .MuiListItem-root {
+         padding: 1em 2em;
      }
  }
