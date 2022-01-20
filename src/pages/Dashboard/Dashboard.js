@@ -24,9 +24,9 @@ const Dashboard = () => {
   const getCardContent = (criteria) => {
     if (criteria.length > 0) {
       return criteria.map((attr) => (
-        <div key={attr.id} className="d-flex justify-content-between">
-          <p className="text-left font-em-8">{attr.name}</p>
-          <p className="font-em-8">{attr.score}</p>
+        <div key={attr.id} className="card-content">
+          <p className="criteria">{attr.name}</p>
+          <p>{attr.score}</p>
         </div>
       ));
     }
@@ -52,7 +52,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard h-100 position-relative">
+    <div className="dashboard">
       {showChoiceDetails && (
         <ChoiceDetails
           choiceId={selectedChoice}
@@ -64,12 +64,12 @@ const Dashboard = () => {
           onBackdropClick={() => setShowAddCriteria(!showAddCriteria)}
         />
       )}
-      <div className="scrollable-content p-3">
-        <div className="top-nav d-flex justify-content-between">
+      <div className="scrollable-content">
+        <div className="top-nav">
           <h3>{question ? `${question}?` : ""}</h3>
           <button
             type="button"
-            className="back-button d-flex justify-content-center align-items-center"
+            className="back-button"
             onClick={handleNavigateBack}
             tabIndex={0}
             onKeyPress={handleNavigateBack}
@@ -78,36 +78,28 @@ const Dashboard = () => {
             <FaArrowLeft size={20} color="white" />
           </button>
         </div>
-        <div className="main-content row p-2">
-          {choices.every((choice_) => choice_.name) ? (
-            choices.map((choice, index) => {
-              return (
-                <div
-                  className={`score-card-div py-3 d-flex justify-content-center animate__animated animate__fadeIn ${
-                    choices.length === 2 && isMobile ? "col-12" : "col-6"
-                  }`}
-                  style={{ animationDelay: `${index / 2}s` }}
-                  key={choice.id}
-                >
-                  <ScoreCard
-                    choiceId={choice.id}
-                    background={mapProbabilityToBackground(choice.probability)}
-                    onClick={() => handleCardClick(choice.id)}
-                    showClose={choices.length > 2}
-                  >
-                    {getCardContent(choice.attributes)}
-                  </ScoreCard>
-                </div>
-              );
-            })
-          ) : (
-            <div className="align-items-center d-flex h-50 justify-content-center text-disabled">
-              Go back to add your choices
+        <div className="main-content row">
+          {choices.map((choice, index) => (
+            <div
+              className={`score-card-div animate__animated animate__fadeIn ${
+                choices.length === 2 && isMobile ? "col-12" : "col-6"
+              }`}
+              style={{ animationDelay: `${index / 2}s` }}
+              key={choice.id}
+            >
+              <ScoreCard
+                choiceId={choice.id}
+                background={mapProbabilityToBackground(choice.probability)}
+                onClick={() => handleCardClick(choice.id)}
+                showClose={choices.length > 2}
+              >
+                {getCardContent(choice.attributes)}
+              </ScoreCard>
             </div>
-          )}
+          ))}
         </div>
       </div>
-      <div className="action-buttons mx-3 pt-2 mb-4">
+      <div className="action-buttons">
         <Button
           name="Decide now!"
           type="circular"

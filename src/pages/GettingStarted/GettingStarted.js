@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MdAdd } from "react-icons/md";
 import Button from "../../components/Buttons/Button";
-import ChoiceInput from "./ChoiceInput";
+import ChoiceInput from "../../components/ChoiceInput/ChoiceInput";
 import {
   updateChoices,
   updateQuestion,
 } from "../../redux/choices/choiceActions";
 import { updateLocalStorageWithCurrentState } from "../../utils/utils";
+import { GETTING_STARTED_CONTENT } from "../../Constants";
 
 const GettingStarted = () => {
   const history = useHistory();
@@ -68,12 +69,12 @@ const GettingStarted = () => {
 
   return (
     <div className="getting-started animate__animated animate__slideInRight">
-      <section className="getting-started-card shadow">
+      <section className="getting-started-card">
         <form className="add-choices-form" onSubmit={handleSubmit}>
           <div className="form-elements">
-            <section className="question pb-3">
-              <label htmlFor="questionInput" className="m-0 w-100">
-                What are you considering?
+            <section className="question">
+              <label htmlFor="questionInput">
+                {GETTING_STARTED_CONTENT.QUESTION_LABEL}
                 <input
                   type="text"
                   autoComplete="off"
@@ -82,16 +83,18 @@ const GettingStarted = () => {
                   onChange={(e) => setQuestion(e.target.value.trimStart())}
                 />
               </label>
-              <p className="font-em-8 text-minor m-0">For example:</p>
-              <ul className="hint-list text-minor font-em-8">
-                <li>Which car should I buy?</li>
-                <li>Which company should I join?</li>
-                <li>Where to go on holiday?</li>
+              <p className="text-minor">
+                {GETTING_STARTED_CONTENT.FOR_EXAMPLE_TEXT}
+              </p>
+              <ul className="example-list text-minor">
+                {GETTING_STARTED_CONTENT.QUESTION_EXAMPLES.map((example) => (
+                  <li key={example}>{example}</li>
+                ))}
               </ul>
             </section>
             {/* inputing choices */}
             <section className="choices">
-              <p className="m-0">What are the options?</p>
+              <p className="m-0">{GETTING_STARTED_CONTENT.OPTIONS_LABEL}</p>
               {addedChoices.map((choice, index) => (
                 <ChoiceInput
                   key={choice.id}
@@ -106,10 +109,10 @@ const GettingStarted = () => {
 
               {/* Add more choices */}
               {addedChoices.every((choice) => choice.name !== "") ? (
-                <div className="d-flex justify-content-center py-3">
+                <div className="add-more-wrapper">
                   <button
                     type="button"
-                    className="add-more-button border-0 d-flex justify-content-center align-items-center"
+                    className="add-more-button"
                     tabIndex={0}
                     aria-label="Add more options"
                     onClick={handleAddMore}
@@ -124,9 +127,9 @@ const GettingStarted = () => {
             </section>
           </div>
 
-          <div className="pt-2 p-4">
+          <div className="submit-button-wrapper">
             <Button
-              name="Proceed"
+              name={GETTING_STARTED_CONTENT.NEXT_BUTTON_TEXT}
               type="rectangular"
               isDisabled={addedChoices.some((choice) => !choice.name)}
               action="submit"

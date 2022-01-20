@@ -4,18 +4,30 @@
     animation-duration: 0.2s;
 
     .about {
-        border-radius: 5px;
-        background: white;
         height: 480px;
+        background: white;
+        border-radius: 5px;
+        padding: 1.5rem;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
-        .step-circle {
-            display: inline-block;
-            text-align: center;
-            background-color: #007a96;
-            color: white;
-            border-radius: 50%;
-            height: 1.4em;
-            width: 1.4em;
+        h2 {
+            font-family: "Courgette"
+        }
+
+        .description {
+            margin: 1.5rem 0;
+            text-align: left;
+
+            .step-circle {
+                display: inline-block;
+                text-align: center;
+                background-color: #007a96;
+                color: white;
+                border-radius: 50%;
+                height: 1.4em;
+                width: 1.4em;
+                margin-right: 1em;
+            }
         }
     }
 

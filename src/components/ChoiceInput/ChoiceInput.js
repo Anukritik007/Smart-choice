@@ -1,4 +1,5 @@
 import React from "react";
+import "./ChoiceInput.scss";
 import { FaTrashAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
 

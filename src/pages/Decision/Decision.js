@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaTrophy, FaArrowLeft } from "react-icons/fa";
 import { resetState } from "../../redux/choices/choiceActions";
 import Button from "../../components/Buttons/Button";
+import { DECISION_PAGE_CONTENT } from "../../Constants";
 
 const Decision = () => {
   const history = useHistory();
@@ -42,57 +43,56 @@ const Decision = () => {
   };
 
   return (
-    <div className="decision-view h-100">
-      <div className="row top-nav pt-3 px-3 m-0">
-        <div className="col-10" />
-        <div className="col-2">
-          <button
-            type="button"
-            className="back-button d-flex justify-content-center align-items-center"
-            onClick={handleNavigateBack}
-            tabIndex={0}
-            onKeyPress={handleNavigateBack}
-            aria-label="go back"
-          >
-            <FaArrowLeft size={20} color="white" />
-          </button>
-        </div>
+    <div className="decision-view">
+      <div className="top-nav">
+        <button
+          type="button"
+          className="back-button"
+          onClick={handleNavigateBack}
+          tabIndex={0}
+          onKeyPress={handleNavigateBack}
+          aria-label="go back"
+        >
+          <FaArrowLeft size={20} color="white" />
+        </button>
       </div>
-      <div className="h-75 d-flex justify-content-center align-items-center animate__animated animate__fadeIn">
-        <div className="p-2">
-          <h3>
-            {winners.length > 0
-              ? winners.length > 1
-                ? "Your top options are:"
-                : "Your smart choice should be"
-              : "Redirecting..."}
-          </h3>
-          <div className="d-flex justify-content-center">
-            <div className="winner-list">
-              {winners.map((ch_) => (
-                <div className="p-3 text-left" key={ch_.id}>
-                  <FaTrophy
-                    color={winners.length > 1 ? "#b1bade" : "#f9bc4b"}
-                    size={30}
-                  />
-                  <span className="px-3 font-bold">{ch_.name}</span>
-                </div>
-              ))}
+      <div className="decision-body animate__animated animate__fadeIn">
+        <h3>
+          {winners && winners.length > 1
+            ? DECISION_PAGE_CONTENT.DRAW_MESSAGE
+            : DECISION_PAGE_CONTENT.WINNER_MESSAGE}
+        </h3>
+        <div className="winner-list">
+          {winners.map((winner) => (
+            <div className="winner-item" key={winner.id}>
+              <FaTrophy
+                color={winners.length > 1 ? "#b1bade" : "#f9bc4b"}
+                size={30}
+              />
+              <span>{winner.name}</span>
             </div>
-          </div>
-          <div className="pt-3">
-            {winners.length > 1 ? "May be go for a toss?" : "Wish you luck!"}
-          </div>
+          ))}
+        </div>
+        <div className="pt-3">
+          {winners.length > 1
+            ? DECISION_PAGE_CONTENT.TOSS_MESSAGE
+            : DECISION_PAGE_CONTENT.WISH_MESSAGE}
+        </div>
 
-          {winners.length > 1 && (
-            <div className="mt-3">
-              <Button name="Toss" onClick={handleToss} />
-            </div>
-          )}
-          <div className="mt-5">
-            <Button name="Save my choice" isDisabled />
-            <Button name="Discard &amp; Start over" onClick={handleRestart} />
+        {winners.length > 1 && (
+          <div className="mt-3">
+            <Button
+              name={DECISION_PAGE_CONTENT.TOSS_BUTTON_TEXT}
+              onClick={handleToss}
+            />
           </div>
+        )}
+        <div className="mt-5">
+          <Button name={DECISION_PAGE_CONTENT.SAVE_BUTTON_TEXT} isDisabled />
+          <Button
+            name={DECISION_PAGE_CONTENT.DISCARD_BUTTON_TEXT}
+            onClick={handleRestart}
+          />
         </div>
       </div>
     </div>
