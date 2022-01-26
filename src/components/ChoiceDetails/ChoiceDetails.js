@@ -5,7 +5,7 @@ import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
 import Button from "../Buttons/Button";
 import Overlay from "../Overlay/Overlay";
-import { SCORE_MARKS } from "../../Constants";
+import { SCORE_MARKS, CHOICE_DETAILS_CONTENT } from "../../Constants";
 import { updateChoices } from "../../redux/choices/choiceActions";
 import {
   mapScoreToProbabilities,
@@ -17,7 +17,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
   const activeChoice = useSelector((state) =>
     state.choices.find((choice) => choice.id === choiceId)
   );
-  const [state, setstate] = useState(activeChoice);
+  const [state, setState] = useState(activeChoice);
   const [allowEdit, setAllowEdit] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
       return attr;
     });
     const scoreSum = updatedAttr.reduce((acc, attr) => acc + attr.score, 0);
-    setstate({ ...state, attributes: updatedAttr, score: scoreSum });
+    setState({ ...state, attributes: updatedAttr, score: scoreSum });
   };
 
   const onAttrChange = (val, attrId) => {
@@ -44,7 +44,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
       }
       return attr;
     });
-    setstate({ ...state, attributes: updatedAttr });
+    setState({ ...state, attributes: updatedAttr });
   };
 
   const handleUpdateAttributes = () => {
@@ -61,7 +61,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
     <Overlay onBackdropClick={onBackdropClick}>
       <section
         role="presentation"
-        className="choice-content position-relative p-2"
+        className="choice-content"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -69,22 +69,19 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
           e.stopPropagation();
         }}
       >
-        <div className="header p-2 d-flex justify-content-between align-items-center">
-          <h3 className="m-0 text-left">{activeChoice.name}</h3>
-          <h3 className="total-score m-0 d-flex justify-content-center align-items-center">
-            {activeChoice.score}
-          </h3>
+        <div className="choice-header">
+          <h3 className="choice-name">{activeChoice.name}</h3>
+          <h3 className="total-score">{activeChoice.score}</h3>
         </div>
 
         {allowEdit ? (
-          <div className="display-body p-2 animate__animated animate__fadeIn">
+          <div className="display-body animate__animated animate__fadeIn">
             {state &&
               state.attributes.map((attr) => {
                 return (
-                  <div key={attr.id} className="attribute-info p-2 mb-4">
+                  <div key={attr.id} className="criteria-info">
                     <input
                       type="text"
-                      className="w-100 p-2 mb-4"
                       value={attr.name}
                       onChange={(e) => onAttrChange(e.target.value, attr.id)}
                     />
@@ -105,27 +102,30 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
               })}
           </div>
         ) : (
-          <div className="display-body p-2">
+          <div className="display-body">
             {activeChoice && activeChoice.attributes.length > 0 ? (
               activeChoice.attributes.map((attr) => (
-                <div key={attr.id} className="row py-1">
-                  <div className="col-10 text-left">{attr.name}</div>
-                  <div className="col-2 p-0">{attr.score}</div>
+                <div key={attr.id} className="criteria-row">
+                  <div className="criteria-name">{attr.name}</div>
+                  <div className="criteria-score">{attr.score}</div>
                 </div>
               ))
             ) : (
               <div className="empty-state">
-                <p>No points added yet.</p>
-                <p>Click on &quot;Add criterion&quot; to add your points</p>
+                <p>{CHOICE_DETAILS_CONTENT.EMPTY_STATE_INFO_TEXT}</p>
               </div>
             )}
           </div>
         )}
 
-        <div className="bottom-nav p-2">
+        <div className="button-wrapper">
           {activeChoice.attributes.length > 0 && (
             <Button
-              name={allowEdit ? "Update" : "Edit criteria"}
+              name={
+                allowEdit
+                  ? CHOICE_DETAILS_CONTENT.UPDATE_BUTTON_TEXT
+                  : CHOICE_DETAILS_CONTENT.EDIT_BUTTON_TEXT
+              }
               type="rectangular"
               styles={{ backgroundColor: "#007a96" }}
               onClick={allowEdit ? handleUpdateAttributes : toggleAllowEdit}

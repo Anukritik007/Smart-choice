@@ -12,7 +12,7 @@ const ChoiceInput = ({
   onInputDelete,
 }) => {
   return (
-    <div className="choice-input py-1">
+    <div className="choice-input">
       <label className="field font-em-8 text-minor" htmlFor="choiceInput">
         {label}
         <input

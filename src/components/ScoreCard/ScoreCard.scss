@@ -1,8 +1,11 @@
 .score-card {
+    position: relative;
     border-radius: 10px;
     background: white;
     width: 100%;
     max-width: 20em;
+    padding: 0.5rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
     &.bg--success {
         border-top: 10px solid #6ab76a;
@@ -17,9 +20,15 @@
     }
 
     .header {
+        display: flex;
+        justify-content: space-between;
         font-weight: bold;
+        padding-bottom: 0.5rem;
 
         .total-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 2em;
             width: 2em;
             background: white;
@@ -29,12 +38,15 @@
     }
 
     .delete-choice {
+        position: absolute;
         top: -1em;
         left: -1em;
     }
 
-    .body {
+    .score-card-body {
         overflow: hidden;
+        padding: 0.5rem;
+        height: 5em;
     }
 }
 

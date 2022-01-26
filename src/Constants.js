@@ -56,3 +56,21 @@ export const DECISION_PAGE_CONTENT = {
   SAVE_BUTTON_TEXT: "Save my choice",
   DISCARD_BUTTON_TEXT: "Discard & Start over",
 };
+
+export const ADD_CRITERIA_FORM = {
+  CRITERIA_INPUT_LABEL: "What is your Criterion for judgement?",
+  CRITERIA_INPUT_PLACEHOLDER: "Enter criteria",
+  CHOICE_SELECT_LABEL:
+    "Select options to add this criteria and a score for each:",
+  SCORE: "Score",
+  FIELD_REQUIRED_ERROR_TEXT: " This field is required",
+  NOT_SELECTED_ERROR_TEXT: " not selected",
+  ADD_BUTTON_NAME: "Add",
+  ADD_SUCCESS_MESSAGE: "Criteria Added, You can continue adding more.",
+};
+
+export const CHOICE_DETAILS_CONTENT = {
+  EMPTY_STATE_INFO_TEXT: "No criteria added yet",
+  UPDATE_BUTTON_TEXT: "Update",
+  EDIT_BUTTON_TEXT: "Edit criteria",
+};

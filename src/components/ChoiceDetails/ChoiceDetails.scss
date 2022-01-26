@@ -1,16 +1,32 @@
 .choice-content {
+    position: relative;
+    padding: 0.5rem;
     border-radius: 4px;
     background: white;
 
-    .header {
+    .choice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         font-weight: bold;
+        padding: 0.5rem;
+
+        .choice-name {
+            margin: 0;
+            text-align: left;
+            max-width: 80%;
+        }
 
         .total-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 2em;
             width: 2em;
             background: white;
             box-shadow: 0 0 8px 0 #c1c1ca inset;
             border-radius: 50%;
+            margin: 0;
         }
     }
 
@@ -19,20 +35,55 @@
         max-height: 55vh;
         overflow: scroll;
         overflow-x: hidden;
+        padding: 0.5rem;
+
+        .criteria-info {
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+
+            input {
+                width: 100%;
+                padding: 0.5rem;
+                margin-bottom: 1.5rem
+            }
+
+            .MuiSlider-root {
+                >span {
+                    color: #007a96;
+                }
+
+                .MuiSlider-markLabel {
+                    color: black;
+                }
+            }
+        }
 
         .empty-state {
             color: #9fa9b9
         }
+
+        .criteria-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+
+            .criteria-name {
+                text-align: left;
+                max-width: 80%;
+            }
+
+            .criteria-score {
+                text-align: right;
+                padding: 0 0.5rem;
+            }
+
+        }
     }
 
-    .MuiSlider-root {
-        >span {
-            color: #007a96;
-        }
 
-        .MuiSlider-markLabel {
-            color: black;
-        }
+    .button-wrapper {
+        padding: 0.5rem;
     }
 }
 
@@ -47,8 +98,12 @@
             box-shadow: none;
         }
 
-        .MuiSlider-markLabel {
-            color: white;
+        .display-body {
+            .criteria-info {
+                .MuiSlider-markLabel {
+                    color: white;
+                }
+            }
         }
     }
 }

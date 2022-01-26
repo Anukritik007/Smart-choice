@@ -2,42 +2,35 @@
     border-radius: 4px;
     background: white;
     animation-duration: 0.5s;
+    padding: 0.5rem;
 
     .display-body {
         min-height: 30vh;
         max-height: 55vh;
         overflow: scroll;
-    }
+        padding: 0.5rem;
 
-    .option-group {
-        border: 1px solid #dadaea;
-        border-radius: 5px;
-        overflow: hidden;
+        label {
+            width: 100%;
+            padding-top: 0.5rem;
+            text-align: left;
 
-        &.collapsed {
-            height: 67px;
-            transition: height 0.2s;
+            input {
+                width: 100%;
+                padding: 0.5rem;
+            }
         }
 
-        &.expanded {
-            height: 170px;
-            transition: height 0.2s;
-        }
-
-        .check-button {
-            display: inline-block;
+        .choice-label {
+            padding-top: 1rem;
+            text-align: left;
         }
     }
 
-    .MuiSlider-root {
-        >span {
-            color: #007a96;
-        }
-
-        .MuiSlider-markLabel {
-            color: black;
-        }
+    .button-wrapper {
+        padding: 0.5rem;
     }
+
 }
 
 .theme-dark {

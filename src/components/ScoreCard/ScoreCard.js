@@ -27,7 +27,7 @@ const ScoreCard = ({ choiceId, background, showClose, onClick, children }) => {
   return (
     <div
       role="button"
-      className={`score-card shadow position-relative p-2 ${
+      className={`score-card ${
         background === "success"
           ? "bg--success"
           : background === "warning"
@@ -42,7 +42,7 @@ const ScoreCard = ({ choiceId, background, showClose, onClick, children }) => {
       onKeyPress={onClick}
     >
       {showClose && (
-        <div className="delete-choice position-absolute">
+        <div className="delete-choice">
           <BsFillXCircleFill
             size={30}
             onClick={handleDelete}
@@ -51,18 +51,14 @@ const ScoreCard = ({ choiceId, background, showClose, onClick, children }) => {
         </div>
       )}
       {choiceInfo && (
-        <div className="header pb-2 d-flex justify-content-between">
+        <div className="header">
           <div className="text-left">
             {choiceInfo.name !== "" ? choiceInfo.name : "Add name"}
           </div>
-          <div className="total-score d-flex justify-content-center align-items-center">
-            {choiceInfo.score}
-          </div>
+          <div className="total-score">{choiceInfo.score}</div>
         </div>
       )}
-      <div className="body p-2" style={{ height: "5em" }}>
-        {children}
-      </div>
+      <div className="score-card-body">{children}</div>
     </div>
   );
 };

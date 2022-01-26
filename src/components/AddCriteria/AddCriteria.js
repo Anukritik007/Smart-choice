@@ -2,17 +2,13 @@ import "./AddCriteria.scss";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import {
-  FaRegCheckCircle,
-  FaRegCircle,
-  FaExclamationCircle,
-} from "react-icons/fa";
-import Slider from "@material-ui/core/Slider";
-import Button from "../Buttons/Button";
+import { FaExclamationCircle } from "react-icons/fa";
 import { updateChoices } from "../../redux/choices/choiceActions";
-import { SCORE_MARKS } from "../../Constants";
-import Overlay from "../Overlay/Overlay";
+import { ADD_CRITERIA_FORM } from "../../Constants";
 import { updateLocalStorageWithCurrentState } from "../../utils/utils";
+import Overlay from "../Overlay/Overlay";
+import Button from "../Buttons/Button";
+import ChoiceSelectionAndScore from "../ChoiceSelectionAndScore/ChoiceSelectionAndScore";
 
 const AddCriteria = ({ onBackdropClick }) => {
   const choices = useSelector((state) => state.choices);
@@ -54,7 +50,7 @@ const AddCriteria = ({ onBackdropClick }) => {
   }, [choiceScoreMap]);
 
   const showStatusMessage = () => {
-    setStatusMessage("Criteria Added, You can continue adding more.");
+    setStatusMessage(ADD_CRITERIA_FORM.ADD_SUCCESS_MESSAGE);
     infoTimer.current = setTimeout(() => {
       setStatusMessage("");
     }, 2000);
@@ -120,26 +116,11 @@ const AddCriteria = ({ onBackdropClick }) => {
     setCriteria(attr_.trimStart());
   };
 
-  const onSelectionChange = (choiceId) => {
-    const newObj = JSON.parse(JSON.stringify(choiceScoreMap));
-    newObj[choiceId].isSelected = !newObj[choiceId].isSelected;
-    newObj[choiceId].score = undefined;
-    setChoiceScoreMap(newObj);
-  };
-
-  const handleSliderChange = (e, val, choiceId) => {
-    // TODO: use debouncing
-    // console.log(val, choiceId);
-    const newObj = JSON.parse(JSON.stringify(choiceScoreMap));
-    newObj[choiceId].score = val;
-    setChoiceScoreMap(newObj);
-  };
-
   return (
     <Overlay onBackdropClick={onBackdropClick}>
       <section
         role="presentation"
-        className="add-criteria p-2 animate__animated animate__slideInUp"
+        className="add-criteria animate__animated animate__slideInUp"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -147,13 +128,13 @@ const AddCriteria = ({ onBackdropClick }) => {
           e.stopPropagation();
         }}
       >
-        <div className="display-body p-2">
-          <label className="header pt-2 w-100 text-left" htmlFor="newAttr">
-            What is your Criterion for judgement?
+        <div className="display-body">
+          <label htmlFor="input-criteria">
+            {ADD_CRITERIA_FORM.CRITERIA_INPUT_LABEL}
             {isOptionSelectionsValid && criteria === "" ? (
               <p className="m-0 text-alert font-em-8">
                 <FaExclamationCircle />
-                &nbsp;This field is required
+                {ADD_CRITERIA_FORM.FIELD_REQUIRED_ERROR_TEXT}
               </p>
             ) : (
               <p className="mt-2" />
@@ -166,89 +147,31 @@ const AddCriteria = ({ onBackdropClick }) => {
                   ? { borderColor: "#de4653" }
                   : {}
               }
-              id="newAttr"
-              className="w-100 p-2"
+              id="input-criteria"
               value={criteria}
-              placeholder="Type here..."
+              placeholder={ADD_CRITERIA_FORM.CRITERIA_INPUT_PLACEHOLDER}
               onChange={(e) => onInputChange(e.target.value)}
             />
           </label>
 
           <section>
-            <p className="description pt-3 text-left">
-              Select options to add this criteria and a score for each:
+            <p className="choice-label">
+              {ADD_CRITERIA_FORM.CHOICE_SELECT_LABEL}
             </p>
             {choices &&
-              choices.map((choice) => {
-                return (
-                  <div
-                    className={`option-group my-2 p-3 ${
-                      choiceScoreMap[choice.id].isSelected
-                        ? "expanded"
-                        : "collapsed"
-                    }`}
-                    key={choice.id}
-                  >
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className="d-flex justify-content-between"
-                      onClick={() => onSelectionChange(choice.id)}
-                      onKeyPress={() => onSelectionChange(choice.id)}
-                    >
-                      <p>{choice.name}</p>
-                      <div className="check-button">
-                        {choiceScoreMap[choice.id].isSelected ? (
-                          <FaRegCheckCircle size={30} color="#007a96" />
-                        ) : (
-                          <FaRegCircle size={30} color="#9fa9b9" />
-                        )}
-                      </div>
-                    </div>
-
-                    {choiceScoreMap[choice.id].isSelected && (
-                      <>
-                        <div className="d-flex justify-content-between">
-                          <p id="discrete-slider">Score</p>{" "}
-                          <p
-                            className={
-                              choiceScoreMap[choice.id].score === undefined
-                                ? "text-alert"
-                                : ""
-                            }
-                          >
-                            {choiceScoreMap[choice.id].score !== undefined ? (
-                              choiceScoreMap[choice.id].score
-                            ) : (
-                              <span>
-                                <FaExclamationCircle />
-                                {" not selected"}
-                              </span>
-                            )}
-                          </p>
-                        </div>
-                        <Slider
-                          defaultValue={0}
-                          onChange={(e, val) =>
-                            handleSliderChange(e, val, choice.id)
-                          }
-                          aria-labelledby="discrete-slider"
-                          valueLabelDisplay="auto"
-                          step={1}
-                          marks={SCORE_MARKS}
-                          min={-10}
-                          max={10}
-                        />
-                      </>
-                    )}
-                  </div>
-                );
-              })}
+              choices.map((choice) => (
+                <ChoiceSelectionAndScore
+                  key={choice.id}
+                  choice={choice}
+                  choiceScoreMap={choiceScoreMap}
+                  updateChoiceScoreMap={(newObj) => setChoiceScoreMap(newObj)}
+                />
+              ))}
           </section>
         </div>
-        <div className="bottom-nav p-2">
+        <div className="button-wrapper">
           <Button
-            name="Add"
+            name={ADD_CRITERIA_FORM.ADD_BUTTON_NAME}
             type="rectangular"
             styles={{ backgroundColor: "#007a96" }}
             isDisabled={criteria === "" || !isOptionSelectionsValid}

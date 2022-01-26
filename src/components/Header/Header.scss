@@ -1,13 +1,16 @@
 .header-container {
     height: 3em;
     background-image: linear-gradient(to right, #007a96, #111618);
+    display: flex;
+    align-items: center;
 
     nav {
         display: flex;
         width: 100%;
         justify-content: space-between;
 
-        button {
+        .theme-button,
+        .menu-hamburger {
             background: transparent;
             border: none;
         }

@@ -13,7 +13,7 @@ const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <header className="header-container d-flex align-items-center">
+    <header className="header-container">
       <nav>
         <button
           className="menu-hamburger"
@@ -29,12 +29,12 @@ const Header = () => {
           type="button"
           onClick={toggleTheme}
           aria-label="toggle theme"
-          className="theme-button border-0 bg-transparent"
+          className="theme-button"
         >
           {isThemeDark ? (
-            <FaRegMoon color="white" size={20} />
-          ) : (
             <MdWbSunny color="white" size={20} />
+          ) : (
+            <FaRegMoon color="white" size={20} />
           )}
         </button>
       </nav>

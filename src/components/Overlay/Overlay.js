@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 
 const Overlay = ({ onBackdropClick, children }) => {
   return (
-    <div className="overlay position-absolute h-100 w-100">
+    <div className="overlay">
       <div
         role="presentation"
-        className="backdrop animate__animated animate__fadeIn h-100 p-5"
+        className="backdrop animate__animated animate__fadeIn"
         onClick={onBackdropClick}
         onKeyPress={onBackdropClick}
       >
