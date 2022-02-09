@@ -31,7 +31,7 @@ const ChoiceSelectionAndScore = ({
 
   return (
     <div
-      className={`option-group my-2 p-3 ${
+      className={`option-group ${
         choiceScoreMap[choice.id].isSelected ? "expanded" : "collapsed"
       }`}
       key={choice.id}
@@ -39,7 +39,7 @@ const ChoiceSelectionAndScore = ({
       <div
         role="button"
         tabIndex={0}
-        className="d-flex justify-content-between"
+        className="custom-check-box"
         onClick={() => onSelectionChange(choice.id)}
         onKeyPress={() => onSelectionChange(choice.id)}
       >
@@ -55,7 +55,7 @@ const ChoiceSelectionAndScore = ({
 
       {choiceScoreMap[choice.id].isSelected && (
         <>
-          <div className="d-flex justify-content-between">
+          <div className="selected-score">
             <p id="discrete-slider">{ADD_CRITERIA_FORM.SCORE}</p>
             <p
               className={
@@ -65,7 +65,7 @@ const ChoiceSelectionAndScore = ({
               }
             >
               {choiceScoreMap[choice.id].score !== undefined ? (
-                choiceScoreMap[choice.id].score
+                <span>{choiceScoreMap[choice.id].score}</span>
               ) : (
                 <span>
                   <FaExclamationCircle />

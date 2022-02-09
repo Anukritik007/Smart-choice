@@ -2,6 +2,8 @@
     border: 1px solid #dadaea;
     border-radius: 5px;
     overflow: hidden;
+    padding: 1rem;
+    margin: 0.5rem 0;
 
     &.collapsed {
         height: 67px;
@@ -13,8 +15,24 @@
         transition: height 0.2s;
     }
 
-    .check-button {
-        display: inline-block;
+    .custom-check-box {
+        display: flex;
+        justify-content: space-between;
+
+        .check-button {
+            display: inline-block;
+        }
+    }
+
+    .selected-score {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            span {
+                padding: 0.5rem;
+            }
+        }
     }
 }
 

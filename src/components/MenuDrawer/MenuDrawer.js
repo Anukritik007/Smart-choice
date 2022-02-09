@@ -86,7 +86,7 @@ const MenuDrawer = ({ isOpen, onClose, onOpen, isThemeDark }) => {
         </ListItem>
       </List>
       <Divider />
-      <p className="p-4">
+      <p className="drawer-footer">
         Made with &nbsp;
         <FaHeart color={isThemeDark ? "white" : "black"} /> &nbsp;by Anukritik
       </p>

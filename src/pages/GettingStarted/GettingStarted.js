@@ -94,7 +94,9 @@ const GettingStarted = () => {
             </section>
             {/* inputing choices */}
             <section className="choices">
-              <p className="m-0">{GETTING_STARTED_CONTENT.OPTIONS_LABEL}</p>
+              <p style={{ margin: 0 }}>
+                {GETTING_STARTED_CONTENT.OPTIONS_LABEL}
+              </p>
               {addedChoices.map((choice, index) => (
                 <ChoiceInput
                   key={choice.id}

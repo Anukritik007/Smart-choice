@@ -78,11 +78,15 @@ const Dashboard = () => {
             <FaArrowLeft size={20} color="white" />
           </button>
         </div>
-        <div className="main-content row">
+        <div className="main-content">
           {choices.map((choice, index) => (
             <div
               className={`score-card-div animate__animated animate__fadeIn ${
-                choices.length === 2 && isMobile ? "col-12" : "col-6"
+                choices.length === 2
+                  ? isMobile
+                    ? "single-column"
+                    : "two-column"
+                  : "two-column"
               }`}
               style={{ animationDelay: `${index / 2}s` }}
               key={choice.id}

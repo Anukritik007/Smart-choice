@@ -42,13 +42,22 @@
         }
 
         .main-content {
-            padding: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
 
             .score-card-div {
                 display: flex;
                 justify-content: center;
                 animation-duration: 0.5s !important;
-                margin: 1rem 0;
+                margin: 1rem 3%;
+
+                &.two-column {
+                    width: 44%;
+                }
+
+                &.single-column {
+                    width: 94%;
+                }
 
                 .card-content {
                     display: flex;

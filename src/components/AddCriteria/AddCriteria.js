@@ -132,12 +132,12 @@ const AddCriteria = ({ onBackdropClick }) => {
           <label htmlFor="input-criteria">
             {ADD_CRITERIA_FORM.CRITERIA_INPUT_LABEL}
             {isOptionSelectionsValid && criteria === "" ? (
-              <p className="m-0 text-alert font-em-8">
+              <p className="text-alert font-em-8" style={{ margin: "0" }}>
                 <FaExclamationCircle />
                 {ADD_CRITERIA_FORM.FIELD_REQUIRED_ERROR_TEXT}
               </p>
             ) : (
-              <p className="mt-2" />
+              <p style={{ marginTop: "0.5rem" }} />
             )}
             <input
               type="text"
