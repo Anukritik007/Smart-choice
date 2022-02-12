@@ -6,7 +6,7 @@
     margin: 0.5rem 0;
 
     &.collapsed {
-        height: 67px;
+        height: 40px;
         transition: height 0.2s;
     }
 
@@ -18,6 +18,12 @@
     .custom-check-box {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        p {
+            margin: 0;
+        }
 
         .check-button {
             display: inline-block;

@@ -14,7 +14,6 @@
             align-items: center;
             background-color: #007a96;
             border-radius: 50%;
-            cursor: pointer;
             border: none;
             outline: none;
             box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .40);
@@ -57,6 +56,17 @@
                     padding: 0 1rem;
                     font-weight: bold;
                 }
+            }
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin-top: 3rem;
+
+            button {
+                margin: 1rem
             }
         }
     }

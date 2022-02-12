@@ -73,21 +73,21 @@ const Decision = () => {
             </div>
           ))}
         </div>
-        <div className="pt-3">
+        <div style={{ paddingTop: "1rem" }}>
           {winners.length > 1
             ? DECISION_PAGE_CONTENT.TOSS_MESSAGE
             : DECISION_PAGE_CONTENT.WISH_MESSAGE}
         </div>
 
         {winners.length > 1 && (
-          <div className="mt-3">
+          <div style={{ marginTop: "1rem" }}>
             <Button
               name={DECISION_PAGE_CONTENT.TOSS_BUTTON_TEXT}
               onClick={handleToss}
             />
           </div>
         )}
-        <div className="mt-5">
+        <div className="buttons-wrapper">
           <Button name={DECISION_PAGE_CONTENT.SAVE_BUTTON_TEXT} isDisabled />
           <Button
             name={DECISION_PAGE_CONTENT.DISCARD_BUTTON_TEXT}
