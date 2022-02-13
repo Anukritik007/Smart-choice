@@ -105,12 +105,12 @@ const Dashboard = () => {
       </div>
       <div className="action-buttons">
         <Button
-          name="Decide now!"
-          type="circular"
+          name="Decide now"
+          shape={isMobile ? "circular" : "rectangular"}
           styles={{
             backgroundColor: "#38aeca",
-            height: "5em",
-            width: "5em",
+            height: isMobile ? "5rem" : "3rem",
+            width: isMobile ? "5rem" : "10rem",
             boxShadow: "0 .5rem 1rem rgb(0 0 0 / 40%)",
           }}
           isDisabled={choices.every(
@@ -120,10 +120,10 @@ const Dashboard = () => {
         />
         <Button
           name="Add criterion"
-          type="circular"
+          shape={isMobile ? "circular" : "rectangular"}
           styles={{
-            height: "5em",
-            width: "5em",
+            height: isMobile ? "5rem" : "3rem",
+            width: isMobile ? "5rem" : "10rem",
             boxShadow: "0 .5rem 1rem rgb(0 0 0 / 40%)",
           }}
           isDisabled={choices.every((choice_) => choice_.name === "")}

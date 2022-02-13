@@ -132,7 +132,7 @@ const GettingStarted = () => {
           <div className="submit-button-wrapper">
             <Button
               name={GETTING_STARTED_CONTENT.NEXT_BUTTON_TEXT}
-              type="rectangular"
+              shape="rectangular"
               isDisabled={addedChoices.some((choice) => !choice.name)}
               action="submit"
               styles={{ backgroundColor: "#007a96" }}

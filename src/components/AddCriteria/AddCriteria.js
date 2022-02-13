@@ -172,7 +172,7 @@ const AddCriteria = ({ onBackdropClick }) => {
         <div className="button-wrapper">
           <Button
             name={ADD_CRITERIA_FORM.ADD_BUTTON_NAME}
-            type="rectangular"
+            shape="rectangular"
             styles={{ backgroundColor: "#007a96" }}
             isDisabled={criteria === "" || !isOptionSelectionsValid}
             onClick={handleAdd}

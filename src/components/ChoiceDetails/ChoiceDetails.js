@@ -126,7 +126,7 @@ const ChoiceDetails = ({ choiceId, onBackdropClick }) => {
                   ? CHOICE_DETAILS_CONTENT.UPDATE_BUTTON_TEXT
                   : CHOICE_DETAILS_CONTENT.EDIT_BUTTON_TEXT
               }
-              type="rectangular"
+              shape="rectangular"
               styles={{ backgroundColor: "#007a96" }}
               onClick={allowEdit ? handleUpdateAttributes : toggleAllowEdit}
             />
