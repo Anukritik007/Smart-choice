@@ -2,6 +2,11 @@ import "./App.scss";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
 import themeContext from "./themeContext";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
@@ -16,6 +21,12 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LeftNav from "./components/LeftNav/LeftNav";
 import RightNav from "./components/RightNav/RightNav";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: "Poppins",
+  },
+});
+
 const App = () => {
   const [isThemeDark, toggleThemeDark] = useState(() => {
     const timeOfDay = getTimeOfDay();
@@ -27,44 +38,48 @@ const App = () => {
   };
 
   return (
-    <themeContext.Provider value={themeContextValue}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className="App">
-            <Header />
-            <div
-              className={`view-container ${
-                isThemeDark ? "theme-dark" : "theme-light"
-              }`}
-            >
-              <LeftNav />
-              <main>
-                <Switch>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route path="/getting-started">
-                    <GettingStarted />
-                  </Route>
-                  <Route path="/settings">
-                    <Settings />
-                  </Route>
-                  <Route path="/history">
-                    <History />
-                  </Route>
-                  <ProtectedRoute path="/dashboard" component={Dashboard} />
-                  <ProtectedRoute path="/decision" component={Decision} />
-                  <Route path="*">
-                    <Home />
-                  </Route>
-                </Switch>
-              </main>
-              <RightNav />
-            </div>
-          </div>
-        </BrowserRouter>
-      </Provider>
-    </themeContext.Provider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <themeContext.Provider value={themeContextValue}>
+          <Provider store={store}>
+            <BrowserRouter>
+              <div className="App">
+                <Header />
+                <div
+                  className={`view-container ${
+                    isThemeDark ? "theme-dark" : "theme-light"
+                  }`}
+                >
+                  <LeftNav />
+                  <main>
+                    <Switch>
+                      <Route exact path="/">
+                        <Home />
+                      </Route>
+                      <Route path="/getting-started">
+                        <GettingStarted />
+                      </Route>
+                      <Route path="/settings">
+                        <Settings />
+                      </Route>
+                      <Route path="/history">
+                        <History />
+                      </Route>
+                      <ProtectedRoute path="/dashboard" component={Dashboard} />
+                      <ProtectedRoute path="/decision" component={Decision} />
+                      <Route path="*">
+                        <Home />
+                      </Route>
+                    </Switch>
+                  </main>
+                  <RightNav />
+                </div>
+              </div>
+            </BrowserRouter>
+          </Provider>
+        </themeContext.Provider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

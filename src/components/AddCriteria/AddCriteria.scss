@@ -1,8 +1,7 @@
 .add-criteria {
-    border-radius: 4px;
+    min-width: 40vw;
+    margin: auto;
     background: white;
-    animation-duration: 0.5s;
-    padding: 0.5rem;
 
     .display-body {
         min-height: 30vh;
@@ -28,6 +27,7 @@
     }
 
     .button-wrapper {
+        margin-top: 0.5rem;
         padding: 0.5rem;
     }
 
