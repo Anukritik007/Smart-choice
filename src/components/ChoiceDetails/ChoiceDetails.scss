@@ -1,41 +1,14 @@
 .choice-content {
-    position: relative;
-    padding: 0.5rem;
+    width: 40vw;
+    text-align: center;
     border-radius: 4px;
     background: white;
-
-    .choice-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        padding: 0.5rem;
-
-        .choice-name {
-            margin: 0;
-            text-align: left;
-            max-width: 80%;
-        }
-
-        .total-score {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 2em;
-            width: 2em;
-            background: white;
-            box-shadow: 0 0 8px 0 #c1c1ca inset;
-            border-radius: 50%;
-            margin: 0;
-        }
-    }
 
     .display-body {
         min-height: 30vh;
         max-height: 55vh;
         overflow: scroll;
         overflow-x: hidden;
-        padding: 0.5rem;
 
         .criteria-info {
             padding: 0.5rem;
@@ -81,9 +54,22 @@
         }
     }
 
-
     .button-wrapper {
-        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+
+        button {
+            width: 50%
+        }
+    }
+}
+
+
+//mobile
+@media only screen and (max-width:767px) {
+    .choice-content {
+        width: 74vw;
+        margin: auto;
     }
 }
 
@@ -92,12 +78,6 @@
         background: #213842;
         color: white;
 
-        .total-score {
-            background: #111618;
-            color: white;
-            box-shadow: none;
-        }
-
         .display-body {
             .criteria-info {
                 .MuiSlider-markLabel {
@@ -105,5 +85,39 @@
                 }
             }
         }
+    }
+
+    .choice-header {
+        .total-score {
+            background: #111618;
+            color: white;
+            box-shadow: none;
+        }
+    }
+}
+
+.choice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+
+    .choice-name {
+        margin: 0;
+        text-align: left;
+        max-width: 80%;
+    }
+
+    .total-score {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2em;
+        width: 2em;
+        background: white;
+        box-shadow: 0 0 8px 0 #c1c1ca inset;
+        border-radius: 50%;
+        margin: 0;
+        margin-right: 2em;
     }
 }

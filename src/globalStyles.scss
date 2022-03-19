@@ -39,4 +39,14 @@ h3 {
     input {
         color: white;
     }
+
+    .MuiDialogTitle-root,
+    .MuiDialogContent-root {
+        background: #213842;
+        color: white;
+    }
+}
+
+.MuiDialog-container {
+    font-family: "Poppins", sans-serif;
 }

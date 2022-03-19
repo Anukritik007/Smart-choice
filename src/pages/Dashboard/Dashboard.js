@@ -8,6 +8,7 @@ import ScoreCard from "../../components/ScoreCard/ScoreCard";
 import ChoiceDetails from "../../components/ChoiceDetails/ChoiceDetails";
 import AddCriteria from "../../components/AddCriteria/AddCriteria";
 import { isMobile } from "../../utils/utils";
+import CustomizedDialog from "../../components/Dialog/Dialog";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -15,8 +16,11 @@ const Dashboard = () => {
   const question = useSelector((state) => state.question);
   const [showChoiceDetails, setShowChoiceDetails] = useState(false);
   const [showAddCriteria, setShowAddCriteria] = useState(false);
-
   const [selectedChoice, setSelectedChoice] = useState("");
+  const activeChoice = useSelector((state) =>
+    state.choices.find((choice) => choice.id === selectedChoice)
+  );
+
   const handleNavigateBack = () => {
     history.push("/getting-started");
   };
@@ -51,19 +55,15 @@ const Dashboard = () => {
     setShowChoiceDetails(!showChoiceDetails);
   };
 
+  const getModalTitle = () => (
+    <div className="choice-header">
+      <div className="choice-name">{activeChoice?.name}</div>
+      <div className="total-score">{activeChoice?.score}</div>
+    </div>
+  );
+
   return (
     <div className="dashboard">
-      {showChoiceDetails && (
-        <ChoiceDetails
-          choiceId={selectedChoice}
-          onBackdropClick={() => setShowChoiceDetails(!showChoiceDetails)}
-        />
-      )}
-      {showAddCriteria && (
-        <AddCriteria
-          onBackdropClick={() => setShowAddCriteria(!showAddCriteria)}
-        />
-      )}
       <div className="scrollable-content">
         <div className="top-nav">
           <h3>{question ? `${question}?` : ""}</h3>
@@ -130,6 +130,26 @@ const Dashboard = () => {
           onClick={() => setShowAddCriteria(!showAddCriteria)}
         />
       </div>
+      <CustomizedDialog
+        isOpen={showChoiceDetails}
+        onClose={() => setShowChoiceDetails(!showChoiceDetails)}
+        modalTitle={getModalTitle()}
+        ariaLabel="Choice detail modal"
+      >
+        <ChoiceDetails
+          choiceId={selectedChoice}
+          onBackdropClick={() => setShowChoiceDetails(!showChoiceDetails)}
+        />
+      </CustomizedDialog>
+
+      <CustomizedDialog
+        isOpen={showAddCriteria}
+        onClose={() => setShowAddCriteria(!showAddCriteria)}
+        modalTitle="Add Criteria"
+        ariaLabel="Add Criteria modal"
+      >
+        <AddCriteria />
+      </CustomizedDialog>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ChoiceSelectionAndScore.scss";
 import PropTypes from "prop-types";
-import Slider from "@material-ui/core/Slider";
+import Slider from "@mui/material/Slider";
 import {
   FaRegCheckCircle,
   FaRegCircle,

@@ -58,11 +58,11 @@ export const DECISION_PAGE_CONTENT = {
 };
 
 export const ADD_CRITERIA_FORM = {
-  CRITERIA_INPUT_LABEL: "What is your Criterion for judgement?",
+  CRITERIA_INPUT_LABEL: "* What is your Criterion for judgement?",
   CRITERIA_INPUT_PLACEHOLDER: "Enter criteria",
   CHOICE_SELECT_LABEL:
-    "Select options to add this criteria and a score for each:",
-  SCORE: "Score",
+    "* Select options to add this criteria and a score for each:",
+  SCORE: "* Score",
   FIELD_REQUIRED_ERROR_TEXT: " This field is required",
   NOT_SELECTED_ERROR_TEXT: " not selected",
   ADD_BUTTON_NAME: "Add",
