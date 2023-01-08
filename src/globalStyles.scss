@@ -35,6 +35,11 @@ h3 {
     margin: 0;
 }
 
+.MuiDialog-container {
+    font-family: "Poppins", sans-serif;
+}
+
+//dark theme styles
 .theme-dark {
     input {
         color: white;
@@ -45,8 +50,36 @@ h3 {
         background: #213842;
         color: white;
     }
-}
 
-.MuiDialog-container {
-    font-family: "Poppins", sans-serif;
+    .add-criteria {
+        background: #213842;
+        color: white;
+
+        .MuiSlider-root {
+            .MuiSlider-markLabel {
+                color: white;
+            }
+        }
+    }
+
+    .choice-content {
+        background: #213842;
+        color: white;
+
+        .display-body {
+            .criteria-info {
+                .MuiSlider-markLabel {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .choice-header {
+        .total-score {
+            background: #111618;
+            color: white;
+            box-shadow: none;
+        }
+    }
 }

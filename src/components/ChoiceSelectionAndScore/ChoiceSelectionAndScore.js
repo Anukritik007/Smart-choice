@@ -1,5 +1,4 @@
 import React from "react";
-import "./ChoiceSelectionAndScore.scss";
 import PropTypes from "prop-types";
 import Slider from "@mui/material/Slider";
 import {
@@ -7,6 +6,7 @@ import {
   FaRegCircle,
   FaExclamationCircle,
 } from "react-icons/fa";
+import { OptionGroupStyled } from "./ChoiceSelectionAndScore.style";
 import { SCORE_MARKS, ADD_CRITERIA_FORM } from "../../Constants";
 
 const ChoiceSelectionAndScore = ({
@@ -30,7 +30,7 @@ const ChoiceSelectionAndScore = ({
   };
 
   return (
-    <div
+    <OptionGroupStyled
       className={`option-group ${
         choiceScoreMap[choice.id].isSelected ? "expanded" : "collapsed"
       }`}
@@ -86,7 +86,7 @@ const ChoiceSelectionAndScore = ({
           />
         </>
       )}
-    </div>
+    </OptionGroupStyled>
   );
 };
 

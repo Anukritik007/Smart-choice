@@ -9,6 +9,7 @@ import ChoiceDetails from "../../components/ChoiceDetails/ChoiceDetails";
 import AddCriteria from "../../components/AddCriteria/AddCriteria";
 import { isMobile } from "../../utils/utils";
 import CustomizedDialog from "../../components/Dialog/Dialog";
+import { ChoiceHeaderStyled } from "../../components/ChoiceDetails/ChoiceDetails.style";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -56,10 +57,10 @@ const Dashboard = () => {
   };
 
   const getModalTitle = () => (
-    <div className="choice-header">
+    <ChoiceHeaderStyled className="choice-header">
       <div className="choice-name">{activeChoice?.name}</div>
       <div className="total-score">{activeChoice?.score}</div>
-    </div>
+    </ChoiceHeaderStyled>
   );
 
   return (

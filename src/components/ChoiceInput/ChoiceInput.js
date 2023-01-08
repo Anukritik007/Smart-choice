@@ -1,7 +1,7 @@
 import React from "react";
-import "./ChoiceInput.scss";
 import { FaTrashAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { ChoiceInputStyled } from "./ChoiceInput.style";
 
 const ChoiceInput = ({
   value,
@@ -12,7 +12,7 @@ const ChoiceInput = ({
   onInputDelete,
 }) => {
   return (
-    <div className="choice-input">
+    <ChoiceInputStyled>
       <label className="field font-em-8 text-minor" htmlFor="choiceInput">
         {label}
         <input
@@ -31,7 +31,7 @@ const ChoiceInput = ({
           <FaTrashAlt size={25} color="#007a96" onClick={onInputDelete} />
         )}
       </div>
-    </div>
+    </ChoiceInputStyled>
   );
 };
 

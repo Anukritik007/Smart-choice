@@ -1,8 +1,8 @@
-import "./AddCriteria.scss";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaExclamationCircle } from "react-icons/fa";
 import { updateChoices } from "../../redux/choices/choiceActions";
+import { AddCriteriaStyled } from "./AddCriteria.style";
 import { ADD_CRITERIA_FORM } from "../../Constants";
 import { updateLocalStorageWithCurrentState } from "../../utils/utils";
 import Button from "../Buttons/Button";
@@ -115,7 +115,7 @@ const AddCriteria = () => {
   };
 
   return (
-    <section role="presentation" className="add-criteria">
+    <AddCriteriaStyled className="add-criteria">
       <div className="display-body">
         <label htmlFor="input-criteria">
           {ADD_CRITERIA_FORM.CRITERIA_INPUT_LABEL}
@@ -167,7 +167,7 @@ const AddCriteria = () => {
         />
       </div>
       {statusMessage && <p className="text-success">{statusMessage}</p>}
-    </section>
+    </AddCriteriaStyled>
   );
 };
 

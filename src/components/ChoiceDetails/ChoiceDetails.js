@@ -1,8 +1,8 @@
-import "./ChoiceDetails.scss";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Slider from "@mui/material/Slider";
 import PropTypes from "prop-types";
+import { ChoiceDetailStyled } from "./ChoiceDetails.style";
 import Button from "../Buttons/Button";
 import { SCORE_MARKS, CHOICE_DETAILS_CONTENT } from "../../Constants";
 import { updateChoices } from "../../redux/choices/choiceActions";
@@ -57,7 +57,7 @@ const ChoiceDetails = ({ choiceId }) => {
   };
 
   return (
-    <section role="presentation" className="choice-content">
+    <ChoiceDetailStyled className="choice-content">
       {allowEdit ? (
         <div className="display-body animate__animated animate__fadeIn">
           {state &&
@@ -116,7 +116,7 @@ const ChoiceDetails = ({ choiceId }) => {
           />
         )}
       </div>
-    </section>
+    </ChoiceDetailStyled>
   );
 };
 
